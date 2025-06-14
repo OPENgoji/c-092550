@@ -87,19 +87,21 @@ const Index = () => {
   }, [walletAddress]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-yellow-900/10 to-black p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-yellow-900/20 to-black p-4 md:p-8" style={{
+      background: 'radial-gradient(circle at center, #1a1a0a 0%, #0a0a00 50%, #000000 100%)'
+    }}>
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
       
       <div className="max-w-7xl mx-auto">
         <header className="mb-8 text-center">
           <div className="flex flex-col items-center justify-center mb-4">
             <img
-              src="/lovable-uploads/2f6063b3-dfc0-4223-b344-aae167eb48a6.png"
+              src="/lovable-uploads/a8e8291a-531a-42d0-b99a-151de202bf83.png"
               alt="GoldenPuF NFT"
-              className="w-48 h-48 animate-pulse-subtle token-image mb-6"
+              className="w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] animate-pulse-subtle token-image mb-6 drop-shadow-2xl"
             />
             <div>
-              <h1 className="text-6xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-tight">
                 GoldenPuF<br />NFT
               </h1>
             </div>
