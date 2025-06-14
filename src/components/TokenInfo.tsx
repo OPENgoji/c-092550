@@ -24,13 +24,13 @@ const TokenInfo = () => {
         <div className="p-4 bg-secondary bg-opacity-30 rounded-lg">
           <h3 className="text-sm font-medium text-muted-foreground mb-1">Contract Address</h3>
           <a
-            href="https://dexscreener.com/worldchain/0xEde38e5b74d2fD1b2213eD880819FF95758f02f7"
+            href="https://dexscreener.com/worldchain/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-yellow-500 hover:text-yellow-400 flex items-center gap-1"
+            className="text-xs text-yellow-500 hover:text-yellow-400 flex items-center gap-1 break-all"
           >
-            0xEde38e5b74d2fD1b2213eD880819FF95758f02f7
-            <ExternalLink className="w-3 h-3" />
+            0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd
+            <ExternalLink className="w-3 h-3 flex-shrink-0" />
           </a>
         </div>
       </div>

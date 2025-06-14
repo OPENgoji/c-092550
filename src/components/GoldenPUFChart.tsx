@@ -11,24 +11,29 @@ const GoldenPUFChart = () => {
             alt="GoldenPUF"
             className="w-16 h-16 token-image"
           />
-          GoldenPUF Price Chart
+          GoldenPUF Live Chart
         </h2>
       </div>
-      <div className="h-[400px] w-full">
+      <div className="h-[500px] w-full">
         <TradingViewWidget
-          symbol="0xEde38e5b74d2fD1b2213eD880819FF95758f02f7"
-          theme="dark"
+          symbol="0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
+          theme="Dark"
           locale="en"
           autosize
           hide_side_toolbar={false}
           allow_symbol_change={true}
-          interval="D"
+          interval="15"
           toolbar_bg="#141413"
           enable_publishing={false}
           hide_top_toolbar={false}
           save_image={false}
-          container_id="goldenpuf_chart"
+          container_id="goldenpuf_live_chart"
         />
+      </div>
+      <div className="mt-4 p-3 bg-yellow-900 bg-opacity-20 rounded-lg">
+        <p className="text-sm text-yellow-400 text-center">
+          📈 Live trading data for GoldenPUF token pairs
+        </p>
       </div>
     </div>
   );
