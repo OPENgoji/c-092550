@@ -16,10 +16,12 @@ const Index = () => {
   };
 
   const handleRewardClaim = () => {
+    console.log("Reward claim triggered, showing token rain");
     setShowTokenRain(true);
   };
 
   const handleRainComplete = () => {
+    console.log("Token rain completed");
     setShowTokenRain(false);
   };
 
@@ -33,11 +35,11 @@ const Index = () => {
             <img
               src="/lovable-uploads/2f6063b3-dfc0-4223-b344-aae167eb48a6.png"
               alt="GoldenPUF"
-              className="w-40 h-40 animate-pulse-subtle token-image mb-4"
+              className="w-48 h-48 animate-pulse-subtle token-image mb-6"
             />
             <div>
-              <h1 className="text-5xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-                GoldenPUF SWAP
+              <h1 className="text-6xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
+                GoldenPUF
               </h1>
               <p className="text-muted-foreground text-lg">World Chain Ecosystem Platform</p>
             </div>

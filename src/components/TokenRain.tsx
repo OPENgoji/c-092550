@@ -5,24 +5,34 @@ const TokenRain = ({ isActive, onComplete }: { isActive: boolean; onComplete: ()
   const [tokens, setTokens] = useState<Array<{ id: number; x: number; delay: number }>>([]);
 
   useEffect(() => {
+    console.log("TokenRain effect triggered, isActive:", isActive);
     if (isActive) {
       const tokenArray = Array.from({ length: 50000 }, (_, i) => ({
         id: i,
         x: Math.random() * 100,
         delay: Math.random() * 3
       }));
+      console.log("Created token array with", tokenArray.length, "tokens");
       setTokens(tokenArray);
 
       const timer = setTimeout(() => {
+        console.log("Token rain timer completed");
         onComplete();
         setTokens([]);
       }, 10000);
 
-      return () => clearTimeout(timer);
+      return () => {
+        console.log("Cleaning up token rain timer");
+        clearTimeout(timer);
+      };
+    } else {
+      setTokens([]);
     }
   }, [isActive, onComplete]);
 
-  if (!isActive) return null;
+  console.log("TokenRain render - isActive:", isActive, "tokens count:", tokens.length);
+
+  if (!isActive || tokens.length === 0) return null;
 
   return (
     <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden bg-black bg-opacity-40">
