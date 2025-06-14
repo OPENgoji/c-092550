@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenInfo from "@/components/TokenInfo";
@@ -87,10 +88,10 @@ const Index = () => {
   }, [walletAddress]);
 
   return (
-    <div className="fixed inset-0 w-full h-full bg-black flex flex-col items-center justify-center p-0 m-0 overflow-hidden" style={{ backgroundColor: '#000000', width: '100vw', height: '100vh', position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
+    <div className="min-h-screen w-full bg-black flex flex-col items-center justify-center p-4" style={{ backgroundColor: '#000000' }}>
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
       
-      <div className="w-full h-full flex flex-col items-center justify-center bg-black" style={{ backgroundColor: '#000000' }}>
+      <div className="w-full flex flex-col items-center justify-center bg-black" style={{ backgroundColor: '#000000' }}>
         <header className="text-center">
           <div className="flex flex-col items-center justify-center mb-4">
             <img
