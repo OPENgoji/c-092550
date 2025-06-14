@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -22,14 +23,14 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#141413",
+        background: "#000000",
         foreground: "#FAFAF8",
         primary: {
-          DEFAULT: "#8989DE",
-          foreground: "#FAFAF8",
+          DEFAULT: "#FFD700",
+          foreground: "#000000",
         },
         secondary: {
-          DEFAULT: "#3A3935",
+          DEFAULT: "#1A1A00",
           foreground: "#FAFAF8",
         },
         success: {
@@ -45,8 +46,8 @@ export default {
           foreground: "#E6E4DD",
         },
         accent: {
-          DEFAULT: "#8989DE",
-          foreground: "#FAFAF8",
+          DEFAULT: "#FFD700",
+          foreground: "#000000",
         },
       },
       borderRadius: {
@@ -57,6 +58,7 @@ export default {
       animation: {
         "fade-in": "fade-in 0.5s ease-out",
         "slide-up": "slide-up 0.5s ease-out",
+        "token-fall": "token-fall 3s linear infinite",
       },
       keyframes: {
         "fade-in": {
@@ -66,6 +68,10 @@ export default {
         "slide-up": {
           "0%": { transform: "translateY(10px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        "token-fall": {
+          "0%": { transform: "translateY(-100vh) rotate(0deg)", opacity: "1" },
+          "100%": { transform: "translateY(100vh) rotate(360deg)", opacity: "0" },
         },
       },
     },
