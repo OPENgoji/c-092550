@@ -6,13 +6,12 @@ import TokenButtons from "@/components/TokenButtons";
 import DailyReward from "@/components/DailyReward";
 import TelegramInfo from "@/components/TelegramInfo";
 import TokenRain from "@/components/TokenRain";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { WorldIDUser } from "@/types/worldid";
 import { PointsStorage } from "@/utils/pointsStorage";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const Index = () => {
-  const { currentLanguage, changeLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const [walletAddress, setWalletAddress] = useState<string>('');
   const [worldIdUser, setWorldIdUser] = useState<WorldIDUser | null>(null);
   const [showTokenRain, setShowTokenRain] = useState(false);
@@ -90,14 +89,6 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-yellow-900/10 to-black p-4 md:p-8">
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
-      
-      {/* Language Switcher */}
-      <div className="fixed top-4 right-4 z-50">
-        <LanguageSwitcher 
-          currentLanguage={currentLanguage}
-          onLanguageChange={changeLanguage}
-        />
-      </div>
       
       <div className="max-w-7xl mx-auto">
         <header className="mb-8 text-center">
