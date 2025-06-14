@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenInfo from "@/components/TokenInfo";
@@ -7,10 +6,13 @@ import TokenButtons from "@/components/TokenButtons";
 import DailyReward from "@/components/DailyReward";
 import TelegramInfo from "@/components/TelegramInfo";
 import TokenRain from "@/components/TokenRain";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { WorldIDUser } from "@/types/worldid";
 import { PointsStorage } from "@/utils/pointsStorage";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const Index = () => {
+  const { currentLanguage, changeLanguage, t } = useTranslation();
   const [walletAddress, setWalletAddress] = useState<string>('');
   const [worldIdUser, setWorldIdUser] = useState<WorldIDUser | null>(null);
   const [showTokenRain, setShowTokenRain] = useState(false);
@@ -89,6 +91,14 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-black via-yellow-900/10 to-black p-4 md:p-8">
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
       
+      {/* Language Switcher */}
+      <div className="fixed top-4 right-4 z-50">
+        <LanguageSwitcher 
+          currentLanguage={currentLanguage}
+          onLanguageChange={changeLanguage}
+        />
+      </div>
+      
       <div className="max-w-7xl mx-auto">
         <header className="mb-8 text-center">
           <div className="flex flex-col items-center justify-center mb-4">
@@ -108,8 +118,8 @@ const Index = () => {
             <div className="mt-12 flex justify-center">
               <div className="glass-card p-8 rounded-2xl max-w-md w-full border-2 border-yellow-500/30 shadow-2xl backdrop-blur-xl">
                 <div className="text-center mb-6">
-                  <h2 className="text-2xl font-bold text-yellow-400 mb-2">Добро пожаловать!</h2>
-                  <p className="text-muted-foreground">Подключите кошелек для начала работы</p>
+                  <h2 className="text-2xl font-bold text-yellow-400 mb-2">{t('welcome')}</h2>
+                  <p className="text-muted-foreground">{t('connectWallet')}</p>
                 </div>
                 <WalletConnect onConnect={handleWalletConnect} />
               </div>
@@ -120,12 +130,12 @@ const Index = () => {
         {walletAddress && (
           <>
             <div className="mb-8 text-center">
-              <p className="text-sm text-muted-foreground mb-2">Connected Wallet:</p>
+              <p className="text-sm text-muted-foreground mb-2">{t('connectedWallet')}</p>
               <p className="font-mono text-yellow-500">{walletAddress}</p>
               {worldIdUser?.verified && (
                 <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-green-600/20 border border-green-500/30 rounded-full">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-green-400 text-sm">World ID Verified (2x rewards)</span>
+                  <span className="text-green-400 text-sm">{t('worldIdVerified')}</span>
                 </div>
               )}
             </div>

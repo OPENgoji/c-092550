@@ -1,7 +1,10 @@
 
 import { MessageCircle, ExternalLink, Users } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const TelegramInfo = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="glass-card p-6 rounded-lg">
       <div className="flex items-center gap-4 mb-6">
@@ -9,8 +12,8 @@ const TelegramInfo = () => {
           <MessageCircle className="w-6 h-6 text-white" />
         </div>
         <div>
-          <h3 className="text-xl font-bold text-blue-400">Telegram Канал</h3>
-          <p className="text-sm text-muted-foreground">Присоединяйтесь к нашему сообществу</p>
+          <h3 className="text-xl font-bold text-blue-400">{t('telegramChannel')}</h3>
+          <p className="text-sm text-muted-foreground">{t('joinCommunity')}</p>
         </div>
       </div>
       
@@ -26,12 +29,12 @@ const TelegramInfo = () => {
               <MessageCircle className="w-6 h-6 text-white" />
             </div>
             <div>
-              <p className="font-semibold text-blue-300 text-lg">GoldenPUF Swap</p>
+              <p className="font-semibold text-blue-300 text-lg">{t('goldenPufSwap')}</p>
               <div className="flex items-center gap-2 mt-1">
                 <Users className="w-4 h-4 text-blue-400" />
                 <p className="text-sm text-blue-400">@GoldenPUFswap</p>
               </div>
-              <p className="text-xs text-muted-foreground mt-1">Нажмите для перехода в Telegram</p>
+              <p className="text-xs text-muted-foreground mt-1">{t('clickToTelegram')}</p>
             </div>
           </div>
           <ExternalLink className="w-5 h-5 text-blue-400" />
@@ -40,7 +43,7 @@ const TelegramInfo = () => {
       
       <div className="mt-4 text-center">
         <p className="text-xs text-muted-foreground">
-          Получайте новости, обновления и общайтесь с сообществом
+          {t('getUpdates')}
         </p>
       </div>
     </div>
