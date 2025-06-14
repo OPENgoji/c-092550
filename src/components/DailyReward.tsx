@@ -49,8 +49,8 @@ const DailyReward = ({
 
   return (
     <div className="glass-card p-6 rounded-lg text-center">
-      <h3 className="text-xl font-semibold mb-4 flex items-center justify-center gap-2">
-        <Gift className="w-6 h-6 text-yellow-500" />
+      <h3 className="text-lg font-semibold mb-4 flex items-center justify-center gap-2">
+        <Gift className="w-5 h-5 text-yellow-500" />
         Daily NFT Reward
       </h3>
       
@@ -63,15 +63,14 @@ const DailyReward = ({
         </button>
       ) : (
         <div className="flex flex-col items-center gap-3">
-          <Clock className="w-6 h-6 text-yellow-500" />
-          <p className="text-sm text-muted-foreground">Следующие специальные NFT поинты через:</p>
-          <p className="text-lg font-mono text-yellow-500">{timeLeft}</p>
+          <Clock className="w-4 h-4 text-yellow-500" />
+          <p className="text-xs text-muted-foreground">Следующие специальные NFT поинты через:</p>
+          <p className="text-sm font-mono text-yellow-500">{timeLeft}</p>
           
-          {/* Счетчик NFT без звёздочки */}
-          <div className="mt-3 p-2 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 border border-yellow-500/30 rounded-lg">
+          <div className="mt-2 p-2 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 border border-yellow-500/30 rounded-lg">
             <div className="text-center">
               <p className="text-xs text-muted-foreground">Мои специальные NFT</p>
-              <p className="text-base font-bold text-yellow-500">{userPoints.toLocaleString()}</p>
+              <p className="text-sm font-bold text-yellow-500">{userPoints.toLocaleString()}</p>
             </div>
           </div>
         </div>
