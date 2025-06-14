@@ -87,17 +87,22 @@ const Index = () => {
   }, [walletAddress]);
 
   return (
-    <div className="min-h-screen w-screen bg-black flex flex-col items-center justify-center p-0 m-0" style={{ backgroundColor: '#000000' }}>
+    <div className="min-h-screen w-screen bg-black flex flex-col items-center justify-center p-0 m-0 overflow-x-hidden" style={{ backgroundColor: '#000000', minHeight: '100vh', width: '100vw' }}>
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
       
       <div className="w-full flex flex-col items-center justify-center">
         <header className="text-center">
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center mb-4">
             <img
               src="/lovable-uploads/a8e8291a-531a-42d0-b99a-151de202bf83.png"
               alt="GoldenPuF NFT"
-              className="w-[600px] h-[600px] md:w-[700px] md:h-[700px] lg:w-[800px] lg:h-[800px] animate-pulse-subtle token-image drop-shadow-2xl"
+              className="w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] animate-pulse-subtle token-image drop-shadow-2xl"
             />
+            <div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-tight">
+                GoldenPuF NFT
+              </h1>
+            </div>
           </div>
           
           {!walletAddress && (
