@@ -7,7 +7,7 @@ const PointsCounter = ({ points }: { points: number }) => {
       <div className="flex items-center gap-2">
         <Star className="w-5 h-5 text-yellow-500" />
         <div className="text-center">
-          <p className="text-xs text-muted-foreground">Мои поинты</p>
+          <p className="text-xs text-muted-foreground">Мои специальные NFT</p>
           <p className="text-lg font-bold text-yellow-500">{points.toLocaleString()}</p>
         </div>
       </div>
