@@ -6,17 +6,17 @@ const TokenRain = ({ isActive, onComplete }: { isActive: boolean; onComplete: ()
 
   useEffect(() => {
     if (isActive) {
-      const tokenArray = Array.from({ length: 5000 }, (_, i) => ({
+      const tokenArray = Array.from({ length: 100 }, (_, i) => ({
         id: i,
         x: Math.random() * 100,
-        delay: Math.random() * 5
+        delay: Math.random() * 3
       }));
       setTokens(tokenArray);
 
       const timer = setTimeout(() => {
         onComplete();
         setTokens([]);
-      }, 20000);
+      }, 8000);
 
       return () => {
         clearTimeout(timer);
@@ -33,7 +33,7 @@ const TokenRain = ({ isActive, onComplete }: { isActive: boolean; onComplete: ()
       {tokens.map((token) => (
         <div
           key={token.id}
-          className="absolute animate-token-fall-slow"
+          className="absolute animate-token-fall"
           style={{
             left: `${token.x}%`,
             animationDelay: `${token.delay}s`,

@@ -18,8 +18,8 @@ const TokenInfo = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div className="p-4 bg-secondary bg-opacity-30 rounded-lg">
-          <h3 className="text-sm font-medium text-muted-foreground mb-1">Total Supply</h3>
-          <p className="text-xl font-semibold text-yellow-500">10,000,000 PUF</p>
+          <h3 className="text-sm font-medium text-muted-foreground mb-1">Общее количество поинтов</h3>
+          <p className="text-xl font-semibold text-yellow-500">10,000,000 Points</p>
         </div>
         <div className="p-4 bg-secondary bg-opacity-30 rounded-lg">
           <h3 className="text-sm font-medium text-muted-foreground mb-2">Contract Address</h3>
@@ -33,7 +33,7 @@ const TokenInfo = () => {
             <ExternalLink className="w-3 h-3 flex-shrink-0" />
           </a>
           <a
-            href="https://worldcoin.org/mini-app?app_id=app_15daccf5b7d4ec9b7dbba044a8fdeab5&path=app/token/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
+            href="https://worldcoin.org/mini-app?app_id=app_15daccf5b7d4ec9b7dbda044a8fdeab5&path=app/token/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-3 py-2 bg-yellow-600 hover:bg-yellow-700 text-black rounded-lg text-sm font-medium transition-colors"
@@ -45,11 +45,20 @@ const TokenInfo = () => {
       </div>
       
       <div className="bg-secondary bg-opacity-30 p-4 rounded-lg">
-        <h3 className="text-lg font-semibold mb-2 text-yellow-500">About GoldenPUF Points</h3>
+        <h3 className="text-lg font-semibold mb-3 text-yellow-500">Распределение поинтов</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="p-3 bg-yellow-900/20 rounded-lg border border-yellow-500/20">
+            <h4 className="font-semibold text-yellow-400 mb-1">5,000,000 поинтов</h4>
+            <p className="text-sm text-muted-foreground">Конвертируются в NFT коллекцию</p>
+          </div>
+          <div className="p-3 bg-yellow-900/20 rounded-lg border border-yellow-500/20">
+            <h4 className="font-semibold text-yellow-400 mb-1">5,000,000 поинтов</h4>
+            <p className="text-sm text-muted-foreground">Конвертируются в GoldenPUF токены</p>
+          </div>
+        </div>
         <p className="text-sm text-muted-foreground">
-          Earn daily points that will be converted to GoldenPUF tokens on World Chain. 
-          Total supply is limited to 10 million tokens. Connect your World Chain wallet 
-          and claim your daily reward every 24 hours!
+          Зарабатывайте ежедневные поинты, которые будут конвертированы в NFT коллекцию и токены GoldenPUF на World Chain. 
+          Подключите свой World Chain кошелек и получайте ежедневную награду каждые 24 часа!
         </p>
       </div>
     </div>

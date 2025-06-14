@@ -1,23 +1,32 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenInfo from "@/components/TokenInfo";
 import GoldenPUFChart from "@/components/GoldenPUFChart";
 import DailyReward from "@/components/DailyReward";
 import TelegramInfo from "@/components/TelegramInfo";
 import TokenRain from "@/components/TokenRain";
+import PointsCounter from "@/components/PointsCounter";
 
 const Index = () => {
   const [walletAddress, setWalletAddress] = useState<string>('');
   const [showTokenRain, setShowTokenRain] = useState(false);
+  const [userPoints, setUserPoints] = useState<number>(0);
 
   const handleWalletConnect = (address: string) => {
     setWalletAddress(address);
+    // Загружаем поинты пользователя при подключении кошелька
+    const savedPoints = localStorage.getItem(`points_${address}`);
+    setUserPoints(savedPoints ? parseInt(savedPoints) : 0);
   };
 
   const handleRewardClaim = () => {
     console.log("Reward claim triggered, showing token rain");
     setShowTokenRain(true);
+    // Добавляем 1 поинт при получении награды
+    const newPoints = userPoints + 1;
+    setUserPoints(newPoints);
+    localStorage.setItem(`points_${walletAddress}`, newPoints.toString());
   };
 
   const handleRainComplete = () => {
@@ -25,9 +34,28 @@ const Index = () => {
     setShowTokenRain(false);
   };
 
+  // Автоматически подключаем пользователя, если он уже подключался ранее
+  useEffect(() => {
+    const lastWallet = localStorage.getItem('lastConnectedWallet');
+    if (lastWallet) {
+      setWalletAddress(lastWallet);
+      const savedPoints = localStorage.getItem(`points_${lastWallet}`);
+      setUserPoints(savedPoints ? parseInt(savedPoints) : 0);
+    }
+  }, []);
+
+  // Сохраняем последний подключенный кошелек
+  useEffect(() => {
+    if (walletAddress) {
+      localStorage.setItem('lastConnectedWallet', walletAddress);
+    }
+  }, [walletAddress]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-yellow-900/10 to-black p-4 md:p-8">
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
+      
+      {walletAddress && <PointsCounter points={userPoints} />}
       
       <div className="max-w-7xl mx-auto">
         <header className="mb-8 text-center">
