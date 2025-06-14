@@ -19,7 +19,7 @@ const TokenInfo = () => {
       <div className="grid grid-cols-1 md:grid-cols-1 gap-4 mb-6">
         <div className="p-4 bg-secondary bg-opacity-30 rounded-lg">
           <h3 className="text-sm font-medium text-muted-foreground mb-1">Общее количество специальных NFT</h3>
-          <p className="text-xl font-semibold text-yellow-500">10,000,000 специальных NFT</p>
+          <p className="text-xl font-semibold text-yellow-500">100,000,000 специальных NFT</p>
         </div>
       </div>
       
@@ -27,7 +27,7 @@ const TokenInfo = () => {
         <h3 className="text-lg font-semibold mb-3 text-yellow-500">Распределение специальных NFT</h3>
         <div className="grid grid-cols-1 gap-4 mb-4">
           <div className="p-3 bg-yellow-900/20 rounded-lg border border-yellow-500/20">
-            <h4 className="font-semibold text-yellow-400 mb-1">10,000,000 специальных NFT</h4>
+            <h4 className="font-semibold text-yellow-400 mb-1">100,000,000 специальных NFT</h4>
             <p className="text-sm text-muted-foreground">Конвертируются в эксклюзивную NFT коллекцию</p>
           </div>
         </div>
