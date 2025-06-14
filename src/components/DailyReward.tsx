@@ -51,7 +51,7 @@ const DailyReward = ({
     <div className="glass-card p-6 rounded-lg text-center">
       <h3 className="text-xl font-semibold mb-4 flex items-center justify-center gap-2">
         <Gift className="w-6 h-6 text-yellow-500" />
-        Daily Reward
+        Daily NFT Reward
       </h3>
       
       {canClaim ? (
@@ -59,12 +59,12 @@ const DailyReward = ({
           onClick={handleClaim}
           className="px-8 py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-semibold rounded-lg hover:from-yellow-400 hover:to-yellow-500 transition-all duration-200 shadow-lg hover:shadow-xl text-lg"
         >
-          Claim 1 GoldenPUF Point
+          Claim 1 GoldenPUF NFT Point
         </button>
       ) : (
         <div className="flex flex-col items-center gap-4">
           <Clock className="w-8 h-8 text-yellow-500" />
-          <p className="text-muted-foreground">Next reward in:</p>
+          <p className="text-muted-foreground">Next NFT reward in:</p>
           <p className="text-2xl font-mono text-yellow-500">{timeLeft}</p>
           
           {/* Счетчик NFT без звёздочки */}

@@ -43,8 +43,8 @@ export const WORLD_CHAIN_CONFIG: WorldChainConfig = {
 };
 
 export const GOLDENPUF_TOKEN: TokenInfo = {
-  symbol: 'GOLDENPUF',
-  name: 'GoldenPUF Token',
+  symbol: 'GOLDENPUF-NFT',
+  name: 'GoldenPUF NFT Token',
   decimals: 18,
   contract_address: '0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd'
 };

@@ -7,12 +7,12 @@ const TokenInfo = () => {
       <div className="flex items-center gap-4 mb-6">
         <img
           src="/lovable-uploads/2f6063b3-dfc0-4223-b344-aae167eb48a6.png"
-          alt="GoldenPUF Token"
+          alt="GoldenPUF NFT Token"
           className="w-32 h-32 token-image"
         />
         <div>
-          <h2 className="text-2xl font-bold text-yellow-500">GoldenPUF</h2>
-          <p className="text-muted-foreground">World Chain Ecosystem Token</p>
+          <h2 className="text-2xl font-bold text-yellow-500">GoldenPUF NFT</h2>
+          <p className="text-muted-foreground">World Chain NFT Collection Token</p>
         </div>
       </div>
       
@@ -39,7 +39,7 @@ const TokenInfo = () => {
             className="inline-flex items-center gap-2 px-3 py-2 bg-yellow-600 hover:bg-yellow-700 text-black rounded-lg text-sm font-medium transition-colors"
           >
             <ShoppingCart className="w-4 h-4" />
-            Купить токен
+            Купить NFT токен
           </a>
         </div>
       </div>
