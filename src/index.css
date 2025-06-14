@@ -13,6 +13,7 @@
     padding: 0;
     overflow-x: hidden;
     position: relative;
+    color: #e5e5e5;
   }
   
   body {
@@ -33,9 +34,10 @@
 }
 
 .glass-card {
-  @apply backdrop-blur-lg border border-yellow-500 border-opacity-20 shadow-lg;
-  background: rgba(10, 10, 10, 0.8) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  @apply backdrop-blur-lg shadow-lg;
+  background: rgba(20, 20, 20, 0.6) !important;
+  border: 1px solid rgba(60, 60, 60, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 1;
 }
