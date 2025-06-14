@@ -40,8 +40,10 @@ const TokenButtons = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-yellow-500 hover:text-yellow-400 flex items-center gap-1"
+              title="Открыть на DEX Screener"
             >
               <ExternalLink className="w-3 h-3" />
+              <span className="text-xs">DEX Screener</span>
             </a>
           </div>
         </div>
