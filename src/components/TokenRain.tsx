@@ -26,13 +26,24 @@ const TokenRain = ({ isActive, onComplete }: { isActive: boolean; onComplete: ()
         clearTimeout(timer);
       };
     } else {
+      console.log("Setting tokens to empty array");
       setTokens([]);
     }
   }, [isActive, onComplete]);
 
   console.log("TokenRain render - isActive:", isActive, "tokens count:", tokens.length);
 
-  if (!isActive || tokens.length === 0) return null;
+  if (!isActive) {
+    console.log("TokenRain not active, returning null");
+    return null;
+  }
+
+  if (tokens.length === 0) {
+    console.log("No tokens to display, returning null");
+    return null;
+  }
+
+  console.log("Rendering TokenRain with", tokens.length, "tokens");
 
   return (
     <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden bg-black bg-opacity-40">
