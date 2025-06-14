@@ -1,3 +1,4 @@
+
 import { ExternalLink, ShoppingCart, Clock } from 'lucide-react';
 
 const TokenInfo = () => {
@@ -39,14 +40,14 @@ const TokenInfo = () => {
               className="inline-flex items-center gap-2 px-3 py-2 bg-yellow-600 hover:bg-yellow-700 text-black rounded-lg text-sm font-medium transition-colors"
             >
               <ShoppingCart className="w-4 h-4" />
-              Купить GoldenPUF $GPUF
+              Купить GoldenPUF $GPUF токен
             </a>
             <button
               className="inline-flex items-center gap-2 px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-colors cursor-not-allowed opacity-75"
               disabled
             >
               <Clock className="w-4 h-4" />
-              Стейкинг скоро будет coming Sam
+              GoldenPUF $GPUF токен стейкинг скоро будет 💸
             </button>
           </div>
         </div>
