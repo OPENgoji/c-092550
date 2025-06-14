@@ -33,7 +33,7 @@ const Index = () => {
             <img
               src="/lovable-uploads/ad787e15-5730-4794-bb13-51b5e117eff5.png"
               alt="GoldenPUF"
-              className="w-16 h-16 rounded-full animate-pulse-subtle"
+              className="w-24 h-24 rounded-full animate-pulse-subtle token-image"
             />
             <div>
               <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">

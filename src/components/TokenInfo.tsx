@@ -8,7 +8,7 @@ const TokenInfo = () => {
         <img
           src="/lovable-uploads/ad787e15-5730-4794-bb13-51b5e117eff5.png"
           alt="GoldenPUF Token"
-          className="w-16 h-16 rounded-full"
+          className="w-24 h-24 rounded-full token-image"
         />
         <div>
           <h2 className="text-2xl font-bold text-yellow-500">GoldenPUF</h2>

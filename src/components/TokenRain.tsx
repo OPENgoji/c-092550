@@ -39,7 +39,7 @@ const TokenRain = ({ isActive, onComplete }: { isActive: boolean; onComplete: ()
           <img
             src="/lovable-uploads/ad787e15-5730-4794-bb13-51b5e117eff5.png"
             alt="GoldenPUF Token"
-            className="w-12 h-12 animate-pulse"
+            className="w-16 h-16 animate-pulse token-image"
           />
         </div>
       ))}

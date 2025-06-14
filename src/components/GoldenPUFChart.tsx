@@ -9,7 +9,7 @@ const GoldenPUFChart = () => {
           <img
             src="/lovable-uploads/ad787e15-5730-4794-bb13-51b5e117eff5.png"
             alt="GoldenPUF"
-            className="w-8 h-8 rounded-full"
+            className="w-12 h-12 rounded-full token-image"
           />
           GoldenPUF Price Chart
         </h2>
