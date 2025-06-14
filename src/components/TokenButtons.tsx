@@ -1,5 +1,5 @@
 
-import { ExternalLink, ShoppingCart, Clock, Copy } from 'lucide-react';
+import { ExternalLink, ShoppingCart, Clock, Copy, ArrowLeftRight } from 'lucide-react';
 import { useState } from 'react';
 
 const TokenButtons = () => {
@@ -54,7 +54,7 @@ const TokenButtons = () => {
           href="https://worldcoin.org/mini-app?app_id=app_15daccf5b7d4ec9b7dbba044a8fdeab5&path=app/token/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-yellow-600 hover:bg-yellow-700 text-black rounded-lg text-lg font-medium transition-colors justify-center"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg text-lg font-medium transition-colors justify-center"
         >
           <ShoppingCart className="w-5 h-5" />
           Купить GoldenPUF $GPUF токен
@@ -65,6 +65,13 @@ const TokenButtons = () => {
         >
           <Clock className="w-5 h-5" />
           GoldenPUF $GPUF токен стейкинг и майнинг скоро будет 💸
+        </button>
+        <button
+          className="inline-flex items-center gap-2 px-6 py-3 bg-yellow-600 hover:bg-yellow-700 text-black rounded-lg text-lg font-medium transition-colors cursor-not-allowed opacity-75 justify-center"
+          disabled
+        >
+          <ArrowLeftRight className="w-5 h-5" />
+          GoldenPUF токен swap скоро будет 💰⏰
         </button>
       </div>
     </div>
