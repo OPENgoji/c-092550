@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenInfo from "@/components/TokenInfo";
@@ -10,6 +9,7 @@ import TokenRain from "@/components/TokenRain";
 import { WorldIDUser } from "@/types/worldid";
 import { PointsStorage } from "@/utils/pointsStorage";
 import { useTranslation } from "@/hooks/useTranslation";
+import { LogOut } from "lucide-react";
 
 const Index = () => {
   const { t } = useTranslation();
@@ -35,6 +35,25 @@ const Index = () => {
         console.error('Failed to save World ID data:', error);
       }
     }
+  };
+
+  const handleWalletDisconnect = () => {
+    setWalletAddress('');
+    setWorldIdUser(null);
+    setUserPoints(0);
+    setShowTokenRain(false);
+    
+    // Очищаем localStorage
+    localStorage.removeItem('lastConnectedWallet');
+    localStorage.removeItem('worldid_verification');
+    localStorage.removeItem('worldid_verification_backup');
+    
+    // Очищаем все данные World ID для всех адресов
+    Object.keys(localStorage).forEach(key => {
+      if (key.startsWith('worldid_')) {
+        localStorage.removeItem(key);
+      }
+    });
   };
 
   const handleRewardClaim = () => {
@@ -126,8 +145,21 @@ const Index = () => {
         {walletAddress && (
           <>
             <div className="mb-8 text-center">
-              <p className="text-sm text-muted-foreground mb-2">{t('connectedWallet')}</p>
-              <p className="font-mono text-yellow-500">{walletAddress}</p>
+              <div className="flex items-center justify-center gap-4 mb-2">
+                <div>
+                  <p className="text-sm text-muted-foreground mb-1">{t('connectedWallet')}</p>
+                  <p className="font-mono text-yellow-500">{walletAddress}</p>
+                </div>
+                <button
+                  onClick={handleWalletDisconnect}
+                  className="flex items-center gap-2 px-3 py-2 bg-red-600/20 hover:bg-red-600/30 border border-red-500/30 rounded-lg text-red-400 hover:text-red-300 transition-colors"
+                  title="Отключить кошелек"
+                >
+                  <LogOut className="w-4 h-4" />
+                  <span className="text-sm">Отключить</span>
+                </button>
+              </div>
+              
               {worldIdUser?.verified && (
                 <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-green-600/20 border border-green-500/30 rounded-full">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
