@@ -11,7 +11,7 @@ const GoldenPUFChart = () => {
             alt="GoldenPUF"
             className="w-16 h-16 token-image"
           />
-          GoldenPUF Live Chart
+          GoldenPUF $GPUF Live Chart
         </h2>
       </div>
       <div className="h-[500px] w-full">
@@ -29,7 +29,7 @@ const GoldenPUFChart = () => {
           save_image={false}
           container_id="goldenpuf_live_chart"
           withdateranges={true}
-          range="1D"
+          range="1d"
           style="1"
           details={true}
           hotlist={true}
@@ -42,7 +42,7 @@ const GoldenPUFChart = () => {
       </div>
       <div className="mt-4 p-3 bg-yellow-900 bg-opacity-20 rounded-lg">
         <p className="text-sm text-yellow-400 text-center">
-          📈 Реальная цена токена GoldenPUF - Contract: 0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd
+          📈 Реальная цена токена GoldenPUF $GPUF - Contract: 0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd
         </p>
       </div>
     </div>
