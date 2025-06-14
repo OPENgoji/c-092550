@@ -7,24 +7,36 @@ import DailyReward from "@/components/DailyReward";
 import TelegramInfo from "@/components/TelegramInfo";
 import TokenRain from "@/components/TokenRain";
 import PointsCounter from "@/components/PointsCounter";
+import { WorldIDUser } from "@/types/worldid";
 
 const Index = () => {
   const [walletAddress, setWalletAddress] = useState<string>('');
+  const [worldIdUser, setWorldIdUser] = useState<WorldIDUser | null>(null);
   const [showTokenRain, setShowTokenRain] = useState(false);
   const [userPoints, setUserPoints] = useState<number>(0);
 
-  const handleWalletConnect = (address: string) => {
+  const handleWalletConnect = (address: string, worldId?: WorldIDUser) => {
     setWalletAddress(address);
+    setWorldIdUser(worldId || null);
+    
     // Загружаем поинты пользователя при подключении кошелька
     const savedPoints = localStorage.getItem(`points_${address}`);
     setUserPoints(savedPoints ? parseInt(savedPoints) : 0);
+    
+    // Сохраняем данные World ID
+    if (worldId) {
+      localStorage.setItem(`worldid_${address}`, JSON.stringify(worldId));
+    }
   };
 
   const handleRewardClaim = () => {
     console.log("Reward claim triggered, showing token rain");
     setShowTokenRain(true);
-    // Добавляем 1 поинт при получении награды
-    const newPoints = userPoints + 1;
+    
+    // Больше поинтов для верифицированных пользователей World ID
+    const rewardMultiplier = worldIdUser?.verified ? 2 : 1;
+    const newPoints = userPoints + (1 * rewardMultiplier);
+    
     setUserPoints(newPoints);
     localStorage.setItem(`points_${walletAddress}`, newPoints.toString());
   };
@@ -91,6 +103,12 @@ const Index = () => {
             <div className="mb-8 text-center">
               <p className="text-sm text-muted-foreground mb-2">Connected Wallet:</p>
               <p className="font-mono text-yellow-500">{walletAddress}</p>
+              {worldIdUser?.verified && (
+                <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-green-600/20 border border-green-500/30 rounded-full">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-green-400 text-sm">World ID Verified (2x rewards)</span>
+                </div>
+              )}
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
