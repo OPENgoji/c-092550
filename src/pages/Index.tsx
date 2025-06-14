@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenInfo from "@/components/TokenInfo";
@@ -7,7 +6,6 @@ import TokenButtons from "@/components/TokenButtons";
 import DailyReward from "@/components/DailyReward";
 import TelegramInfo from "@/components/TelegramInfo";
 import TokenRain from "@/components/TokenRain";
-import NFTCountdown from "@/components/NFTCountdown";
 import { WorldIDUser } from "@/types/worldid";
 import { PointsStorage } from "@/utils/pointsStorage";
 
@@ -142,7 +140,6 @@ const Index = () => {
               </div>
             </div>
 
-            <NFTCountdown />
             <TokenInfo />
             <GoldenPUFChart />
             <TokenButtons />
