@@ -1,6 +1,6 @@
 
-import { useState } from 'react';
-import { Wallet } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Wallet, Globe } from 'lucide-react';
 import WorldIDVerification from './WorldIDVerification';
 import { WorldIDVerificationResult, WorldIDUser } from '@/types/worldid';
 
@@ -13,6 +13,20 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
   const [isWorldIdVerified, setIsWorldIdVerified] = useState(false);
   const [worldIdData, setWorldIdData] = useState<WorldIDVerificationResult | null>(null);
 
+  // Проверяем сохраненную верификацию при загрузке
+  useEffect(() => {
+    const savedVerification = localStorage.getItem('worldid_verification');
+    if (savedVerification) {
+      try {
+        const data = JSON.parse(savedVerification);
+        setWorldIdData(data);
+        setIsWorldIdVerified(true);
+      } catch (error) {
+        console.error('Error parsing saved World ID verification:', error);
+      }
+    }
+  }, []);
+
   const handleWorldIDVerify = (result: WorldIDVerificationResult) => {
     console.log("World ID verified:", result);
     setWorldIdData(result);
@@ -21,25 +35,52 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
 
   const connectWallet = async () => {
     setIsConnecting(true);
-    // Симуляция подключения кошелька World Chain
-    setTimeout(() => {
-      const mockAddress = "0x" + Math.random().toString(16).substr(2, 40);
-      const worldIdUser: WorldIDUser = {
-        verified: isWorldIdVerified,
-        nullifier_hash: worldIdData?.nullifier_hash,
-        verification_level: worldIdData?.verification_level
-      };
-      onConnect(mockAddress, worldIdUser);
+    
+    try {
+      // Проверяем поддержку Web3
+      if (typeof window.ethereum !== 'undefined') {
+        // Запрашиваем подключение к World Chain (если доступно)
+        const accounts = await window.ethereum.request({ 
+          method: 'eth_requestAccounts' 
+        });
+        
+        if (accounts.length > 0) {
+          const address = accounts[0];
+          const worldIdUser: WorldIDUser = {
+            verified: isWorldIdVerified,
+            nullifier_hash: worldIdData?.nullifier_hash,
+            verification_level: worldIdData?.verification_level
+          };
+          onConnect(address, worldIdUser);
+        }
+      } else {
+        // Fallback для демонстрации
+        setTimeout(() => {
+          const mockAddress = "0x" + Math.random().toString(16).substr(2, 40);
+          const worldIdUser: WorldIDUser = {
+            verified: isWorldIdVerified,
+            nullifier_hash: worldIdData?.nullifier_hash,
+            verification_level: worldIdData?.verification_level
+          };
+          onConnect(mockAddress, worldIdUser);
+        }, 1500);
+      }
+    } catch (error) {
+      console.error('Wallet connection failed:', error);
+    } finally {
       setIsConnecting(false);
-    }, 2000);
+    }
   };
 
   return (
     <div className="space-y-4">
       <div className="text-center mb-4">
-        <h3 className="text-lg font-semibold text-yellow-400 mb-2">Верификация и подключение</h3>
+        <div className="flex items-center justify-center gap-2 mb-2">
+          <Globe className="w-6 h-6 text-blue-500" />
+          <h3 className="text-lg font-semibold text-yellow-400">World Chain Integration</h3>
+        </div>
         <p className="text-sm text-muted-foreground">
-          Для получения максимальных наград рекомендуется верификация через World ID
+          Подключение к World Chain с верификацией World ID для максимальных наград
         </p>
       </div>
 
@@ -57,7 +98,7 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
         {isConnecting ? (
           <>
             <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-black"></div>
-            Подключение...
+            Connecting to World Chain...
           </>
         ) : (
           'Connect World Chain Wallet'
@@ -65,8 +106,9 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
       </button>
 
       {isWorldIdVerified && (
-        <div className="text-center text-sm text-green-400">
-          ✓ World ID верификация пройдена - получайте больше наград!
+        <div className="text-center text-sm text-green-400 flex items-center justify-center gap-2">
+          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+          World ID верификация активна - получайте 2x награды!
         </div>
       )}
     </div>
