@@ -6,23 +6,37 @@
 @layer base {
   html, body, #root {
     @apply text-foreground antialiased;
-    background: #18181b !important;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%) !important;
     min-height: 100vh;
     width: 100vw;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    position: relative;
   }
   
   body {
-    background: #18181b !important;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%) !important;
     background-attachment: fixed;
   }
   
   #root {
-    background: #18181b !important;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%) !important;
     width: 100vw;
     min-height: 100vh;
+    position: relative;
+  }
+  
+  #root::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 60% 40%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
   }
   
   * {
@@ -31,8 +45,11 @@
 }
 
 .glass-card {
-  @apply bg-zinc-900 bg-opacity-100 backdrop-blur-lg border border-yellow-500 border-opacity-20 shadow-lg;
-  background: #18181b !important;
+  @apply backdrop-blur-lg border border-yellow-500 border-opacity-20 shadow-lg;
+  background: radial-gradient(circle at center, rgba(26, 26, 26, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%) !important;
+  box-shadow: 0 0 40px 5px rgba(255, 215, 0, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .crypto-chart {
@@ -44,6 +61,8 @@
   backdrop-filter: none !important;
   mix-blend-mode: normal;
   filter: drop-shadow(0 20px 40px rgba(255, 215, 0, 0.3));
+  position: relative;
+  z-index: 2;
 }
 
 @keyframes pulse-subtle {

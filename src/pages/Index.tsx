@@ -87,10 +87,13 @@ const Index = () => {
   }, [walletAddress]);
 
   return (
-    <div className="min-h-screen w-full bg-zinc-900 flex flex-col items-center justify-center p-4" style={{ backgroundColor: '#18181b' }}>
+    <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 relative" style={{ 
+      background: 'radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%)',
+      position: 'relative'
+    }}>
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
       
-      <div className="w-full flex flex-col items-center justify-center bg-zinc-900" style={{ backgroundColor: '#18181b' }}>
+      <div className="w-full flex flex-col items-center justify-center relative z-10">
         <header className="text-center">
           <div className="flex flex-col items-center justify-center mb-4">
             <img
@@ -108,7 +111,7 @@ const Index = () => {
           
           {!walletAddress && (
             <div className="mt-8 flex justify-center">
-              <div className="glass-card p-8 rounded-2xl max-w-md w-full border-2 border-yellow-500/30 shadow-2xl backdrop-blur-xl" style={{ backgroundColor: '#18181b' }}>
+              <div className="glass-card p-8 rounded-2xl max-w-md w-full border-2 border-yellow-500/30 shadow-2xl backdrop-blur-xl">
                 <div className="text-center mb-6">
                   <h2 className="text-2xl font-bold text-yellow-400 mb-2">{t('welcome')}</h2>
                   <p className="text-muted-foreground">{t('connectWallet')}</p>
