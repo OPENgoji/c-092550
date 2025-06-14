@@ -7,9 +7,9 @@ const GoldenPUFChart = () => {
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-semibold flex items-center gap-2">
           <img
-            src="/lovable-uploads/ad787e15-5730-4794-bb13-51b5e117eff5.png"
+            src="/lovable-uploads/2f6063b3-dfc0-4223-b344-aae167eb48a6.png"
             alt="GoldenPUF"
-            className="w-12 h-12 rounded-full token-image"
+            className="w-16 h-16 token-image"
           />
           GoldenPUF Price Chart
         </h2>

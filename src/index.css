@@ -17,6 +17,12 @@
   @apply h-[300px] w-full;
 }
 
+.token-image {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  mix-blend-mode: normal;
+}
+
 @keyframes pulse-subtle {
   0%, 100% {
     opacity: 1;
@@ -32,15 +38,15 @@
 
 @keyframes token-fall {
   0% {
-    transform: translateY(-100vh) rotate(0deg);
+    transform: translateY(-200px) rotate(0deg);
     opacity: 1;
   }
   100% {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
+    transform: translateY(calc(100vh + 200px)) rotate(720deg);
+    opacity: 0.8;
   }
 }
 
 .animate-token-fall {
-  animation: token-fall 3s linear infinite;
+  animation: token-fall 5s linear infinite;
 }

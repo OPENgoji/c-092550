@@ -6,9 +6,9 @@ const TokenInfo = () => {
     <div className="glass-card p-6 rounded-lg mb-8">
       <div className="flex items-center gap-4 mb-6">
         <img
-          src="/lovable-uploads/ad787e15-5730-4794-bb13-51b5e117eff5.png"
+          src="/lovable-uploads/2f6063b3-dfc0-4223-b344-aae167eb48a6.png"
           alt="GoldenPUF Token"
-          className="w-24 h-24 rounded-full token-image"
+          className="w-32 h-32 token-image"
         />
         <div>
           <h2 className="text-2xl font-bold text-yellow-500">GoldenPUF</h2>

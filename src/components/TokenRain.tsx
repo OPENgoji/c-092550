@@ -25,21 +25,21 @@ const TokenRain = ({ isActive, onComplete }: { isActive: boolean; onComplete: ()
   if (!isActive) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-50">
+    <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
       {tokens.map((token) => (
         <div
           key={token.id}
-          className="absolute animate-bounce"
+          className="absolute animate-token-fall"
           style={{
             left: `${token.x}%`,
             animationDelay: `${token.delay}s`,
-            animationDuration: '1s'
+            top: '-200px'
           }}
         >
           <img
-            src="/lovable-uploads/ad787e15-5730-4794-bb13-51b5e117eff5.png"
+            src="/lovable-uploads/2f6063b3-dfc0-4223-b344-aae167eb48a6.png"
             alt="GoldenPUF Token"
-            className="w-16 h-16 animate-pulse token-image"
+            className="w-24 h-24 token-image"
           />
         </div>
       ))}
