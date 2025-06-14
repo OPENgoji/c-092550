@@ -19,7 +19,7 @@ const TokenButtons = () => {
   return (
     <div className="glass-card p-6 rounded-lg mb-8">
       <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-3 text-yellow-500">GoldenPUF $GPUF Смарт-контракт</h3>
+        <h3 className="text-lg font-semibold mb-3 text-yellow-500">GoldenPUF $GPUF токен Смарт-контракт</h3>
         <div className="p-4 bg-secondary bg-opacity-30 rounded-lg">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-muted-foreground">Contract Address:</span>
@@ -62,7 +62,7 @@ const TokenButtons = () => {
           disabled
         >
           <Clock className="w-5 h-5" />
-          GoldenPUF $GPUF токен стейкинг скоро будет 💸
+          GoldenPUF $GPUF токен стейкинг и майнинг скоро будет 💸
         </button>
       </div>
     </div>
