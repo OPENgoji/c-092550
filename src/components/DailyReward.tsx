@@ -64,7 +64,7 @@ const DailyReward = ({
       ) : (
         <div className="flex flex-col items-center gap-4">
           <Clock className="w-8 h-8 text-yellow-500" />
-          <p className="text-muted-foreground">Next NFT reward in:</p>
+          <p className="text-muted-foreground">Следующие специальные NFT поинты через:</p>
           <p className="text-2xl font-mono text-yellow-500">{timeLeft}</p>
           
           {/* Счетчик NFT без звёздочки */}
