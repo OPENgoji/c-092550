@@ -87,12 +87,10 @@ const Index = () => {
   }, [walletAddress]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-yellow-900/20 to-black p-4 md:p-8" style={{
-      background: 'radial-gradient(circle at center, #1a1a0a 0%, #0a0a00 50%, #000000 100%)'
-    }}>
+    <div className="min-h-screen w-full p-4 md:p-8">
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
       
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full">
         <header className="mb-8 text-center">
           <div className="flex flex-col items-center justify-center mb-4">
             <img
