@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Gift, Clock } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const DailyReward = ({ 
   walletAddress, 
@@ -11,6 +12,7 @@ const DailyReward = ({
   onClaim: () => void;
   userPoints: number;
 }) => {
+  const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState<string>('');
   const [canClaim, setCanClaim] = useState(false);
 
@@ -51,7 +53,7 @@ const DailyReward = ({
     <div className="glass-card p-6 rounded-lg text-center">
       <h3 className="text-lg font-semibold mb-4 flex items-center justify-center gap-2">
         <Gift className="w-5 h-5 text-yellow-500" />
-        Daily NFT Reward
+        {t('dailyReward')}
       </h3>
       
       {canClaim ? (
@@ -59,17 +61,17 @@ const DailyReward = ({
           onClick={handleClaim}
           className="px-8 py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-semibold rounded-lg hover:from-yellow-400 hover:to-yellow-500 transition-all duration-200 shadow-lg hover:shadow-xl text-lg"
         >
-          Claim 1 GoldenPUF NFT Point
+          {t('claimNow')}
         </button>
       ) : (
         <div className="flex flex-col items-center gap-3">
           <Clock className="w-4 h-4 text-yellow-500" />
-          <p className="text-xs text-muted-foreground">Следующие специальные NFT поинты через:</p>
+          <p className="text-xs text-muted-foreground">{t('nextReward')}</p>
           <p className="text-sm font-mono text-yellow-500">{timeLeft}</p>
           
           <div className="mt-2 p-2 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 border border-yellow-500/30 rounded-lg">
             <div className="text-center">
-              <p className="text-xs text-muted-foreground">Мои специальные NFT</p>
+              <p className="text-xs text-muted-foreground">{t('myPoints')}</p>
               <p className="text-sm font-bold text-yellow-500">{userPoints.toLocaleString()}</p>
             </div>
           </div>

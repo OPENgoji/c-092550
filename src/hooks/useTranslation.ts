@@ -16,10 +16,10 @@ const translations: Translations = {
     worldIdVerified: "World ID Verified (2x rewards)",
     
     // Daily Reward
-    dailyReward: "Daily Reward",
-    claimNow: "Claim Now",
-    nextReward: "Next reward in:",
-    myPoints: "My Points",
+    dailyReward: "Daily NFT Reward",
+    claimNow: "Claim 1 GoldenPUF NFT Point",
+    nextReward: "Next special NFT points in:",
+    myPoints: "My special NFT",
     
     // Token Info
     tokenInfo: "Token Information",
@@ -36,7 +36,21 @@ const translations: Translations = {
     joinCommunity: "Join our community",
     goldenPufSwap: "GoldenPUF Swap",
     clickToTelegram: "Click to go to Telegram",
-    getUpdates: "Get news, updates and chat with the community"
+    getUpdates: "Get news, updates and chat with the community",
+    
+    // Token Buttons
+    tokenTitle: "GoldenPUF $GPUF token",
+    contractAddress: "Contract Address:",
+    copy: "Copy",
+    copied: "Copied!",
+    openDexScreener: "Open on DEX Screener",
+    buyToken: "Buy GoldenPUF $GPUF token",
+    stakingComingSoon: "GoldenPUF $GPUF token staking and mining coming soon 💸",
+    swapComingSoon: "GoldenPUF $GPUF token swap coming soon 💰⏰",
+    
+    // Chart
+    liveChart: "GoldenPUF $GPUF Live Chart",
+    realTimePrice: "📈 Real-time GoldenPUF $GPUF token price - Contract: 0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
   },
   es: {
     // Main page
@@ -46,10 +60,10 @@ const translations: Translations = {
     worldIdVerified: "World ID Verificado (2x recompensas)",
     
     // Daily Reward
-    dailyReward: "Recompensa Diaria",
-    claimNow: "Reclamar Ahora",
-    nextReward: "Próxima recompensa en:",
-    myPoints: "Mis Puntos",
+    dailyReward: "Recompensa NFT Diaria",
+    claimNow: "Reclamar 1 Punto NFT GoldenPUF",
+    nextReward: "Próximos puntos NFT especiales en:",
+    myPoints: "Mi NFT especial",
     
     // Token Info
     tokenInfo: "Información del Token",
@@ -66,7 +80,21 @@ const translations: Translations = {
     joinCommunity: "Únete a nuestra comunidad",
     goldenPufSwap: "GoldenPUF Swap",
     clickToTelegram: "Haz clic para ir a Telegram",
-    getUpdates: "Obtén noticias, actualizaciones y chatea con la comunidad"
+    getUpdates: "Obtén noticias, actualizaciones y chatea con la comunidad",
+    
+    // Token Buttons
+    tokenTitle: "Token GoldenPUF $GPUF",
+    contractAddress: "Dirección del Contrato:",
+    copy: "Copiar",
+    copied: "¡Copiado!",
+    openDexScreener: "Abrir en DEX Screener",
+    buyToken: "Comprar token GoldenPUF $GPUF",
+    stakingComingSoon: "Staking y minería de token GoldenPUF $GPUF próximamente 💸",
+    swapComingSoon: "Intercambio de token GoldenPUF $GPUF próximamente 💰⏰",
+    
+    // Chart
+    liveChart: "Gráfico en Vivo GoldenPUF $GPUF",
+    realTimePrice: "📈 Precio en tiempo real del token GoldenPUF $GPUF - Contrato: 0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
   },
   ru: {
     // Main page
@@ -76,10 +104,10 @@ const translations: Translations = {
     worldIdVerified: "World ID Верифицирован (2x награды)",
     
     // Daily Reward
-    dailyReward: "Ежедневная награда",
-    claimNow: "Получить сейчас",
-    nextReward: "Следующая награда через:",
-    myPoints: "Мои очки",
+    dailyReward: "Ежедневная NFT награда",
+    claimNow: "Получить 1 NFT поинт GoldenPUF",
+    nextReward: "Следующие специальные NFT поинты через:",
+    myPoints: "Мои специальные NFT",
     
     // Token Info
     tokenInfo: "Информация о токене",
@@ -96,7 +124,21 @@ const translations: Translations = {
     joinCommunity: "Присоединяйся к сообществу",
     goldenPufSwap: "GoldenPUF Swap",
     clickToTelegram: "Нажмите для перехода в Telegram",
-    getUpdates: "Получайте новости, обновления и общайтесь с сообществом"
+    getUpdates: "Получайте новости, обновления и общайтесь с сообществом",
+    
+    // Token Buttons
+    tokenTitle: "GoldenPUF $GPUF токен",
+    contractAddress: "Адрес контракта:",
+    copy: "Копировать",
+    copied: "Скопировано!",
+    openDexScreener: "Открыть на DEX Screener",
+    buyToken: "Купить GoldenPUF $GPUF токен",
+    stakingComingSoon: "GoldenPUF $GPUF токен стейкинг и майнинг скоро будет 💸",
+    swapComingSoon: "GoldenPUF $GPUF токен swap скоро будет 💰⏰",
+    
+    // Chart
+    liveChart: "GoldenPUF $GPUF График в реальном времени",
+    realTimePrice: "📈 Реальная цена токена GoldenPUF $GPUF - Contract: 0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
   },
   fr: {
     // Main page
@@ -106,10 +148,10 @@ const translations: Translations = {
     worldIdVerified: "World ID Vérifié (2x récompenses)",
     
     // Daily Reward
-    dailyReward: "Récompense quotidienne",
-    claimNow: "Réclamer maintenant",
-    nextReward: "Prochaine récompense dans:",
-    myPoints: "Mes points",
+    dailyReward: "Récompense NFT quotidienne",
+    claimNow: "Réclamer 1 Point NFT GoldenPUF",
+    nextReward: "Prochains points NFT spéciaux dans:",
+    myPoints: "Mon NFT spécial",
     
     // Token Info
     tokenInfo: "Informations sur le token",
@@ -126,7 +168,21 @@ const translations: Translations = {
     joinCommunity: "Rejoignez notre communauté",
     goldenPufSwap: "GoldenPUF Swap",
     clickToTelegram: "Cliquez pour aller sur Telegram",
-    getUpdates: "Obtenez des nouvelles, des mises à jour et discutez avec la communauté"
+    getUpdates: "Obtenez des nouvelles, des mises à jour et discutez avec la communauté",
+    
+    // Token Buttons
+    tokenTitle: "Token GoldenPUF $GPUF",
+    contractAddress: "Adresse du contrat:",
+    copy: "Copier",
+    copied: "Copié!",
+    openDexScreener: "Ouvrir sur DEX Screener",
+    buyToken: "Acheter le token GoldenPUF $GPUF",
+    stakingComingSoon: "Staking et minage du token GoldenPUF $GPUF bientôt disponible 💸",
+    swapComingSoon: "Échange de token GoldenPUF $GPUF bientôt disponible 💰⏰",
+    
+    // Chart
+    liveChart: "Graphique en Direct GoldenPUF $GPUF",
+    realTimePrice: "📈 Prix en temps réel du token GoldenPUF $GPUF - Contrat: 0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
   },
   ja: {
     // Main page
@@ -136,10 +192,10 @@ const translations: Translations = {
     worldIdVerified: "World ID 認証済み (2倍報酬)",
     
     // Daily Reward
-    dailyReward: "デイリー報酬",
-    claimNow: "今すぐ受け取る",
-    nextReward: "次の報酬まで:",
-    myPoints: "マイポイント",
+    dailyReward: "デイリーNFT報酬",
+    claimNow: "1 GoldenPUF NFTポイントを受け取る",
+    nextReward: "次の特別NFTポイントまで:",
+    myPoints: "マイ特別NFT",
     
     // Token Info
     tokenInfo: "トークン情報",
@@ -156,7 +212,21 @@ const translations: Translations = {
     joinCommunity: "コミュニティに参加",
     goldenPufSwap: "GoldenPUF Swap",
     clickToTelegram: "Telegramに移動するにはクリック",
-    getUpdates: "ニュース、アップデート、コミュニティとのチャットを受け取る"
+    getUpdates: "ニュース、アップデート、コミュニティとのチャットを受け取る",
+    
+    // Token Buttons
+    tokenTitle: "GoldenPUF $GPUFトークン",
+    contractAddress: "コントラクトアドレス:",
+    copy: "コピー",
+    copied: "コピーしました！",
+    openDexScreener: "DEX Screenerで開く",
+    buyToken: "GoldenPUF $GPUFトークンを購入",
+    stakingComingSoon: "GoldenPUF $GPUFトークンステーキングとマイニングが近日公開 💸",
+    swapComingSoon: "GoldenPUF $GPUFトークンスワップが近日公開 💰⏰",
+    
+    // Chart
+    liveChart: "GoldenPUF $GPUF ライブチャート",
+    realTimePrice: "📈 GoldenPUF $GPUFトークンのリアルタイム価格 - コントラクト: 0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
   }
 };
 
