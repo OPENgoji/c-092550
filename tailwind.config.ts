@@ -59,6 +59,7 @@ export default {
         "fade-in": "fade-in 0.5s ease-out",
         "slide-up": "slide-up 0.5s ease-out",
         "token-fall": "token-fall 10s linear infinite",
+        "token-fall-slow": "token-fall-slow 20s linear infinite",
       },
       keyframes: {
         "fade-in": {
@@ -72,6 +73,10 @@ export default {
         "token-fall": {
           "0%": { transform: "translateY(-200px) rotate(0deg)", opacity: "1" },
           "100%": { transform: "translateY(calc(100vh + 200px)) rotate(1080deg)", opacity: "0.8" },
+        },
+        "token-fall-slow": {
+          "0%": { transform: "translateY(-200px) rotate(0deg)", opacity: "1" },
+          "100%": { transform: "translateY(calc(100vh + 200px)) rotate(720deg)", opacity: "0.6" },
         },
       },
     },
