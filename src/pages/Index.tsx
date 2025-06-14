@@ -6,7 +6,6 @@ import GoldenPUFChart from "@/components/GoldenPUFChart";
 import DailyReward from "@/components/DailyReward";
 import TelegramInfo from "@/components/TelegramInfo";
 import TokenRain from "@/components/TokenRain";
-import PointsCounter from "@/components/PointsCounter";
 import { WorldIDUser } from "@/types/worldid";
 
 const Index = () => {
@@ -67,8 +66,6 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-black via-yellow-900/10 to-black p-4 md:p-8">
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
       
-      {walletAddress && <PointsCounter points={userPoints} />}
-      
       <div className="max-w-7xl mx-auto">
         <header className="mb-8 text-center">
           <div className="flex flex-col items-center justify-center mb-4">
@@ -113,7 +110,11 @@ const Index = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
               <div className="lg:col-span-2">
-                <DailyReward walletAddress={walletAddress} onClaim={handleRewardClaim} />
+                <DailyReward 
+                  walletAddress={walletAddress} 
+                  onClaim={handleRewardClaim}
+                  userPoints={userPoints}
+                />
               </div>
               <div>
                 <TelegramInfo />
