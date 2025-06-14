@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenInfo from "@/components/TokenInfo";
@@ -88,7 +89,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 relative" style={{ 
-      background: 'radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%)',
+      background: '#0a0a0a',
       position: 'relative'
     }}>
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />

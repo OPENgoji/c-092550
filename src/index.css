@@ -6,7 +6,7 @@
 @layer base {
   html, body, #root {
     @apply text-foreground antialiased;
-    background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%) !important;
+    background: #0a0a0a !important;
     min-height: 100vh;
     width: 100vw;
     margin: 0;
@@ -16,27 +16,15 @@
   }
   
   body {
-    background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%) !important;
+    background: #0a0a0a !important;
     background-attachment: fixed;
   }
   
   #root {
-    background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%) !important;
+    background: #0a0a0a !important;
     width: 100vw;
     min-height: 100vh;
     position: relative;
-  }
-  
-  #root::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 60% 40%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
   }
   
   * {
@@ -46,7 +34,7 @@
 
 .glass-card {
   @apply backdrop-blur-lg border border-yellow-500 border-opacity-20 shadow-lg;
-  background: radial-gradient(circle at center, rgba(26, 26, 26, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%) !important;
+  background: rgba(10, 10, 10, 0.8) !important;
   box-shadow: 0 0 40px 5px rgba(255, 215, 0, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 1;
