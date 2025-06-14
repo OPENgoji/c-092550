@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Gift, Clock, Star } from 'lucide-react';
+import { Gift, Clock } from 'lucide-react';
 
 const DailyReward = ({ 
   walletAddress, 
@@ -67,14 +67,11 @@ const DailyReward = ({
           <p className="text-muted-foreground">Next reward in:</p>
           <p className="text-2xl font-mono text-yellow-500">{timeLeft}</p>
           
-          {/* Счетчик NFT здесь */}
+          {/* Счетчик NFT без звёздочки */}
           <div className="mt-4 p-3 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 border border-yellow-500/30 rounded-lg">
-            <div className="flex items-center gap-2 justify-center">
-              <Star className="w-5 h-5 text-yellow-500" />
-              <div className="text-center">
-                <p className="text-xs text-muted-foreground">Мои специальные NFT</p>
-                <p className="text-lg font-bold text-yellow-500">{userPoints.toLocaleString()}</p>
-              </div>
+            <div className="text-center">
+              <p className="text-xs text-muted-foreground">Мои специальные NFT</p>
+              <p className="text-lg font-bold text-yellow-500">{userPoints.toLocaleString()}</p>
             </div>
           </div>
         </div>
