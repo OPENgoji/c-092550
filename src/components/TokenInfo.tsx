@@ -39,7 +39,7 @@ const TokenInfo = () => {
             className="inline-flex items-center gap-2 px-3 py-2 bg-yellow-600 hover:bg-yellow-700 text-black rounded-lg text-sm font-medium transition-colors"
           >
             <ShoppingCart className="w-4 h-4" />
-            Купить NFT токен
+            Купить GoldenPUF $GPUF
           </a>
         </div>
       </div>
