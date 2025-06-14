@@ -29,17 +29,17 @@ const Index = () => {
       
       <div className="max-w-7xl mx-auto">
         <header className="mb-8 text-center">
-          <div className="flex items-center justify-center gap-4 mb-4">
+          <div className="flex flex-col items-center justify-center mb-4">
             <img
               src="/lovable-uploads/2f6063b3-dfc0-4223-b344-aae167eb48a6.png"
               alt="GoldenPUF"
-              className="w-32 h-32 animate-pulse-subtle token-image"
+              className="w-40 h-40 animate-pulse-subtle token-image mb-4"
             />
             <div>
-              <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
+              <h1 className="text-5xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
                 GoldenPUF SWAP
               </h1>
-              <p className="text-muted-foreground">World Chain Ecosystem Platform</p>
+              <p className="text-muted-foreground text-lg">World Chain Ecosystem Platform</p>
             </div>
           </div>
           
