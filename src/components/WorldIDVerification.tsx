@@ -13,8 +13,8 @@ const WorldIDVerification = ({ onVerify, isVerified }: WorldIDVerificationProps)
   const [isVerifying, setIsVerifying] = useState(false);
   const [verificationError, setVerificationError] = useState<string>('');
 
-  // Правильные параметры для World Chain
-  const APP_ID = "app_staging_15daccf5b7d4ec9b7dbba044a8fdeab5"; // Используем staging версию
+  // Обновленные параметры для World ID
+  const APP_ID = "app_staging_15daccf5b7d4ec9b7dbba044a8fdeab5";
   const ACTION = "verify-golden-puf-user";
 
   const handleVerify = async (result: ISuccessResult) => {
@@ -29,8 +29,22 @@ const WorldIDVerification = ({ onVerify, isVerified }: WorldIDVerificationProps)
       verification_level: result.verification_level
     };
     
-    // Сохраняем результат верификации в localStorage для персистентности
-    localStorage.setItem('worldid_verification', JSON.stringify(verificationData));
+    // Множественное сохранение для надежности
+    try {
+      localStorage.setItem('worldid_verification', JSON.stringify(verificationData));
+      localStorage.setItem(`worldid_backup_${Date.now()}`, JSON.stringify(verificationData));
+      
+      // Дополнительное сохранение с timestamp
+      const backupData = {
+        ...verificationData,
+        timestamp: Date.now(),
+        version: '1.0'
+      };
+      localStorage.setItem('worldid_verification_backup', JSON.stringify(backupData));
+      
+    } catch (error) {
+      console.error('Failed to save World ID verification:', error);
+    }
     
     onVerify(verificationData);
   };
@@ -59,7 +73,6 @@ const WorldIDVerification = ({ onVerify, isVerified }: WorldIDVerificationProps)
         onSuccess={handleVerify}
         onError={onError}
         verification_level={VerificationLevel.Orb}
-        enableTelemetry
       >
         {({ open }) => (
           <button

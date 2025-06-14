@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenInfo from "@/components/TokenInfo";
@@ -7,6 +6,7 @@ import DailyReward from "@/components/DailyReward";
 import TelegramInfo from "@/components/TelegramInfo";
 import TokenRain from "@/components/TokenRain";
 import { WorldIDUser } from "@/types/worldid";
+import { PointsStorage } from "@/utils/pointsStorage";
 
 const Index = () => {
   const [walletAddress, setWalletAddress] = useState<string>('');
@@ -18,13 +18,18 @@ const Index = () => {
     setWalletAddress(address);
     setWorldIdUser(worldId || null);
     
-    // Загружаем поинты пользователя при подключении кошелька
-    const savedPoints = localStorage.getItem(`points_${address}`);
-    setUserPoints(savedPoints ? parseInt(savedPoints) : 0);
+    // Используем улучшенную систему загрузки поинтов
+    const userData = PointsStorage.getUserPointsData(address);
+    setUserPoints(userData?.points || 0);
     
-    // Сохраняем данные World ID
+    // Сохраняем данные World ID с backup
     if (worldId) {
-      localStorage.setItem(`worldid_${address}`, JSON.stringify(worldId));
+      try {
+        localStorage.setItem(`worldid_${address}`, JSON.stringify(worldId));
+        localStorage.setItem(`worldid_backup_${address}_${Date.now()}`, JSON.stringify(worldId));
+      } catch (error) {
+        console.error('Failed to save World ID data:', error);
+      }
     }
   };
 
@@ -34,10 +39,13 @@ const Index = () => {
     
     // Больше поинтов для верифицированных пользователей World ID
     const rewardMultiplier = worldIdUser?.verified ? 2 : 1;
-    const newPoints = userPoints + (1 * rewardMultiplier);
+    const rewardAmount = 1 * rewardMultiplier;
+    const newPoints = userPoints + rewardAmount;
     
     setUserPoints(newPoints);
-    localStorage.setItem(`points_${walletAddress}`, newPoints.toString());
+    
+    // Используем улучшенную систему сохранения
+    PointsStorage.saveUserPoints(walletAddress, newPoints, worldIdUser);
   };
 
   const handleRainComplete = () => {
@@ -50,8 +58,18 @@ const Index = () => {
     const lastWallet = localStorage.getItem('lastConnectedWallet');
     if (lastWallet) {
       setWalletAddress(lastWallet);
-      const savedPoints = localStorage.getItem(`points_${lastWallet}`);
-      setUserPoints(savedPoints ? parseInt(savedPoints) : 0);
+      const userData = PointsStorage.getUserPointsData(lastWallet);
+      setUserPoints(userData?.points || 0);
+      
+      // Восстанавливаем World ID данные
+      try {
+        const worldIdData = localStorage.getItem(`worldid_${lastWallet}`);
+        if (worldIdData) {
+          setWorldIdUser(JSON.parse(worldIdData));
+        }
+      } catch (error) {
+        console.error('Failed to restore World ID data:', error);
+      }
     }
   }, []);
 

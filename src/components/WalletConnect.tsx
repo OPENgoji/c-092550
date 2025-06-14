@@ -23,6 +23,17 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
         setIsWorldIdVerified(true);
       } catch (error) {
         console.error('Error parsing saved World ID verification:', error);
+        // Пытаемся восстановить из backup
+        const backupVerification = localStorage.getItem('worldid_verification_backup');
+        if (backupVerification) {
+          try {
+            const backupData = JSON.parse(backupVerification);
+            setWorldIdData(backupData);
+            setIsWorldIdVerified(true);
+          } catch (backupError) {
+            console.error('Backup verification also corrupted:', backupError);
+          }
+        }
       }
     }
   }, []);
@@ -39,7 +50,7 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
     try {
       // Проверяем поддержку Web3
       if (typeof window.ethereum !== 'undefined') {
-        // Запрашиваем подключение к World Chain (если доступно)
+        // Запрашиваем подключение к кошельку
         const accounts = await window.ethereum.request({ 
           method: 'eth_requestAccounts' 
         });
@@ -49,7 +60,8 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
           const worldIdUser: WorldIDUser = {
             verified: isWorldIdVerified,
             nullifier_hash: worldIdData?.nullifier_hash,
-            verification_level: worldIdData?.verification_level
+            verification_level: worldIdData?.verification_level,
+            created_at: new Date().toISOString()
           };
           onConnect(address, worldIdUser);
         }
@@ -60,7 +72,8 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
           const worldIdUser: WorldIDUser = {
             verified: isWorldIdVerified,
             nullifier_hash: worldIdData?.nullifier_hash,
-            verification_level: worldIdData?.verification_level
+            verification_level: worldIdData?.verification_level,
+            created_at: new Date().toISOString()
           };
           onConnect(mockAddress, worldIdUser);
         }, 1500);
