@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenInfo from "@/components/TokenInfo";
 import GoldenPUFChart from "@/components/GoldenPUFChart";
+import TokenButtons from "@/components/TokenButtons";
 import DailyReward from "@/components/DailyReward";
 import TelegramInfo from "@/components/TelegramInfo";
 import TokenRain from "@/components/TokenRain";
@@ -139,6 +140,7 @@ const Index = () => {
 
             <TokenInfo />
             <GoldenPUFChart />
+            <TokenButtons />
             
             <div className="mt-8 flex justify-center">
               <div className="max-w-md w-full">

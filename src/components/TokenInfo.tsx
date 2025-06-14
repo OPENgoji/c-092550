@@ -1,5 +1,5 @@
 
-import { ExternalLink, ShoppingCart, Clock } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 const TokenInfo = () => {
   return (
@@ -27,29 +27,11 @@ const TokenInfo = () => {
             href="https://dexscreener.com/worldchain/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-yellow-500 hover:text-yellow-400 flex items-center gap-1 break-all mb-2"
+            className="text-xs text-yellow-500 hover:text-yellow-400 flex items-center gap-1 break-all"
           >
             0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd
             <ExternalLink className="w-3 h-3 flex-shrink-0" />
           </a>
-          <div className="flex flex-col sm:flex-row gap-2">
-            <a
-              href="https://worldcoin.org/mini-app?app_id=app_15daccf5b7d4ec9b7dbba044a8fdeab5&path=app/token/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3 py-2 bg-yellow-600 hover:bg-yellow-700 text-black rounded-lg text-sm font-medium transition-colors"
-            >
-              <ShoppingCart className="w-4 h-4" />
-              Купить GoldenPUF $GPUF токен
-            </a>
-            <button
-              className="inline-flex items-center gap-2 px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-colors cursor-not-allowed opacity-75"
-              disabled
-            >
-              <Clock className="w-4 h-4" />
-              GoldenPUF $GPUF токен стейкинг скоро будет 💸
-            </button>
-          </div>
         </div>
       </div>
       
