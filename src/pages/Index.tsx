@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenInfo from "@/components/TokenInfo";
@@ -100,7 +101,6 @@ const Index = () => {
               <h1 className="text-6xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-tight">
                 GoldenPuF<br />NFT
               </h1>
-              <p className="text-muted-foreground text-lg">World Chain NFT Collection Platform</p>
             </div>
           </div>
           
