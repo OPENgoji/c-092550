@@ -16,23 +16,33 @@ const GoldenPUFChart = () => {
       </div>
       <div className="h-[500px] w-full">
         <TradingViewWidget
-          symbol="0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
+          symbol="WORLDCHAIN:0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
           theme="Dark"
           locale="en"
           autosize
           hide_side_toolbar={false}
-          allow_symbol_change={true}
+          allow_symbol_change={false}
           interval="15"
           toolbar_bg="#141413"
           enable_publishing={false}
           hide_top_toolbar={false}
           save_image={false}
           container_id="goldenpuf_live_chart"
+          withdateranges={true}
+          range="1D"
+          style="1"
+          details={true}
+          hotlist={true}
+          calendar={false}
+          studies={[
+            "Volume@tv-basicstudies",
+            "MACD@tv-basicstudies"
+          ]}
         />
       </div>
       <div className="mt-4 p-3 bg-yellow-900 bg-opacity-20 rounded-lg">
         <p className="text-sm text-yellow-400 text-center">
-          📈 Live trading data for GoldenPUF token pairs
+          📈 Реальная цена токена GoldenPUF - Contract: 0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd
         </p>
       </div>
     </div>

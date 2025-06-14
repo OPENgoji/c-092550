@@ -109,20 +109,23 @@ const Index = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-              <div className="lg:col-span-2">
+              <div className="lg:col-span-3">
                 <DailyReward 
                   walletAddress={walletAddress} 
                   onClaim={handleRewardClaim}
                   userPoints={userPoints}
                 />
               </div>
-              <div>
-                <TelegramInfo />
-              </div>
             </div>
 
             <TokenInfo />
             <GoldenPUFChart />
+            
+            <div className="mt-8 flex justify-center">
+              <div className="max-w-md w-full">
+                <TelegramInfo />
+              </div>
+            </div>
           </>
         )}
       </div>
