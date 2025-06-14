@@ -87,16 +87,17 @@ const Index = () => {
   }, [walletAddress]);
 
   return (
-    <div className="min-h-screen w-screen bg-black flex flex-col items-center justify-center p-0 m-0 overflow-x-hidden" style={{ backgroundColor: '#000000', minHeight: '100vh', width: '100vw' }}>
+    <div className="fixed inset-0 w-full h-full bg-black flex flex-col items-center justify-center p-0 m-0 overflow-hidden" style={{ backgroundColor: '#000000', width: '100vw', height: '100vh', position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
       
-      <div className="w-full flex flex-col items-center justify-center">
+      <div className="w-full h-full flex flex-col items-center justify-center bg-black" style={{ backgroundColor: '#000000' }}>
         <header className="text-center">
           <div className="flex flex-col items-center justify-center mb-4">
             <img
               src="/lovable-uploads/a8e8291a-531a-42d0-b99a-151de202bf83.png"
               alt="GoldenPuF NFT"
               className="w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] animate-pulse-subtle token-image drop-shadow-2xl"
+              style={{ background: 'transparent' }}
             />
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-tight">
@@ -107,7 +108,7 @@ const Index = () => {
           
           {!walletAddress && (
             <div className="mt-8 flex justify-center">
-              <div className="glass-card p-8 rounded-2xl max-w-md w-full border-2 border-yellow-500/30 shadow-2xl backdrop-blur-xl">
+              <div className="glass-card p-8 rounded-2xl max-w-md w-full border-2 border-yellow-500/30 shadow-2xl backdrop-blur-xl" style={{ backgroundColor: '#000000' }}>
                 <div className="text-center mb-6">
                   <h2 className="text-2xl font-bold text-yellow-400 mb-2">{t('welcome')}</h2>
                   <p className="text-muted-foreground">{t('connectWallet')}</p>
