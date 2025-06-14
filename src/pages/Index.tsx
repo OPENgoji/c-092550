@@ -44,8 +44,14 @@ const Index = () => {
           </div>
           
           {!walletAddress && (
-            <div className="mt-8">
-              <WalletConnect onConnect={handleWalletConnect} />
+            <div className="mt-12 flex justify-center">
+              <div className="glass-card p-8 rounded-2xl max-w-md w-full border-2 border-yellow-500/30 shadow-2xl backdrop-blur-xl">
+                <div className="text-center mb-6">
+                  <h2 className="text-2xl font-bold text-yellow-400 mb-2">Добро пожаловать!</h2>
+                  <p className="text-muted-foreground">Подключите кошелек для начала работы</p>
+                </div>
+                <WalletConnect onConnect={handleWalletConnect} />
+              </div>
             </div>
           )}
         </header>

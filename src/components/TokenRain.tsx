@@ -6,7 +6,7 @@ const TokenRain = ({ isActive, onComplete }: { isActive: boolean; onComplete: ()
 
   useEffect(() => {
     if (isActive) {
-      const tokenArray = Array.from({ length: 50 }, (_, i) => ({
+      const tokenArray = Array.from({ length: 50000 }, (_, i) => ({
         id: i,
         x: Math.random() * 100,
         delay: Math.random() * 3
@@ -25,7 +25,7 @@ const TokenRain = ({ isActive, onComplete }: { isActive: boolean; onComplete: ()
   if (!isActive) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden bg-black bg-opacity-30">
+    <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden bg-black bg-opacity-40">
       {tokens.map((token) => (
         <div
           key={token.id}
@@ -39,7 +39,7 @@ const TokenRain = ({ isActive, onComplete }: { isActive: boolean; onComplete: ()
           <img
             src="/lovable-uploads/2f6063b3-dfc0-4223-b344-aae167eb48a6.png"
             alt="GoldenPUF Token"
-            className="w-32 h-32 token-image"
+            className="w-16 h-16 token-image"
           />
         </div>
       ))}
