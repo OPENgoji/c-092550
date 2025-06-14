@@ -90,12 +90,12 @@ const Index = () => {
           <div className="flex flex-col items-center justify-center mb-4">
             <img
               src="/lovable-uploads/2f6063b3-dfc0-4223-b344-aae167eb48a6.png"
-              alt="GoldenPUF NFT"
+              alt="GoldenPuF NFT"
               className="w-48 h-48 animate-pulse-subtle token-image mb-6"
             />
             <div>
-              <h1 className="text-6xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-                GoldenPUF NFT
+              <h1 className="text-6xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-tight">
+                GoldenPuF<br />NFT
               </h1>
               <p className="text-muted-foreground text-lg">World Chain NFT Collection Platform</p>
             </div>
