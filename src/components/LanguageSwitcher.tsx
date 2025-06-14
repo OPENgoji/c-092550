@@ -9,7 +9,10 @@ interface Language {
 
 const languages: Language[] = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' }
+  { code: 'es', name: 'Español', flag: '🇪🇸' },
+  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+  { code: 'fr', name: 'Français', flag: '🇫🇷' },
+  { code: 'ja', name: '日本語', flag: '🇯🇵' }
 ];
 
 interface LanguageSwitcherProps {
@@ -41,7 +44,7 @@ const LanguageSwitcher = ({ currentLanguage, onLanguageChange }: LanguageSwitche
       </button>
 
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 bg-black/80 backdrop-blur-sm border border-yellow-500/30 rounded-lg overflow-hidden z-50">
+        <div className="absolute top-full right-0 mt-2 bg-black/80 backdrop-blur-sm border border-yellow-500/30 rounded-lg overflow-hidden z-50 min-w-[140px]">
           {languages.map((language) => (
             <button
               key={language.code}

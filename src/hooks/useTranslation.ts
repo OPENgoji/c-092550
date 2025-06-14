@@ -59,6 +59,84 @@ const translations: Translations = {
     goldenPufSwap: "GoldenPUF Swap",
     clickToTelegram: "Haz clic para ir a Telegram",
     getUpdates: "Obtén noticias, actualizaciones y chatea con la comunidad"
+  },
+  ru: {
+    // Main page
+    welcome: "Добро пожаловать!",
+    connectWallet: "Подключите кошелек для начала",
+    connectedWallet: "Подключенный кошелек:",
+    worldIdVerified: "World ID Верифицирован (2x награды)",
+    
+    // Daily Reward
+    dailyReward: "Ежедневная награда",
+    claimNow: "Получить сейчас",
+    nextReward: "Следующая награда через:",
+    myPoints: "Мои очки",
+    
+    // Token Info
+    tokenInfo: "Информация о токене",
+    totalSupply: "Общее предложение",
+    currentPrice: "Текущая цена",
+    marketCap: "Рыночная капитализация",
+    
+    // Telegram
+    telegramChannel: "Telegram канал",
+    joinCommunity: "Присоединяйся к сообществу",
+    goldenPufSwap: "GoldenPUF Swap",
+    clickToTelegram: "Нажмите для перехода в Telegram",
+    getUpdates: "Получайте новости, обновления и общайтесь с сообществом"
+  },
+  fr: {
+    // Main page
+    welcome: "Bienvenue!",
+    connectWallet: "Connectez votre portefeuille pour commencer",
+    connectedWallet: "Portefeuille connecté:",
+    worldIdVerified: "World ID Vérifié (2x récompenses)",
+    
+    // Daily Reward
+    dailyReward: "Récompense quotidienne",
+    claimNow: "Réclamer maintenant",
+    nextReward: "Prochaine récompense dans:",
+    myPoints: "Mes points",
+    
+    // Token Info
+    tokenInfo: "Informations sur le token",
+    totalSupply: "Offre totale",
+    currentPrice: "Prix actuel",
+    marketCap: "Capitalisation boursière",
+    
+    // Telegram
+    telegramChannel: "Canal Telegram",
+    joinCommunity: "Rejoignez notre communauté",
+    goldenPufSwap: "GoldenPUF Swap",
+    clickToTelegram: "Cliquez pour aller sur Telegram",
+    getUpdates: "Obtenez des nouvelles, des mises à jour et discutez avec la communauté"
+  },
+  ja: {
+    // Main page
+    welcome: "ようこそ！",
+    connectWallet: "開始するにはウォレットを接続してください",
+    connectedWallet: "接続されたウォレット:",
+    worldIdVerified: "World ID 認証済み (2倍報酬)",
+    
+    // Daily Reward
+    dailyReward: "デイリー報酬",
+    claimNow: "今すぐ受け取る",
+    nextReward: "次の報酬まで:",
+    myPoints: "マイポイント",
+    
+    // Token Info
+    tokenInfo: "トークン情報",
+    totalSupply: "総供給量",
+    currentPrice: "現在価格",
+    marketCap: "時価総額",
+    
+    // Telegram
+    telegramChannel: "Telegramチャンネル",
+    joinCommunity: "コミュニティに参加",
+    goldenPufSwap: "GoldenPUF Swap",
+    clickToTelegram: "Telegramに移動するにはクリック",
+    getUpdates: "ニュース、アップデート、コミュニティとのチャットを受け取る"
   }
 };
 
