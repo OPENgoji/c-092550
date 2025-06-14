@@ -16,22 +16,10 @@ const TokenInfo = () => {
         </div>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-1 gap-4 mb-6">
         <div className="p-4 bg-secondary bg-opacity-30 rounded-lg">
           <h3 className="text-sm font-medium text-muted-foreground mb-1">Общее количество специальных NFT</h3>
           <p className="text-xl font-semibold text-yellow-500">10,000,000 специальных NFT</p>
-        </div>
-        <div className="p-4 bg-secondary bg-opacity-30 rounded-lg">
-          <h3 className="text-sm font-medium text-muted-foreground mb-2">Contract Address</h3>
-          <a
-            href="https://dexscreener.com/worldchain/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs text-yellow-500 hover:text-yellow-400 flex items-center gap-1 break-all"
-          >
-            0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd
-            <ExternalLink className="w-3 h-3 flex-shrink-0" />
-          </a>
         </div>
       </div>
       
