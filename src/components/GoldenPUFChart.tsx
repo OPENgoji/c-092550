@@ -16,7 +16,7 @@ const GoldenPUFChart = () => {
       </div>
       <div className="h-[500px] w-full">
         <TradingViewWidget
-          symbol="WORLDCHAIN:0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
+          symbol="WORLDCHAIN:0xEde38e5b74d2fD1b2213eD880819FF95758f02f7"
           theme="Dark"
           locale="en"
           autosize
@@ -42,7 +42,7 @@ const GoldenPUFChart = () => {
       </div>
       <div className="mt-4 p-3 bg-yellow-900 bg-opacity-20 rounded-lg">
         <p className="text-sm text-yellow-400 text-center">
-          📈 Реальная цена токена GoldenPUF $GPUF - Contract: 0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd
+          📈 Реальная цена токена GoldenPUF $GPUF - Contract: 0xEde38e5b74d2fD1b2213eD880819FF95758f02f7
         </p>
       </div>
     </div>
