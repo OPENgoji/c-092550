@@ -62,16 +62,16 @@ const DailyReward = ({
           Claim 1 GoldenPUF NFT Point
         </button>
       ) : (
-        <div className="flex flex-col items-center gap-4">
-          <Clock className="w-8 h-8 text-yellow-500" />
-          <p className="text-muted-foreground">Следующие специальные NFT поинты через:</p>
-          <p className="text-2xl font-mono text-yellow-500">{timeLeft}</p>
+        <div className="flex flex-col items-center gap-3">
+          <Clock className="w-6 h-6 text-yellow-500" />
+          <p className="text-sm text-muted-foreground">Следующие специальные NFT поинты через:</p>
+          <p className="text-lg font-mono text-yellow-500">{timeLeft}</p>
           
           {/* Счетчик NFT без звёздочки */}
-          <div className="mt-4 p-3 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 border border-yellow-500/30 rounded-lg">
+          <div className="mt-3 p-2 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 border border-yellow-500/30 rounded-lg">
             <div className="text-center">
               <p className="text-xs text-muted-foreground">Мои специальные NFT</p>
-              <p className="text-lg font-bold text-yellow-500">{userPoints.toLocaleString()}</p>
+              <p className="text-base font-bold text-yellow-500">{userPoints.toLocaleString()}</p>
             </div>
           </div>
         </div>
