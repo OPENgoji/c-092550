@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenInfo from "@/components/TokenInfo";
@@ -88,16 +87,16 @@ const Index = () => {
   }, [walletAddress]);
 
   return (
-    <div className="min-h-screen w-full bg-black flex flex-col items-center justify-center p-4" style={{ backgroundColor: '#000000' }}>
+    <div className="min-h-screen w-full bg-zinc-900 flex flex-col items-center justify-center p-4" style={{ backgroundColor: '#18181b' }}>
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
       
-      <div className="w-full flex flex-col items-center justify-center bg-black" style={{ backgroundColor: '#000000' }}>
+      <div className="w-full flex flex-col items-center justify-center bg-zinc-900" style={{ backgroundColor: '#18181b' }}>
         <header className="text-center">
           <div className="flex flex-col items-center justify-center mb-4">
             <img
               src="/lovable-uploads/a8e8291a-531a-42d0-b99a-151de202bf83.png"
               alt="GoldenPuF NFT"
-              className="w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] animate-pulse-subtle token-image drop-shadow-2xl"
+              className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 animate-pulse-subtle token-image drop-shadow-2xl"
               style={{ background: 'transparent' }}
             />
             <div>
@@ -109,7 +108,7 @@ const Index = () => {
           
           {!walletAddress && (
             <div className="mt-8 flex justify-center">
-              <div className="glass-card p-8 rounded-2xl max-w-md w-full border-2 border-yellow-500/30 shadow-2xl backdrop-blur-xl" style={{ backgroundColor: '#000000' }}>
+              <div className="glass-card p-8 rounded-2xl max-w-md w-full border-2 border-yellow-500/30 shadow-2xl backdrop-blur-xl" style={{ backgroundColor: '#18181b' }}>
                 <div className="text-center mb-6">
                   <h2 className="text-2xl font-bold text-yellow-400 mb-2">{t('welcome')}</h2>
                   <p className="text-muted-foreground">{t('connectWallet')}</p>
