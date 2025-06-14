@@ -6,15 +6,20 @@
 @layer base {
   html, body, #root {
     @apply text-foreground antialiased;
-    background: radial-gradient(circle at center, #1a1a0a 0%, #0a0a00 50%, #000000 100%);
+    background: #000000;
     min-height: 100vh;
-    width: 100%;
+    width: 100vw;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
   }
   
   body {
     background-attachment: fixed;
+  }
+  
+  * {
+    box-sizing: border-box;
   }
 }
 

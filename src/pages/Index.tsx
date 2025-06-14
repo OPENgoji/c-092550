@@ -87,26 +87,21 @@ const Index = () => {
   }, [walletAddress]);
 
   return (
-    <div className="min-h-screen w-full p-4 md:p-8">
+    <div className="min-h-screen w-screen bg-black flex flex-col items-center justify-center p-0 m-0" style={{ backgroundColor: '#000000' }}>
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
       
-      <div className="w-full">
-        <header className="mb-8 text-center">
-          <div className="flex flex-col items-center justify-center mb-4">
+      <div className="w-full flex flex-col items-center justify-center">
+        <header className="text-center">
+          <div className="flex flex-col items-center justify-center">
             <img
               src="/lovable-uploads/a8e8291a-531a-42d0-b99a-151de202bf83.png"
               alt="GoldenPuF NFT"
-              className="w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] animate-pulse-subtle token-image mb-6 drop-shadow-2xl"
+              className="w-[600px] h-[600px] md:w-[700px] md:h-[700px] lg:w-[800px] lg:h-[800px] animate-pulse-subtle token-image drop-shadow-2xl"
             />
-            <div>
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-tight">
-                GoldenPuF<br />NFT
-              </h1>
-            </div>
           </div>
           
           {!walletAddress && (
-            <div className="mt-12 flex justify-center">
+            <div className="mt-8 flex justify-center">
               <div className="glass-card p-8 rounded-2xl max-w-md w-full border-2 border-yellow-500/30 shadow-2xl backdrop-blur-xl">
                 <div className="text-center mb-6">
                   <h2 className="text-2xl font-bold text-yellow-400 mb-2">{t('welcome')}</h2>
@@ -131,7 +126,7 @@ const Index = () => {
               )}
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8 w-full max-w-7xl px-4">
               <div className="lg:col-span-3">
                 <DailyReward 
                   walletAddress={walletAddress} 
@@ -141,13 +136,15 @@ const Index = () => {
               </div>
             </div>
 
-            <TokenInfo />
-            <GoldenPUFChart />
-            <TokenButtons />
-            
-            <div className="mt-8 flex justify-center">
-              <div className="max-w-md w-full">
-                <TelegramInfo />
+            <div className="w-full max-w-7xl px-4">
+              <TokenInfo />
+              <GoldenPUFChart />
+              <TokenButtons />
+              
+              <div className="mt-8 flex justify-center">
+                <div className="max-w-md w-full">
+                  <TelegramInfo />
+                </div>
               </div>
             </div>
           </>
