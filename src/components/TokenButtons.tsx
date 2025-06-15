@@ -36,27 +36,27 @@ const TokenButtons = () => {
       <div className="glass-card p-6 rounded-xl border-2 border-orange-500/30 opacity-60">
         <div className="flex items-center gap-3 mb-3">
           <Clock className="w-6 h-6 text-orange-500" />
-          <span className="font-bold text-orange-400">{t('staking')}</span>
+          <span className="font-bold text-orange-400">Staking</span>
         </div>
         <p className="text-sm text-muted-foreground">
-          Stake your points for additional rewards and enhanced APY rates
+          Earn more $GPUF by staking your GoldenPUF tokens. Boost your rewards!
         </p>
         <div className="mt-3 text-xs text-orange-300">
-          {t('comingSoon')} ⏳
+          Coming soon for GoldenPUF ⏳
         </div>
       </div>
 
-      {/* Swap - Coming Soon */}
+      {/* Mining - Coming Soon */}
       <div className="glass-card p-6 rounded-xl border-2 border-blue-500/30 opacity-60">
         <div className="flex items-center gap-3 mb-3">
           <Repeat className="w-6 h-6 text-blue-500" />
-          <span className="font-bold text-blue-400">{t('swap')}</span>
+          <span className="font-bold text-blue-400">Mining</span>
         </div>
         <p className="text-sm text-muted-foreground">
-          Swap between points and $GPUF tokens with integrated DEX functionality
+          Mine $GPUF and unlock new DeFi features with our upcoming mining tools.
         </p>
         <div className="mt-3 text-xs text-blue-300">
-          {t('comingSoon')} ⏳
+          Mining for GoldenPUF coming soon ⏳
         </div>
       </div>
     </div>
