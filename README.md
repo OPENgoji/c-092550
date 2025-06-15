@@ -107,13 +107,13 @@ const ACTION = "verify-golden-puf-user";
 - Proof of unique human identity
 - Reduced fraud risk
 
-## 📊 Smart Contract Information
+## 📊 Smart Contract / Token Information
 
 **Token GoldenPUF ($GPUF)**
-- *Текущий механизм начисления баллов временный, окончательное имя токена и адрес будут анонсированы после создания смарт-контракта.*
-- **Десятичные знаки:** 18
-- **Договор:** Будет опубликован после создания смарт-контракта
-- **Сеть:** World Chain Mainnet (идентификатор цепочки: 480)
+- *The current mechanism is point accrual only. The final token name and smart contract address will be announced after the contract is created.*
+- **Decimals:** 18
+- **Smart Contract:** Will be published after smart contract creation
+- **Network:** World Chain Mainnet (Chain ID: 480)
 
 ## 🗺️ Roadmap
 

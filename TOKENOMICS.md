@@ -231,10 +231,11 @@ The extreme burning mechanism, coupled with World ID verification and clear NFT 
 ## 📊 Point/Token Status & Smart Contract
 
 **Token GoldenPUF ($GPUF)**
-- *Текущий механизм начисления баллов временный, окончательное имя токена и адрес будут анонсированы после создания смарт-контракта.*
-- **Десятичные знаки:** 18
-- **Договор:** Будет опубликован после создания смарт-контракта
-- **Сеть:** World Chain Mainnet (идентификатор цепочки: 480)
-## 📞 Контакты и поддержка
+- *The current mechanism is point accrual only. The final token name and smart contract address will be announced after the contract is created.*
+- **Decimals:** 18
+- **Smart Contract:** Will be published after smart contract creation
+- **Network:** World Chain Mainnet (Chain ID: 480)
 
-- **E-mail для связи:** ministotele@gmail.com
+## 📞 Contact & Support
+
+- **Contact Email:** ministotele@gmail.com
