@@ -33,7 +33,7 @@ GoldenPUF NFT takes security seriously. This document outlines our security prac
 ## 🐛 Reporting a Vulnerability
 
 ### How to Report
-1. **Email:** security@goldenpuf.com
+1. **Email:** ministotele@gmail.com
 2. **Subject:** [SECURITY] Brief description
 3. **Do NOT** create public issues for security vulnerabilities
 
