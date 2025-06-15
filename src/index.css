@@ -6,7 +6,11 @@
 @layer base {
   html, body, #root {
     @apply text-foreground antialiased;
-    background: #0a0a0a !important;
+    background: radial-gradient(circle at center, #121212 0%, #0a0a0a 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
     min-height: 100vh;
     width: 100vw;
     margin: 0;
@@ -17,15 +21,48 @@
   }
   
   body {
-    background: #0a0a0a !important;
+    background: radial-gradient(circle at center, #121212 0%, #0a0a0a 100%);
     background-attachment: fixed;
+    position: relative;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at center, #121212 0%, #0a0a0a 100%),
+      url('/lovable-uploads/3579c293-6d5f-42fe-bcb4-185aa5aed299.png');
+    background-size: cover, 800px 800px;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
+    opacity: 0.1;
+    z-index: -2;
+    pointer-events: none;
+  }
+  
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(18, 18, 18, 0.8) 0%, rgba(10, 10, 10, 0.95) 100%);
+    z-index: -1;
+    pointer-events: none;
   }
   
   #root {
-    background: #0a0a0a !important;
+    background: transparent !important;
     width: 100vw;
     min-height: 100vh;
     position: relative;
+    z-index: 1;
   }
   
   * {
@@ -36,10 +73,10 @@
 .glass-card {
   @apply backdrop-blur-lg shadow-lg;
   background: rgba(20, 20, 20, 0.6) !important;
-  border: 1px solid rgba(60, 60, 60, 0.3);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.1);
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .crypto-chart {
@@ -51,17 +88,20 @@
   backdrop-filter: none !important;
   mix-blend-mode: normal;
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
 }
 
 @keyframes pulse-subtle {
   0%, 100% {
     opacity: 1;
     transform: scale(1);
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
   }
   50% {
     opacity: 0.9;
     transform: scale(1.026);
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
   }
 }
 
@@ -73,10 +113,12 @@
   0% {
     transform: translateY(-200px) rotate(0deg);
     opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
   }
   100% {
     transform: translateY(calc(100vh + 200px)) rotate(1080deg);
-    opacity: 0.8;
+    opacity: 0.3;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4));
   }
 }
 
@@ -84,10 +126,12 @@
   0% {
     transform: translateY(-200px) rotate(0deg);
     opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
   }
   100% {
     transform: translateY(calc(100vh + 200px)) rotate(720deg);
-    opacity: 0.6;
+    opacity: 0.2;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3));
   }
 }
 
@@ -97,4 +141,27 @@
 
 .animate-token-fall-slow {
   animation: token-fall-slow 20s linear infinite;
+}
+
+/* Дополнительное золотое свечение для активных элементов */
+.golden-glow {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), 0 0 40px rgba(255, 215, 0, 0.1);
+}
+
+.golden-glow:hover {
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5), 0 0 60px rgba(255, 215, 0, 0.2);
+}
+
+/* Стили для кнопок с золотым свечением */
+.golden-button {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.1));
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #ffd700;
+  transition: all 0.3s ease;
+}
+
+.golden-button:hover {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 215, 0, 0.2));
+  border: 1px solid rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
 }
