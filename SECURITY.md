@@ -1,3 +1,4 @@
+
 # Security Policy
 
 ## 🛡️ Security Overview
@@ -17,8 +18,6 @@ GoldenPUF NFT takes security seriously. This document outlines our security prac
 - **Encryption:** Sensitive data encrypted before storage
 - **Access Control:** World ID verification for enhanced features
 - **Session Management:** Secure session handling
-
-> **IMPORTANT:** This mini-app implements client-side World ID and points protection only. For large scale production or significant rewards, you must implement server-side verification of both World ID proofs and points (e.g. on Supabase). Relying solely on localStorage is not secure for valuable rewards!
 
 ### Smart Contract Security
 - **Contract Address:** `0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd`

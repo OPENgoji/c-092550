@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenInfo from "@/components/TokenInfo";
@@ -43,16 +42,15 @@ const Index = () => {
     setWorldIdUser(null);
     setUserPoints(0);
     setShowTokenRain(false);
-
+    
     // Очищаем localStorage
-    Object.keys(localStorage).forEach((key) => {
-      if (
-        key.startsWith('lastConnectedWallet') ||
-        key.startsWith('worldid_') ||
-        key.startsWith('points_') ||
-        key.startsWith('user_data_') ||
-        key.startsWith('emergency_backup_')
-      ) {
+    localStorage.removeItem('lastConnectedWallet');
+    localStorage.removeItem('worldid_verification');
+    localStorage.removeItem('worldid_verification_backup');
+    
+    // Очищаем все данные World ID для всех адресов
+    Object.keys(localStorage).forEach(key => {
+      if (key.startsWith('worldid_')) {
         localStorage.removeItem(key);
       }
     });

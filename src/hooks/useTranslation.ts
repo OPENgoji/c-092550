@@ -1,79 +1,83 @@
+
 import { useState, useEffect } from 'react';
 
-// Интерфейс для переводов
 interface Translations {
   [key: string]: {
     [key: string]: string;
   };
 }
 
-// Переводы для приложения
 const translations: Translations = {
   en: {
-    welcome: "Welcome to GoldenPUF NFT",
-    connectWallet: "Connect your World Chain wallet to start earning daily rewards",
+    // Main page
+    welcome: "Welcome!",
+    connectWallet: "Connect wallet to get started",
     connectedWallet: "Connected Wallet:",
-    dailyReward: "Daily Reward",
-    claimNow: "Claim Daily Reward",
-    nextReward: "Next reward available in:",
-    myPoints: "My Points",
-    worldIdVerified: "World ID Verified - 2x Rewards!",
+    worldIdVerified: "World ID Verified (2x rewards)",
+    
+    // Daily Reward
+    dailyReward: "Daily NFT Reward",
+    claimNow: "Claim 1 GoldenPUF NFT Point",
+    nextReward: "Next special NFT points in:",
+    myPoints: "My special NFT",
+    
+    // Token Info
     tokenInfo: "Token Information",
-    liveChart: "Live Price Chart",
-    buyToken: "Buy Token",
-    comingSoon: "Coming Soon",
-    staking: "Staking",
-    swap: "Swap",
-    tradingViewNotAvailable: "Live chart not available now.",
-    unknownError: "Unknown error",
-  },
-  ru: {
-    welcome: "Добро пожаловать в GoldenPUF NFT",
-    connectWallet: "Подключите кошелек World Chain для получения ежедневных наград",
-    connectedWallet: "Подключенный кошелек:",
-    dailyReward: "Ежедневная награда",
-    claimNow: "Получить награду",
-    nextReward: "Следующая награда доступна через:",
-    myPoints: "Мои поинты",
-    worldIdVerified: "World ID верифицирован - 2x награды!",
-    tokenInfo: "Информация о токене",
-    liveChart: "График цены в реальном времени",
-    buyToken: "Купить токен",
-    comingSoon: "Скоро",
-    staking: "Стейкинг",
-    swap: "Обмен",
-    tradingViewNotAvailable: "График временно недоступен.",
-    unknownError: "Неизвестная ошибка",
+    totalSupply: "Total Supply",
+    currentPrice: "Current Price",
+    marketCap: "Market Cap",
+    pointsInfo: "Points Information",
+    earnDaily: "Earn daily points that will be converted into an exclusive NFT collection on World Chain. Connect your World Chain wallet and get daily rewards every 24 hours!",
+    burnInfo: "A massive burn is planned from 100 million points, 86 million points (86%) will be burned. Only 14 million NFT points will remain",
+    futureTokens: "These points may turn into tokens or NFT collection in the future! Only 14 million in the ecosystem - keep collecting and follow project updates. ✨",
+    
+    // Telegram
+    telegramChannel: "Telegram Channel",
+    joinCommunity: "Join our community",
+    goldenPufSwap: "GoldenPUF Swap",
+    clickToTelegram: "Click to go to Telegram",
+    getUpdates: "Get news, updates and chat with the community",
+    
+    // Token Buttons
+    tokenTitle: "GoldenPUF $GPUF token",
+    contractAddress: "Contract Address:",
+    copy: "Copy",
+    copied: "Copied!",
+    openDexScreener: "Open on DEX Screener",
+    buyToken: "Buy GoldenPUF $GPUF token",
+    stakingComingSoon: "GoldenPUF $GPUF token staking and mining coming soon 💸",
+    swapComingSoon: "GoldenPUF $GPUF token swap coming soon 💰⏰",
+    
+    // Chart
+    liveChart: "GoldenPUF $GPUF Live Chart",
+    realTimePrice: "📈 Real-time GoldenPUF $GPUF token price - Contract: 0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
   }
 };
 
 export const useTranslation = () => {
-  const [language, setLanguage] = useState<string>('en');
+  const [currentLanguage, setCurrentLanguage] = useState<string>('en');
 
   useEffect(() => {
-    // Определяем язык из localStorage или браузера
-    const savedLanguage = localStorage.getItem('preferred_language');
+    const savedLanguage = localStorage.getItem('preferredLanguage');
     if (savedLanguage && translations[savedLanguage]) {
-      setLanguage(savedLanguage);
-    } else {
-      // Определяем язык браузера
-      const browserLanguage = navigator.language.split('-')[0];
-      if (translations[browserLanguage]) {
-        setLanguage(browserLanguage);
-      }
+      setCurrentLanguage(savedLanguage);
     }
   }, []);
 
-  const t = (key: string): string => {
-    return translations[language]?.[key] || translations['en'][key] || key;
-  };
-
-  const changeLanguage = (newLanguage: string) => {
-    if (translations[newLanguage]) {
-      setLanguage(newLanguage);
-      localStorage.setItem('preferred_language', newLanguage);
+  const changeLanguage = (language: string) => {
+    if (translations[language]) {
+      setCurrentLanguage(language);
+      localStorage.setItem('preferredLanguage', language);
     }
   };
 
-  return { t, language, setLanguage: changeLanguage };
+  const t = (key: string): string => {
+    return translations[currentLanguage]?.[key] || translations['en'][key] || key;
+  };
+
+  return {
+    currentLanguage,
+    changeLanguage,
+    t
+  };
 };

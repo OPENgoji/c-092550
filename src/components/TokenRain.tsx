@@ -1,55 +1,49 @@
 
 import { useEffect, useState } from 'react';
 
-interface TokenRainProps {
-  isActive: boolean;
-  onComplete: () => void;
-}
-
-const TokenRain = ({ isActive, onComplete }: TokenRainProps) => {
-  const [tokens, setTokens] = useState<Array<{ id: number; delay: number; duration: number; left: number }>>([]);
+const TokenRain = ({ isActive, onComplete }: { isActive: boolean; onComplete: () => void }) => {
+  const [tokens, setTokens] = useState<Array<{ id: number; x: number; delay: number }>>([]);
 
   useEffect(() => {
     if (isActive) {
-      // Создаем массив падающих токенов
-      const newTokens = Array.from({ length: 15 }, (_, i) => ({
+      const tokenArray = Array.from({ length: 100 }, (_, i) => ({
         id: i,
-        delay: Math.random() * 2000, // Задержка до 2 секунд
-        duration: 8000 + Math.random() * 4000, // Длительность 8-12 секунд
-        left: Math.random() * 100 // Позиция по горизонтали в %
+        x: Math.random() * 100,
+        delay: Math.random() * 3
       }));
+      setTokens(tokenArray);
 
-      setTokens(newTokens);
-
-      // Завершаем анимацию через максимальное время
-      const maxDuration = Math.max(...newTokens.map(t => t.delay + t.duration));
-      setTimeout(() => {
-        setTokens([]);
+      const timer = setTimeout(() => {
         onComplete();
-      }, maxDuration);
+        setTokens([]);
+      }, 8000);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    } else {
+      setTokens([]);
     }
   }, [isActive, onComplete]);
 
-  if (!isActive || tokens.length === 0) {
-    return null;
-  }
+  if (!isActive || tokens.length === 0) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-30 overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden bg-black bg-opacity-40">
       {tokens.map((token) => (
         <div
           key={token.id}
-          className="absolute w-12 h-12 animate-token-fall"
+          className="absolute animate-token-fall"
           style={{
-            left: `${token.left}%`,
-            animationDelay: `${token.delay}ms`,
-            animationDuration: `${token.duration}ms`,
+            left: `${token.x}%`,
+            animationDelay: `${token.delay}s`,
+            top: '-200px'
           }}
         >
           <img
-            src="/lovable-uploads/a8e8291a-531a-42d0-b99a-151de202bf83.png"
-            alt="Golden Token"
-            className="w-full h-full object-contain opacity-80"
+            src="/lovable-uploads/2f6063b3-dfc0-4223-b344-aae167eb48a6.png"
+            alt="GoldenPUF Token"
+            className="w-12 h-12 token-image"
           />
         </div>
       ))}

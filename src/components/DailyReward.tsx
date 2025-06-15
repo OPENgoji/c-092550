@@ -44,13 +44,9 @@ const DailyReward = ({
   }, [walletAddress]);
 
   const handleClaim = () => {
-    try {
-      localStorage.setItem(`lastClaim_${walletAddress}`, Date.now().toString());
-      setCanClaim(false);
-      onClaim();
-    } catch (e: any) {
-      alert(t('unknownError') + ": " + e?.message);
-    }
+    localStorage.setItem(`lastClaim_${walletAddress}`, Date.now().toString());
+    setCanClaim(false);
+    onClaim();
   };
 
   return (
