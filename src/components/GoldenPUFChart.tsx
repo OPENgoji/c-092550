@@ -1,5 +1,7 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { TrendingUp } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 // Импортируем типы, чтобы не было ошибки TS2339
 import "@/types/tradingview.d.ts";
@@ -9,6 +11,7 @@ const TRADINGVIEW_SRC = "https://s3.tradingview.com/tv.js";
 const GoldenPUFChart = () => {
   const chartRef = useRef<HTMLDivElement>(null);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useTranslation(); // добавляем перевод
 
   // Динамическая загрузка TradingView скрипта
   useEffect(() => {
@@ -76,24 +79,19 @@ const GoldenPUFChart = () => {
         }
       })
       .catch((e) => {
-        setError(
-          // Используем translate hook если есть
-          typeof t === "function"
-            ? t("tradingViewNotAvailable") + " " + e.message
-            : "TradingView not available: " + e.message
-        );
+        setError(typeof t === "function" ? t("tradingViewNotAvailable") + " " + e.message : "TradingView not available: " + e.message);
       });
 
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [t]);
 
   return (
     <div className="glass-card p-6 rounded-2xl mb-8">
       <div className="flex items-center gap-2 mb-4">
         <TrendingUp className="w-5 h-5 text-green-500" />
-        <h3 className="text-lg font-semibold text-white">Live Price Chart</h3>
+        <h3 className="text-lg font-semibold text-white">{t('liveChart')}</h3>
       </div>
       
       <div className="crypto-chart">
@@ -109,7 +107,7 @@ const GoldenPUFChart = () => {
             <div className="flex items-center justify-center h-full">
               <div className="text-center">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-500 mx-auto mb-4"></div>
-                <p className="text-muted-foreground">Loading live chart...</p>
+                <p className="text-muted-foreground">{t('loading') || "Loading live chart..."}</p>
               </div>
             </div>
           )}
@@ -131,3 +129,4 @@ const GoldenPUFChart = () => {
 };
 
 export default GoldenPUFChart;
+
