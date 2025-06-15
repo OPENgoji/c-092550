@@ -1,4 +1,3 @@
-
 # GoldenPUF NFT Tokenomics
 
 ## 🪙 Token Overview
@@ -229,3 +228,13 @@ The extreme burning mechanism, coupled with World ID verification and clear NFT 
 *For more information, visit our [official documentation](./README.md) or contact our team.*
 
 **Built for the World Chain community** 🌍✨
+## 📊 Point/Token Status & Smart Contract
+
+**Token GoldenPUF ($GPUF)**
+- *Текущий механизм начисления баллов временный, окончательное имя токена и адрес будут анонсированы после создания смарт-контракта.*
+- **Десятичные знаки:** 18
+- **Договор:** Будет опубликован после создания смарт-контракта
+- **Сеть:** World Chain Mainnet (идентификатор цепочки: 480)
+## 📞 Контакты и поддержка
+
+- **E-mail для связи:** ministotele@gmail.com

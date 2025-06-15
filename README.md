@@ -1,4 +1,3 @@
-
 # GoldenPUF NFT - World Chain Daily Rewards App
 
 ![GoldenPUF NFT](./public/lovable-uploads/a8e8291a-531a-42d0-b99a-151de202bf83.png)
@@ -110,12 +109,11 @@ const ACTION = "verify-golden-puf-user";
 
 ## 📊 Smart Contract Information
 
-**GoldenPUF Token ($GPUF)**
-- **Symbol:** GOLDENPUF-NFT
-- **Name:** GoldenPUF NFT Token
-- **Decimals:** 18
-- **Contract:** `0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd`
-- **Network:** World Chain Mainnet (Chain ID: 480)
+**Token GoldenPUF ($GPUF)**
+- *Текущий механизм начисления баллов временный, окончательное имя токена и адрес будут анонсированы после создания смарт-контракта.*
+- **Десятичные знаки:** 18
+- **Договор:** Будет опубликован после создания смарт-контракта
+- **Сеть:** World Chain Mainnet (идентификатор цепочки: 480)
 
 ## 🗺️ Roadmap
 
@@ -176,7 +174,7 @@ This project is licensed under the MIT License - see [LICENSE](./LICENSE) file f
 ## 📞 Contact & Support
 
 - **Developer:** GoldenPUF Team
-- **Email:** support@goldenpuf.com
+- **Email:** ministotele@gmail.com
 - **World Chain Developer Portal:** [View Project](https://developer.worldcoin.org/teams/team_ad489f561da23f72d61b3ba9e0962cf0/apps/app_b924910c34c036984df5a50cd6f122e9)
 
 ## ⚠️ Important Notes

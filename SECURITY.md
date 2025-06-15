@@ -1,4 +1,3 @@
-
 # Security Policy
 
 ## 🛡️ Security Overview
@@ -201,7 +200,7 @@ const WORLD_ID_CONFIG = {
 ## 📞 Contact Information
 
 ### Security Team
-- **Email:** security@goldenpuf.com
+- **Email:** ministotele@gmail.com
 - **PGP Key:** [Link to public PGP key]
 - **Response Hours:** 24/7 for critical issues
 
