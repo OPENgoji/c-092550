@@ -1,6 +1,8 @@
 
 import { useEffect, useState } from 'react';
 
+const TOKEN_IMAGE = "/lovable-uploads/55fa699e-e967-46e2-9719-3fe4e122ecd8.png";
+
 const TokenRain = ({ isActive, onComplete }: { isActive: boolean; onComplete: () => void }) => {
   const [tokens, setTokens] = useState<Array<{ id: number; x: number; delay: number }>>([]);
 
@@ -41,9 +43,9 @@ const TokenRain = ({ isActive, onComplete }: { isActive: boolean; onComplete: ()
           }}
         >
           <img
-            src="/lovable-uploads/2f6063b3-dfc0-4223-b344-aae167eb48a6.png"
-            alt="GoldenPUF Token"
-            className="w-12 h-12 token-image"
+            src={TOKEN_IMAGE}
+            alt="Rain Token"
+            className="w-16 h-16 token-image"
           />
         </div>
       ))}

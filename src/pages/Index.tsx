@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenInfo from "@/components/TokenInfo";
@@ -10,6 +11,8 @@ import { WorldIDUser } from "@/types/worldid";
 import { PointsStorage } from "@/utils/pointsStorage";
 import { useTranslation } from "@/hooks/useTranslation";
 import { LogOut } from "lucide-react";
+
+const MAIN_LOGO = "/lovable-uploads/55fa699e-e967-46e2-9719-3fe4e122ecd8.png";
 
 const Index = () => {
   const { t } = useTranslation();
@@ -117,7 +120,7 @@ const Index = () => {
         <header className="text-center">
           <div className="flex flex-col items-center justify-center mb-4">
             <img
-              src="/lovable-uploads/a8e8291a-531a-42d0-b99a-151de202bf83.png"
+              src={MAIN_LOGO}
               alt="GoldenPuF NFT"
               className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 animate-pulse-subtle token-image drop-shadow-2xl"
               style={{ background: 'transparent' }}
