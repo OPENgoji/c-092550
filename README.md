@@ -159,7 +159,7 @@ The application includes comprehensive analytics:
 - Transparent point distribution
 
 ### Reporting Security Issues
-Please report security vulnerabilities to: [security@goldenpuf.com]
+Please report security vulnerabilities to: [ministotele@gmail.com]
 
 ## 🤝 Contributing
 
