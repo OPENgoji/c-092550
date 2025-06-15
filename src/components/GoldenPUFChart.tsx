@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { TrendingUp } from 'lucide-react';
 
@@ -77,7 +76,12 @@ const GoldenPUFChart = () => {
         }
       })
       .catch((e) => {
-        setError("TradingView not available: " + e.message);
+        setError(
+          // Используем translate hook если есть
+          typeof t === "function"
+            ? t("tradingViewNotAvailable") + " " + e.message
+            : "TradingView not available: " + e.message
+        );
       });
 
     return () => {

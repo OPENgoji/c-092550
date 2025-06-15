@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 // Интерфейс для переводов
@@ -24,7 +23,9 @@ const translations: Translations = {
     buyToken: "Buy Token",
     comingSoon: "Coming Soon",
     staking: "Staking",
-    swap: "Swap"
+    swap: "Swap",
+    tradingViewNotAvailable: "Live chart not available now.",
+    unknownError: "Unknown error",
   },
   ru: {
     welcome: "Добро пожаловать в GoldenPUF NFT",
@@ -40,7 +41,9 @@ const translations: Translations = {
     buyToken: "Купить токен",
     comingSoon: "Скоро",
     staking: "Стейкинг",
-    swap: "Обмен"
+    swap: "Обмен",
+    tradingViewNotAvailable: "График временно недоступен.",
+    unknownError: "Неизвестная ошибка",
   }
 };
 
