@@ -156,10 +156,10 @@ const Index = () => {
                 <button
                   onClick={handleWalletDisconnect}
                   className="flex items-center gap-2 px-3 py-2 bg-red-600/20 hover:bg-red-600/30 border border-red-500/30 rounded-lg text-red-400 hover:text-red-300 transition-colors"
-                  title="Отключить кошелек"
+                  title={t('disconnect')}
                 >
                   <LogOut className="w-4 h-4" />
-                  <span className="text-sm">Отключить</span>
+                  <span className="text-sm">{t('disconnect')}</span>
                 </button>
               </div>
               

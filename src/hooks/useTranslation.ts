@@ -13,7 +13,16 @@ const translations: Translations = {
     welcome: "Welcome!",
     connectWallet: "Connect wallet to get started",
     connectedWallet: "Connected Wallet:",
+    disconnect: "Disconnect",
     worldIdVerified: "World ID Verified (2x rewards)",
+    
+    // World Chain Integration
+    worldChainIntegration: "World Chain Integration",
+    worldChainDescription: "Connect to World Chain with World ID verification for maximum rewards",
+    worldIdActive: "World ID verification active - get 2x rewards!",
+    verifyWithWorldId: "Verify with World ID",
+    connectWorldChainWallet: "Connect World Chain Wallet",
+    connectingToWorldChain: "Connecting to World Chain...",
     
     // Daily Reward
     dailyReward: "Daily NFT Reward",

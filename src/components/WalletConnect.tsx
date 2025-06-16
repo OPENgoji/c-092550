@@ -3,12 +3,14 @@ import { useState, useEffect } from 'react';
 import { Wallet, Globe } from 'lucide-react';
 import WorldIDVerification from './WorldIDVerification';
 import { WorldIDVerificationResult, WorldIDUser } from '@/types/worldid';
+import { useTranslation } from '@/hooks/useTranslation';
 
 interface WalletConnectProps {
   onConnect: (address: string, worldIdUser?: WorldIDUser) => void;
 }
 
 const WalletConnect = ({ onConnect }: WalletConnectProps) => {
+  const { t } = useTranslation();
   const [isConnecting, setIsConnecting] = useState(false);
   const [isWorldIdVerified, setIsWorldIdVerified] = useState(false);
   const [worldIdData, setWorldIdData] = useState<WorldIDVerificationResult | null>(null);
@@ -90,10 +92,10 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
       <div className="text-center mb-4">
         <div className="flex items-center justify-center gap-2 mb-2">
           <Globe className="w-6 h-6 text-blue-500" />
-          <h3 className="text-lg font-semibold text-yellow-400">World Chain Integration</h3>
+          <h3 className="text-lg font-semibold text-yellow-400">{t('worldChainIntegration')}</h3>
         </div>
         <p className="text-sm text-muted-foreground">
-          Подключение к World Chain с верификацией World ID для максимальных наград
+          {t('worldChainDescription')}
         </p>
       </div>
 
@@ -111,17 +113,17 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
         {isConnecting ? (
           <>
             <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-black"></div>
-            Connecting to World Chain...
+            {t('connectingToWorldChain')}
           </>
         ) : (
-          'Connect World Chain Wallet'
+          t('connectWorldChainWallet')
         )}
       </button>
 
       {isWorldIdVerified && (
         <div className="text-center text-sm text-green-400 flex items-center justify-center gap-2">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-          World ID верификация активна - получайте 2x награды!
+          {t('worldIdActive')}
         </div>
       )}
     </div>
