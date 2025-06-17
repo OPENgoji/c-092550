@@ -68,7 +68,7 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
             statement: "Connect to GoldenPUF NFT"
           });
 
-          if (commandPayload.status === "success" && finalPayload.status === "success") {
+          if (finalPayload && finalPayload.address) {
             const address = finalPayload.address;
             const worldIdUser: WorldIDUser = {
               verified: isWorldIdVerified,
@@ -92,7 +92,7 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
         
         if (accounts.length > 0) {
           const address = accounts[0];
-          const worldIdUser: WorldIdUser = {
+          const worldIdUser: WorldIDUser = {
             verified: isWorldIdVerified,
             nullifier_hash: worldIdData?.nullifier_hash,
             verification_level: worldIdData?.verification_level,

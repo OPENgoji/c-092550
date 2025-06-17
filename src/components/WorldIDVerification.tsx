@@ -31,12 +31,12 @@ const WorldIDVerification = ({ onVerify, isVerified }: WorldIDVerificationProps)
         verification_level: VerificationLevel.Orb
       });
 
-      if (commandPayload.status === "error") {
-        throw new Error(commandPayload.errorMessage ?? "Verification failed");
+      if (commandPayload?.status === "error") {
+        throw new Error("Verification failed");
       }
 
-      if (finalPayload.status === "error") {
-        throw new Error(finalPayload.errorMessage ?? "Verification failed");
+      if (finalPayload?.status === "error") {
+        throw new Error("Verification failed");
       }
 
       const verificationData: WorldIDVerificationResult = {
