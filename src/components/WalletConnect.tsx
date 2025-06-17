@@ -60,7 +60,7 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
       // Use MiniKit for wallet connection if available
       if (MiniKit.isInstalled()) {
         try {
-          const { commandPayload, finalPayload } = await MiniKit.commandsAsync.walletAuth({
+          const result = await MiniKit.commandsAsync.walletAuth({
             nonce: Math.random().toString(36).substring(7),
             requestId: Math.random().toString(36).substring(7),
             expirationTime: new Date(Date.now() + 60000),
@@ -68,8 +68,8 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
             statement: "Connect to GoldenPUF NFT"
           });
 
-          if (finalPayload && finalPayload.address) {
-            const address = finalPayload.address;
+          if (result.finalPayload && 'address' in result.finalPayload) {
+            const address = result.finalPayload.address;
             const worldIdUser: WorldIDUser = {
               verified: isWorldIdVerified,
               nullifier_hash: worldIdData?.nullifier_hash,

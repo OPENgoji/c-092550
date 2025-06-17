@@ -26,24 +26,27 @@ const WorldIDVerification = ({ onVerify, isVerified }: WorldIDVerificationProps)
     setVerificationError('');
 
     try {
-      const { commandPayload, finalPayload } = await MiniKit.commandsAsync.verify({
+      const result = await MiniKit.commandsAsync.verify({
         action: ACTION,
         verification_level: VerificationLevel.Orb
       });
 
-      if (commandPayload?.status === "error") {
-        throw new Error("Verification failed");
+      if (!result.finalPayload) {
+        throw new Error("Verification failed - no response");
       }
 
-      if (finalPayload?.status === "error") {
-        throw new Error("Verification failed");
+      const { finalPayload } = result;
+      
+      // Check if verification was successful
+      if (!finalPayload.merkle_root || !finalPayload.nullifier_hash || !finalPayload.proof) {
+        throw new Error("Verification failed - incomplete data");
       }
 
       const verificationData: WorldIDVerificationResult = {
         merkle_root: finalPayload.merkle_root,
         nullifier_hash: finalPayload.nullifier_hash,
         proof: finalPayload.proof,
-        verification_level: finalPayload.verification_level
+        verification_level: finalPayload.verification_level || 'orb'
       };
 
       // Save verification with backup
