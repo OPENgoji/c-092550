@@ -4,6 +4,7 @@ import { Wallet, Globe } from 'lucide-react';
 import WorldIDVerification from './WorldIDVerification';
 import { WorldIDVerificationResult, WorldIDUser } from '@/types/worldid';
 import { useTranslation } from '@/hooks/useTranslation';
+import { MiniKit } from '@worldcoin/minikit-js';
 
 interface WalletConnectProps {
   onConnect: (address: string, worldIdUser?: WorldIDUser) => void;
@@ -15,6 +16,13 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
   const [isWorldIdVerified, setIsWorldIdVerified] = useState(false);
   const [worldIdData, setWorldIdData] = useState<WorldIDVerificationResult | null>(null);
 
+  // Инициализируем MiniKit
+  useEffect(() => {
+    if (!MiniKit.isInstalled()) {
+      console.log("MiniKit is not installed. Please open in World App.");
+    }
+  }, []);
+
   // Проверяем сохраненную верификацию при загрузке
   useEffect(() => {
     const savedVerification = localStorage.getItem('worldid_verification');
@@ -25,7 +33,6 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
         setIsWorldIdVerified(true);
       } catch (error) {
         console.error('Error parsing saved World ID verification:', error);
-        // Пытаемся восстановить из backup
         const backupVerification = localStorage.getItem('worldid_verification_backup');
         if (backupVerification) {
           try {
@@ -50,9 +57,35 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
     setIsConnecting(true);
     
     try {
-      // Проверяем поддержку Web3
+      // Используем MiniKit для подключения кошелька если доступен
+      if (MiniKit.isInstalled()) {
+        try {
+          const walletResponse = await MiniKit.commandsAsync.walletAuth({
+            nonce: Math.random().toString(36).substring(7),
+            requestId: Math.random().toString(36).substring(7),
+            expirationTime: new Date(Date.now() + 60000).toISOString(),
+            notBefore: new Date().toISOString(),
+            statement: "Connect to GoldenPUF NFT"
+          });
+
+          if (walletResponse.commandPayload.status === "success") {
+            const address = walletResponse.finalPayload;
+            const worldIdUser: WorldIDUser = {
+              verified: isWorldIdVerified,
+              nullifier_hash: worldIdData?.nullifier_hash,
+              verification_level: worldIdData?.verification_level,
+              created_at: new Date().toISOString()
+            };
+            onConnect(address, worldIdUser);
+            return;
+          }
+        } catch (error) {
+          console.error('MiniKit wallet connection failed:', error);
+        }
+      }
+
+      // Fallback для Web3
       if (typeof window.ethereum !== 'undefined') {
-        // Запрашиваем подключение к кошельку
         const accounts = await window.ethereum.request({ 
           method: 'eth_requestAccounts' 
         });
@@ -68,7 +101,7 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
           onConnect(address, worldIdUser);
         }
       } else {
-        // Fallback для демонстрации
+        // Demo fallback
         setTimeout(() => {
           const mockAddress = "0x" + Math.random().toString(16).substr(2, 40);
           const worldIdUser: WorldIDUser = {

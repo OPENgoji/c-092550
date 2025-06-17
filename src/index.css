@@ -70,13 +70,41 @@
   }
 }
 
+/* Скрываем Lovable badge */
+[data-lovable-badge] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.lovable-badge {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Улучшенный glass card эффект */
 .glass-card {
-  @apply backdrop-blur-lg shadow-lg;
-  background: rgba(20, 20, 20, 0.6) !important;
-  border: 1px solid rgba(255, 215, 0, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  @apply backdrop-blur-xl shadow-2xl;
+  background: rgba(15, 15, 15, 0.8) !important;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 215, 0, 0.1);
   position: relative;
   z-index: 2;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), transparent, rgba(255, 215, 0, 0.1));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
 }
 
 .crypto-chart {
@@ -89,6 +117,7 @@
   mix-blend-mode: normal;
   position: relative;
   z-index: 3;
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
 }
 
 @keyframes pulse-subtle {
@@ -136,25 +165,75 @@
   animation: token-fall-slow 20s linear infinite;
 }
 
-/* Дополнительное золотое свечение для активных элементов */
+/* Улучшенное золотое свечение */
 .golden-glow {
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), 0 0 40px rgba(255, 215, 0, 0.1);
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.4), 
+    0 0 40px rgba(255, 215, 0, 0.2),
+    inset 0 1px 0 rgba(255, 215, 0, 0.2);
 }
 
 .golden-glow:hover {
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5), 0 0 60px rgba(255, 215, 0, 0.2);
+  box-shadow: 
+    0 0 30px rgba(255, 215, 0, 0.6), 
+    0 0 60px rgba(255, 215, 0, 0.3),
+    inset 0 1px 0 rgba(255, 215, 0, 0.3);
 }
 
-/* Стили для кнопок с золотым свечением */
+/* Современные стили для кнопок */
 .golden-button {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.1));
-  border: 1px solid rgba(255, 215, 0, 0.4);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 215, 0, 0.15));
+  border: 1px solid rgba(255, 215, 0, 0.5);
   color: #ffd700;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.golden-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.golden-button:hover::before {
+  transform: translateX(100%);
 }
 
 .golden-button:hover {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 215, 0, 0.2));
-  border: 1px solid rgba(255, 215, 0, 0.6);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.35), rgba(255, 215, 0, 0.25));
+  border: 1px solid rgba(255, 215, 0, 0.7);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Улучшенная анимация появления */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+/* Скрытие всех возможных вариантов Lovable badge */
+div[class*="lovable"],
+div[id*="lovable"],
+a[href*="lovable.dev"],
+[data-testid*="lovable"],
+.powered-by-lovable,
+.edit-in-lovable {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
