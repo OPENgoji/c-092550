@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Shield, CheckCircle, AlertCircle } from 'lucide-react';
 import { WorldIDVerificationResult } from '@/types/worldid';
-import { MiniKit, VerificationLevel, ResponseEvent, MiniAppVerifyActionPayload, ISuccessResult } from '@worldcoin/minikit-js';
+import { MiniKit, VerificationLevel } from '@worldcoin/minikit-js';
 
 interface WorldIDVerificationProps {
   onVerify: (result: WorldIDVerificationResult) => void;
@@ -28,12 +28,15 @@ const WorldIDVerification = ({ onVerify, isVerified }: WorldIDVerificationProps)
     try {
       const { commandPayload, finalPayload } = await MiniKit.commandsAsync.verify({
         action: ACTION,
-        app_id: APP_ID,
         verification_level: VerificationLevel.Orb
       });
 
       if (commandPayload.status === "error") {
         throw new Error(commandPayload.errorMessage ?? "Verification failed");
+      }
+
+      if (finalPayload.status === "error") {
+        throw new Error(finalPayload.errorMessage ?? "Verification failed");
       }
 
       const verificationData: WorldIDVerificationResult = {
@@ -43,7 +46,7 @@ const WorldIDVerification = ({ onVerify, isVerified }: WorldIDVerificationProps)
         verification_level: finalPayload.verification_level
       };
 
-      // Сохраняем верификацию
+      // Save verification with backup
       try {
         localStorage.setItem('worldid_verification', JSON.stringify(verificationData));
         localStorage.setItem(`worldid_backup_${Date.now()}`, JSON.stringify(verificationData));

@@ -16,14 +16,14 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
   const [isWorldIdVerified, setIsWorldIdVerified] = useState(false);
   const [worldIdData, setWorldIdData] = useState<WorldIDVerificationResult | null>(null);
 
-  // Инициализируем MiniKit
+  // Initialize MiniKit
   useEffect(() => {
     if (!MiniKit.isInstalled()) {
       console.log("MiniKit is not installed. Please open in World App.");
     }
   }, []);
 
-  // Проверяем сохраненную верификацию при загрузке
+  // Check saved verification on load
   useEffect(() => {
     const savedVerification = localStorage.getItem('worldid_verification');
     if (savedVerification) {
@@ -57,19 +57,19 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
     setIsConnecting(true);
     
     try {
-      // Используем MiniKit для подключения кошелька если доступен
+      // Use MiniKit for wallet connection if available
       if (MiniKit.isInstalled()) {
         try {
-          const walletResponse = await MiniKit.commandsAsync.walletAuth({
+          const { commandPayload, finalPayload } = await MiniKit.commandsAsync.walletAuth({
             nonce: Math.random().toString(36).substring(7),
             requestId: Math.random().toString(36).substring(7),
-            expirationTime: new Date(Date.now() + 60000).toISOString(),
-            notBefore: new Date().toISOString(),
+            expirationTime: new Date(Date.now() + 60000),
+            notBefore: new Date(),
             statement: "Connect to GoldenPUF NFT"
           });
 
-          if (walletResponse.commandPayload.status === "success") {
-            const address = walletResponse.finalPayload;
+          if (commandPayload.status === "success" && finalPayload.status === "success") {
+            const address = finalPayload.address;
             const worldIdUser: WorldIDUser = {
               verified: isWorldIdVerified,
               nullifier_hash: worldIdData?.nullifier_hash,
@@ -84,7 +84,7 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
         }
       }
 
-      // Fallback для Web3
+      // Fallback for Web3
       if (typeof window.ethereum !== 'undefined') {
         const accounts = await window.ethereum.request({ 
           method: 'eth_requestAccounts' 
@@ -92,7 +92,7 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
         
         if (accounts.length > 0) {
           const address = accounts[0];
-          const worldIdUser: WorldIDUser = {
+          const worldIdUser: WorldIdUser = {
             verified: isWorldIdVerified,
             nullifier_hash: worldIdData?.nullifier_hash,
             verification_level: worldIdData?.verification_level,
