@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from 'react';
-import { Gift, Clock } from 'lucide-react';
+import { Gift, Clock, CheckCircle } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
+import { useToast } from '@/hooks/use-toast';
 
 const DailyReward = ({ 
   walletAddress, 
@@ -13,8 +14,10 @@ const DailyReward = ({
   userPoints: number;
 }) => {
   const { t } = useTranslation();
+  const { toast } = useToast();
   const [timeLeft, setTimeLeft] = useState<string>('');
   const [canClaim, setCanClaim] = useState(false);
+  const [isClicking, setIsClicking] = useState(false);
 
   useEffect(() => {
     const lastClaim = localStorage.getItem(`lastClaim_${walletAddress}`);
@@ -43,10 +46,47 @@ const DailyReward = ({
     }
   }, [walletAddress]);
 
-  const handleClaim = () => {
-    localStorage.setItem(`lastClaim_${walletAddress}`, Date.now().toString());
-    setCanClaim(false);
-    onClaim();
+  const handleClaim = async () => {
+    if (!canClaim || isClicking) return;
+    
+    setIsClicking(true);
+    
+    try {
+      // Показываем тост о начале получения награды
+      toast({
+        title: "🎁 Получение награды...",
+        description: "Обработка вашей ежедневной награды",
+      });
+
+      // Сохраняем время последнего получения награды
+      localStorage.setItem(`lastClaim_${walletAddress}`, Date.now().toString());
+      setCanClaim(false);
+      
+      // Вызываем callback для обновления поинтов
+      onClaim();
+      
+      // Показываем успешное уведомление
+      setTimeout(() => {
+        toast({
+          title: "✅ Награда получена!",
+          description: "Ваши поинты успешно добавлены",
+        });
+      }, 500);
+      
+    } catch (error) {
+      console.error('Error claiming reward:', error);
+      toast({
+        title: "❌ Ошибка",
+        description: "Не удалось получить награду. Попробуйте снова.",
+        variant: "destructive"
+      });
+      // Восстанавливаем возможность получить награду при ошибке
+      setCanClaim(true);
+    } finally {
+      setTimeout(() => {
+        setIsClicking(false);
+      }, 1000);
+    }
   };
 
   return (
@@ -59,9 +99,22 @@ const DailyReward = ({
       {canClaim ? (
         <button
           onClick={handleClaim}
-          className="px-8 py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-semibold rounded-lg hover:from-yellow-400 hover:to-yellow-500 transition-all duration-200 shadow-lg hover:shadow-xl text-lg"
+          disabled={isClicking}
+          className={`px-8 py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-semibold rounded-lg hover:from-yellow-400 hover:to-yellow-500 transition-all duration-200 shadow-lg hover:shadow-xl text-lg relative ${
+            isClicking ? 'opacity-70 cursor-not-allowed transform scale-95' : 'hover:transform hover:scale-105'
+          }`}
         >
-          {t('claimNow')}
+          {isClicking ? (
+            <div className="flex items-center justify-center gap-2">
+              <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+              Получение...
+            </div>
+          ) : (
+            <div className="flex items-center justify-center gap-2">
+              <Gift className="w-5 h-5" />
+              {t('claimNow')}
+            </div>
+          )}
         </button>
       ) : (
         <div className="flex flex-col items-center gap-3">

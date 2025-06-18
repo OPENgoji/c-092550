@@ -7,6 +7,7 @@ import TokenButtons from "@/components/TokenButtons";
 import DailyReward from "@/components/DailyReward";
 import TelegramInfo from "@/components/TelegramInfo";
 import TokenRain from "@/components/TokenRain";
+import PointsCounter from "@/components/PointsCounter";
 import { WorldIDUser } from "@/types/worldid";
 import { PointsStorage } from "@/utils/pointsStorage";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -115,6 +116,9 @@ const Index = () => {
       position: 'relative'
     }}>
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
+      
+      {/* Показываем счетчик поинтов только когда кошелек подключен */}
+      {walletAddress && <PointsCounter points={userPoints} />}
       
       <div className="w-full flex flex-col items-center justify-center relative z-10">
         <header className="text-center">
