@@ -5,6 +5,11 @@ import { useTranslation } from '@/hooks/useTranslation';
 const TelegramInfo = () => {
   const { t } = useTranslation();
 
+  const handleTelegramClick = () => {
+    const url = "https://t.me/GoldenPUFswap";
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div className="glass-card p-6 rounded-lg">
       <div className="flex items-center gap-4 mb-6">
@@ -17,11 +22,9 @@ const TelegramInfo = () => {
         </div>
       </div>
       
-      <a
-        href="https://t.me/GoldenPUFswap"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block p-4 bg-gradient-to-r from-blue-600/20 to-blue-500/20 rounded-xl hover:from-blue-600/30 hover:to-blue-500/30 transition-all duration-300 border-2 border-blue-500/30 hover:border-blue-400/50 shadow-lg hover:shadow-blue-500/20"
+      <button
+        onClick={handleTelegramClick}
+        className="block w-full p-4 bg-gradient-to-r from-blue-600/20 to-blue-500/20 rounded-xl hover:from-blue-600/30 hover:to-blue-500/30 transition-all duration-300 border-2 border-blue-500/30 hover:border-blue-400/50 shadow-lg hover:shadow-blue-500/20"
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -39,7 +42,7 @@ const TelegramInfo = () => {
           </div>
           <ExternalLink className="w-5 h-5 text-blue-400" />
         </div>
-      </a>
+      </button>
       
       <div className="mt-4 text-center">
         <p className="text-xs text-muted-foreground">

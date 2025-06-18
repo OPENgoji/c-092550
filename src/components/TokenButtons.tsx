@@ -18,6 +18,16 @@ const TokenButtons = () => {
     }
   };
 
+  const handleBuyToken = () => {
+    const url = "https://worldcoin.org/mini-app?app_id=app_15daccf5b7d4ec9b7dbba044a8fdeab5&path=app/token/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd";
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleDexScreener = () => {
+    const url = "https://dexscreener.com/worldchain/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd";
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div className="glass-card p-6 rounded-lg mb-8">
       <div className="mb-6">
@@ -37,30 +47,26 @@ const TokenButtons = () => {
             <span className="font-mono text-xs text-yellow-400 break-all">
               {contractAddress}
             </span>
-            <a
-              href="https://dexscreener.com/worldchain/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={handleDexScreener}
               className="text-yellow-500 hover:text-yellow-400 flex items-center gap-1"
               title={t('openDexScreener')}
             >
               <ExternalLink className="w-3 h-3" />
               <span className="text-xs">DEX Screener</span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
       
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="https://worldcoin.org/mini-app?app_id=app_15daccf5b7d4ec9b7dbba044a8fdeab5&path=app/token/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={handleBuyToken}
           className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg text-lg font-medium transition-colors justify-center"
         >
           <ShoppingCart className="w-5 h-5" />
           {t('buyToken')}
-        </a>
+        </button>
         <button
           className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-lg font-medium transition-colors cursor-not-allowed opacity-75 justify-center"
           disabled

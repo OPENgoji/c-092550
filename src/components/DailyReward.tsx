@@ -52,35 +52,35 @@ const DailyReward = ({
     setIsClicking(true);
     
     try {
-      // Показываем тост о начале получения награды
+      // Show processing toast in English
       toast({
-        title: "🎁 Получение награды...",
-        description: "Обработка вашей ежедневной награды",
+        title: "🎁 Claiming reward...",
+        description: "Processing your daily reward",
       });
 
-      // Сохраняем время последнего получения награды
+      // Save last claim time
       localStorage.setItem(`lastClaim_${walletAddress}`, Date.now().toString());
       setCanClaim(false);
       
-      // Вызываем callback для обновления поинтов
+      // Call callback to update points
       onClaim();
       
-      // Показываем успешное уведомление
+      // Show success notification
       setTimeout(() => {
         toast({
-          title: "✅ Награда получена!",
-          description: "Ваши поинты успешно добавлены",
+          title: "✅ Reward claimed!",
+          description: "Your points have been successfully added",
         });
       }, 500);
       
     } catch (error) {
       console.error('Error claiming reward:', error);
       toast({
-        title: "❌ Ошибка",
-        description: "Не удалось получить награду. Попробуйте снова.",
+        title: "❌ Error",
+        description: "Failed to claim reward. Please try again.",
         variant: "destructive"
       });
-      // Восстанавливаем возможность получить награду при ошибке
+      // Restore claim ability on error
       setCanClaim(true);
     } finally {
       setTimeout(() => {
@@ -107,7 +107,7 @@ const DailyReward = ({
           {isClicking ? (
             <div className="flex items-center justify-center gap-2">
               <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
-              Получение...
+              Claiming...
             </div>
           ) : (
             <div className="flex items-center justify-center gap-2">
