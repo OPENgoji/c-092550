@@ -9,6 +9,14 @@ interface WorldIDVerificationProps {
   isVerified: boolean;
 }
 
+// Define the expected payload structure
+interface WorldIDPayload {
+  merkle_root: string;
+  nullifier_hash: string;
+  proof: string;
+  verification_level: string;
+}
+
 const WorldIDVerification = ({ onVerify, isVerified }: WorldIDVerificationProps) => {
   const [isVerifying, setIsVerifying] = useState(false);
   const [verificationError, setVerificationError] = useState<string>('');
@@ -31,11 +39,14 @@ const WorldIDVerification = ({ onVerify, isVerified }: WorldIDVerificationProps)
         verification_level: VerificationLevel.Orb
       });
 
+      console.log("MiniKit verify result:", result);
+
       if (!result.finalPayload) {
         throw new Error("Verification failed - no response");
       }
 
-      const { finalPayload } = result;
+      // Type cast the payload to our expected structure
+      const finalPayload = result.finalPayload as WorldIDPayload;
       
       // Check if verification was successful
       if (!finalPayload.merkle_root || !finalPayload.nullifier_hash || !finalPayload.proof) {

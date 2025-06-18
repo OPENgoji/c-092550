@@ -10,6 +10,11 @@ interface WalletConnectProps {
   onConnect: (address: string, worldIdUser?: WorldIDUser) => void;
 }
 
+// Define the expected wallet auth payload structure
+interface WalletAuthPayload {
+  address: string;
+}
+
 const WalletConnect = ({ onConnect }: WalletConnectProps) => {
   const { t } = useTranslation();
   const [isConnecting, setIsConnecting] = useState(false);
@@ -68,16 +73,22 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
             statement: "Connect to GoldenPUF NFT"
           });
 
-          if (result.finalPayload && 'address' in result.finalPayload) {
-            const address = result.finalPayload.address;
-            const worldIdUser: WorldIDUser = {
-              verified: isWorldIdVerified,
-              nullifier_hash: worldIdData?.nullifier_hash,
-              verification_level: worldIdData?.verification_level,
-              created_at: new Date().toISOString()
-            };
-            onConnect(address, worldIdUser);
-            return;
+          console.log("MiniKit wallet auth result:", result);
+
+          if (result.finalPayload) {
+            // Type cast the payload to our expected structure
+            const payload = result.finalPayload as WalletAuthPayload;
+            if (payload.address) {
+              const address = payload.address;
+              const worldIdUser: WorldIDUser = {
+                verified: isWorldIdVerified,
+                nullifier_hash: worldIdData?.nullifier_hash,
+                verification_level: worldIdData?.verification_level,
+                created_at: new Date().toISOString()
+              };
+              onConnect(address, worldIdUser);
+              return;
+            }
           }
         } catch (error) {
           console.error('MiniKit wallet connection failed:', error);
