@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
-import TokenInfo from "@/components/TokenInfo";
 import TokenButtons from "@/components/TokenButtons";
 import DailyReward from "@/components/DailyReward";
 import TelegramInfo from "@/components/TelegramInfo";
@@ -174,7 +173,6 @@ const Index = () => {
             </div>
 
             <div className="w-full max-w-7xl px-4">
-              <TokenInfo />
               <TokenButtons />
               
               <div className="mt-8 flex justify-center">

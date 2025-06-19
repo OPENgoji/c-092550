@@ -52,24 +52,20 @@ const DailyReward = ({
     setIsClicking(true);
     
     try {
-      // Show processing toast in English
       toast({
         title: "🎁 Claiming reward...",
         description: "Processing your daily reward",
       });
 
-      // Save last claim time
       localStorage.setItem(`lastClaim_${walletAddress}`, Date.now().toString());
       setCanClaim(false);
       
-      // Call callback to update points
       onClaim();
       
-      // Show success notification
       setTimeout(() => {
         toast({
           title: "✅ Reward claimed!",
-          description: "Your points have been successfully added",
+          description: "Your tokens have been successfully added",
         });
       }, 500);
       
@@ -80,7 +76,6 @@ const DailyReward = ({
         description: "Failed to claim reward. Please try again.",
         variant: "destructive"
       });
-      // Restore claim ability on error
       setCanClaim(true);
     } finally {
       setTimeout(() => {
@@ -93,7 +88,7 @@ const DailyReward = ({
     <div className="glass-card p-6 rounded-lg text-center">
       <h3 className="text-lg font-semibold mb-4 flex items-center justify-center gap-2">
         <Gift className="w-5 h-5 text-yellow-500" />
-        {t('dailyReward')}
+        Daily special points
       </h3>
       
       {canClaim ? (
@@ -119,12 +114,12 @@ const DailyReward = ({
       ) : (
         <div className="flex flex-col items-center gap-3">
           <Clock className="w-4 h-4 text-yellow-500" />
-          <p className="text-xs text-muted-foreground">{t('nextReward')}</p>
+          <p className="text-xs text-muted-foreground">Next special points in:</p>
           <p className="text-sm font-mono text-yellow-500">{timeLeft}</p>
           
           <div className="mt-2 p-2 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 border border-yellow-500/30 rounded-lg">
             <div className="text-center">
-              <p className="text-xs text-muted-foreground">{t('myPoints')}</p>
+              <p className="text-xs text-muted-foreground">My special tokens</p>
               <p className="text-sm font-bold text-yellow-500">{userPoints.toLocaleString()}</p>
             </div>
           </div>
