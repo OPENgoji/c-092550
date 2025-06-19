@@ -2,7 +2,7 @@
 import { Star } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 
-const PointsCounter = ({ points }: { points: number }) => {
+const TokenCounter = ({ tokens }: { tokens: number }) => {
   const { t } = useTranslation();
   
   return (
@@ -10,12 +10,12 @@ const PointsCounter = ({ points }: { points: number }) => {
       <div className="flex items-center gap-2">
         <Star className="w-5 h-5 text-yellow-500" />
         <div className="text-center">
-          <p className="text-xs text-muted-foreground">{t('myPoints')}</p>
-          <p className="text-lg font-bold text-yellow-500">{points.toLocaleString()}</p>
+          <p className="text-xs text-muted-foreground">{t('myTokens')}</p>
+          <p className="text-lg font-bold text-yellow-500">{tokens.toLocaleString()}</p>
         </div>
       </div>
     </div>
   );
 };
 
-export default PointsCounter;
+export default TokenCounter;

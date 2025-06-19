@@ -7,7 +7,13 @@ const TelegramInfo = () => {
 
   const handleTelegramClick = () => {
     const url = "https://t.me/GoldenPUFswap";
-    window.open(url, '_blank', 'noopener,noreferrer');
+    try {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    } catch (error) {
+      console.error('Failed to open Telegram link:', error);
+      // Fallback: try to redirect in the same window
+      window.location.href = url;
+    }
   };
 
   return (
@@ -24,15 +30,15 @@ const TelegramInfo = () => {
       
       <button
         onClick={handleTelegramClick}
-        className="block w-full p-4 bg-gradient-to-r from-blue-600/20 to-blue-500/20 rounded-xl hover:from-blue-600/30 hover:to-blue-500/30 transition-all duration-300 border-2 border-blue-500/30 hover:border-blue-400/50 shadow-lg hover:shadow-blue-500/20"
+        className="block w-full p-4 bg-gradient-to-r from-blue-600/20 to-blue-500/20 rounded-xl hover:from-blue-600/30 hover:to-blue-500/30 transition-all duration-300 border-2 border-blue-500/30 hover:border-blue-400/50 shadow-lg hover:shadow-blue-500/20 cursor-pointer"
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
-              <MessageCircle className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center">
+              <span className="text-white font-bold text-sm">SWAP</span>
             </div>
             <div>
-              <p className="font-semibold text-blue-300 text-lg">{t('goldenPufSwap')}</p>
+              <p className="font-semibold text-blue-300 text-lg">GoldenPUF SWAP</p>
               <div className="flex items-center gap-2 mt-1">
                 <Users className="w-4 h-4 text-blue-400" />
                 <p className="text-sm text-blue-400">@GoldenPUFswap</p>

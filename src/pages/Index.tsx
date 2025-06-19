@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenInfo from "@/components/TokenInfo";
@@ -5,7 +6,7 @@ import TokenButtons from "@/components/TokenButtons";
 import DailyReward from "@/components/DailyReward";
 import TelegramInfo from "@/components/TelegramInfo";
 import TokenRain from "@/components/TokenRain";
-import PointsCounter from "@/components/PointsCounter";
+import TokenCounter from "@/components/TokenCounter";
 import { WorldIDUser } from "@/types/worldid";
 import { PointsStorage } from "@/utils/pointsStorage";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -18,14 +19,14 @@ const Index = () => {
   const [walletAddress, setWalletAddress] = useState<string>('');
   const [worldIdUser, setWorldIdUser] = useState<WorldIDUser | null>(null);
   const [showTokenRain, setShowTokenRain] = useState(false);
-  const [userPoints, setUserPoints] = useState<number>(0);
+  const [userTokens, setUserTokens] = useState<number>(0);
 
   const handleWalletConnect = (address: string, worldId?: WorldIDUser) => {
     setWalletAddress(address);
     setWorldIdUser(worldId || null);
     
     const userData = PointsStorage.getUserPointsData(address);
-    setUserPoints(userData?.points || 0);
+    setUserTokens(userData?.points || 0);
     
     if (worldId) {
       try {
@@ -40,7 +41,7 @@ const Index = () => {
   const handleWalletDisconnect = () => {
     setWalletAddress('');
     setWorldIdUser(null);
-    setUserPoints(0);
+    setUserTokens(0);
     setShowTokenRain(false);
     
     localStorage.removeItem('lastConnectedWallet');
@@ -60,11 +61,11 @@ const Index = () => {
     
     const rewardMultiplier = worldIdUser?.verified ? 2 : 1;
     const rewardAmount = 1 * rewardMultiplier;
-    const newPoints = userPoints + rewardAmount;
+    const newTokens = userTokens + rewardAmount;
     
-    setUserPoints(newPoints);
+    setUserTokens(newTokens);
     
-    PointsStorage.saveUserPoints(walletAddress, newPoints, worldIdUser);
+    PointsStorage.saveUserPoints(walletAddress, newTokens, worldIdUser);
     
     window.dispatchEvent(new Event('storage'));
   };
@@ -79,7 +80,7 @@ const Index = () => {
     if (lastWallet) {
       setWalletAddress(lastWallet);
       const userData = PointsStorage.getUserPointsData(lastWallet);
-      setUserPoints(userData?.points || 0);
+      setUserTokens(userData?.points || 0);
       
       try {
         const worldIdData = localStorage.getItem(`worldid_${lastWallet}`);
@@ -105,7 +106,7 @@ const Index = () => {
     }}>
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
       
-      {walletAddress && <PointsCounter points={userPoints} />}
+      {walletAddress && <TokenCounter tokens={userTokens} />}
       
       <div className="w-full flex flex-col items-center justify-center relative z-10">
         <header className="text-center">
@@ -167,7 +168,7 @@ const Index = () => {
                 <DailyReward 
                   walletAddress={walletAddress} 
                   onClaim={handleRewardClaim}
-                  userPoints={userPoints}
+                  userPoints={userTokens}
                 />
               </div>
             </div>

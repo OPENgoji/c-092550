@@ -1,46 +1,46 @@
-# GoldenPUF NFT - World Chain Daily Rewards App
 
-![GoldenPUF NFT](./public/lovable-uploads/a8e8291a-531a-42d0-b99a-151de202bf83.png)
+# GoldenPUF Token - World Chain Daily Rewards App
+
+![GoldenPUF Token](./public/lovable-uploads/a8e8291a-531a-42d0-b99a-151de202bf83.png)
 
 ## 📱 World Chain Exclusive Application
 
-**GoldenPUF NFT** is an exclusive daily rewards application built specifically for the World Chain ecosystem. This application is designed to run exclusively within the World App platform and is **NOT** available on Android/iOS app stores or as a web application.
+**GoldenPUF Token** is an exclusive daily rewards application built specifically for the World Chain ecosystem. This application is designed to run exclusively within the World App platform and is **NOT** available on Android/iOS app stores or as a web application.
 
-### 🌟 What is GoldenPUF NFT?
+### 🌟 What is GoldenPUF Token?
 
-Earn daily points that will be converted into an exclusive NFT collection on World Chain. Connect your World Chain wallet and get daily rewards every 24 hours!
+Earn daily tokens that will be converted into real tokens on World Chain. Connect your World Chain wallet and get daily rewards every 24 hours!
 
-### 🔥 Tokenomics & Burning Mechanism
+### 🔥 Tokenomics & Token Information
 
-**A massive burn is planned from 100 million points:**
-- **86 million points (86%) will be burned** 🔥
-- **Only 14 million NFT points will remain** ✨
-
-These points may turn into tokens or NFT collection in the future! Only 14 million in the ecosystem - keep collecting and follow project updates.
+**Total Token Supply: 10 Million Tokens**
+- **Daily Rewards System** - Collect tokens every 24 hours
+- **World ID 2x Multiplier** - Verified users get double rewards
+- **Future Conversion** - Tokens will be converted to real tokens on World Chain
+- **Decentralized Exchange Listing** - Tokens will be listed on DEXs
 
 ## 🪙 GoldenPUF Token ($GPUF)
 
-**Contract Address:** `0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd`
+**World Chain Exclusive Token**
 
 **Available Features:**
-- ✅ **Buy Token** - Direct integration with World Chain
-- ⏳ **Staking** - Coming Soon
-- ⏳ **Swap** - Coming Soon
-
-[🔗 Buy GoldenPUF Token](https://worldcoin.org/mini-app?app_id=app_15daccf5b7d4ec9b7dbba044a8fdeab5&path=app/token/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd)
+- ✅ **Daily Token Collection** - Collect tokens every 24 hours
+- ✅ **World ID Integration** - 2x rewards for verified users
+- ⏳ **Token Conversion** - Coming Soon
+- ⏳ **DEX Listing** - Coming Soon
 
 ## 🚀 Features
 
 ### 🎯 Core Features
-- **Daily Rewards System** - Claim points every 24 hours
+- **Daily Rewards System** - Claim tokens every 24 hours
 - **World ID Integration** - Verified users get 2x rewards
-- **Point Tracking** - Secure blockchain-based point storage
-- **NFT Conversion** - Points will be converted to exclusive NFTs
+- **Token Tracking** - Secure blockchain-based token storage
+- **Token Conversion** - Tokens will be converted to real tokens
 - **World Chain Wallet Connection** - Seamless integration
 
 ### 🛡️ Security Features
 - World ID verification for enhanced rewards
-- Secure point storage with multiple backup systems
+- Secure token storage with multiple backup systems
 - Transparent reward distribution
 - Anti-fraud mechanisms
 
@@ -51,31 +51,29 @@ These points may turn into tokens or NFT collection in the future! Only 14 milli
 - **Build Tool:** Vite
 - **Blockchain:** World Chain (Chain ID: 480)
 - **Authentication:** World ID + World Chain Wallet
-- **Charts:** TradingView Widget for live price data
+- **Platform:** World App Mini-App
 
 ## 📋 World App Integration
 
 This application is built exclusively for the World App platform:
 
-- **App ID:** `app_15daccf5b7d4ec9b7dbba044a8fdeab5`
+- **App ID:** `app_de95af90f10c78687dd4d723124bdad0`
 - **Team ID:** `team_ad489f561da23f72d61b3ba9e0962cf0`
-- **Developer App:** `app_b924910c34c036984df5a50cd6f122e9`
 - **Platform:** World Chain Mainnet
 
 ### 🔗 Official Links
-- [Developer Portal](https://developer.worldcoin.org/teams/team_ad489f561da23f72d61b3ba9e0962cf0/apps/app_b924910c34c036984df5a50cd6f122e9)
-- [Token Purchase](https://worldcoin.org/mini-app?app_id=app_15daccf5b7d4ec9b7dbba044a8fdeab5&path=app/token/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd)
-- [DEX Screener](https://dexscreener.com/worldchain/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd)
+- [Developer Portal](https://developer.worldcoin.org/teams/team_ad489f561da23f72d61b3ba9e0962cf0/apps/app_de95af90f10c78687dd4d723124bdad0)
+- [Telegram Channel](https://t.me/GoldenPUFswap)
 
 ## 🎮 How to Use
 
 ### For Users:
 1. Open the World App
-2. Navigate to GoldenPUF NFT application
+2. Navigate to GoldenPUF Token application
 3. Connect your World Chain wallet
 4. (Optional) Verify with World ID for 2x rewards
 5. Claim daily rewards every 24 hours
-6. Track your points and prepare for NFT conversion
+6. Track your tokens and prepare for conversion
 
 ### For Developers:
 ```bash
@@ -97,7 +95,7 @@ npm run preview
 The application uses World ID for enhanced security and rewards:
 
 ```typescript
-const APP_ID = "app_staging_15daccf5b7d4ec9b7dbba044a8fdeab5";
+const APP_ID = "app_staging_de95af90f10c78687dd4d723124bdad0";
 const ACTION = "verify-golden-puf-user";
 ```
 
@@ -107,12 +105,12 @@ const ACTION = "verify-golden-puf-user";
 - Proof of unique human identity
 - Reduced fraud risk
 
-## 📊 Smart Contract / Token Information
+## 📊 Token Information
 
-**Token GoldenPUF ($GPUF)**
-- *The current mechanism is point accrual only. The final token name and smart contract address will be announced after the contract is created.*
-- **Decimals:** 18
-- **Smart Contract:** Will be published after smart contract creation
+**GoldenPUF Token**
+- **Total Supply:** 10 Million Tokens
+- **Daily Distribution:** Through user claims
+- **Conversion:** Will be converted to real tokens on World Chain
 - **Network:** World Chain Mainnet (Chain ID: 480)
 
 ## 🗺️ Roadmap
@@ -121,8 +119,7 @@ const ACTION = "verify-golden-puf-user";
 - [x] Daily rewards system
 - [x] World ID integration
 - [x] World Chain wallet connection
-- [x] Point tracking system
-- [x] Token contract deployment
+- [x] Token tracking system
 
 ### Phase 2: 🚧 In Progress
 - [ ] Enhanced UI/UX improvements
@@ -130,11 +127,10 @@ const ACTION = "verify-golden-puf-user";
 - [ ] Community features
 
 ### Phase 3: 🔮 Coming Soon
-- [ ] Staking mechanism
-- [ ] Token swap functionality
-- [ ] NFT collection launch
-- [ ] Points to NFT conversion
+- [ ] Token conversion mechanism
+- [ ] DEX listing
 - [ ] Advanced reward tiers
+- [ ] Staking functionality
 
 ### Phase 4: 🚀 Future Plans
 - [ ] Governance features
@@ -147,7 +143,7 @@ The application includes comprehensive analytics:
 - Daily active users tracking
 - Reward distribution monitoring
 - World ID verification rates
-- Point accumulation statistics
+- Token accumulation statistics
 
 ## 🛡️ Security
 
@@ -156,7 +152,7 @@ The application includes comprehensive analytics:
 - Secure localStorage with multiple backups
 - Anti-fraud mechanisms
 - Rate limiting for reward claims
-- Transparent point distribution
+- Transparent token distribution
 
 ### Reporting Security Issues
 Please report security vulnerabilities to: [ministotele@gmail.com]
@@ -175,7 +171,8 @@ This project is licensed under the MIT License - see [LICENSE](./LICENSE) file f
 
 - **Developer:** GoldenPUF Team
 - **Email:** ministotele@gmail.com
-- **World Chain Developer Portal:** [View Project](https://developer.worldcoin.org/teams/team_ad489f561da23f72d61b3ba9e0962cf0/apps/app_b924910c34c036984df5a50cd6f122e9)
+- **Telegram:** https://t.me/GoldenPUFswap
+- **World Chain Developer Portal:** [View Project](https://developer.worldcoin.org/teams/team_ad489f561da23f72d61b3ba9e0962cf0/apps/app_de95af90f10c78687dd4d723124bdad0)
 
 ## ⚠️ Important Notes
 
@@ -184,10 +181,10 @@ This project is licensed under the MIT License - see [LICENSE](./LICENSE) file f
 3. **No Web Version:** Not accessible via web browsers
 4. **World Chain Only:** Designed exclusively for World Chain ecosystem
 5. **Daily Claims:** Rewards are claimable every 24 hours
-6. **Limited Supply:** Only 14 million points will remain after the burn
+6. **Token Supply:** Limited to 10 million tokens total
 
 ---
 
 **Built with ❤️ for the World Chain community**
 
-*Stay tuned for updates and the upcoming NFT collection launch!* ✨
+*Stay tuned for updates and the upcoming token conversion!* ✨
