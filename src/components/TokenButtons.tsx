@@ -8,14 +8,14 @@ const TokenButtons = () => {
   return (
     <div className="glass-card p-6 rounded-lg mb-8">
       <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-3 text-yellow-500">{t('tokenTitle')}</h3>
+        <h3 className="text-lg font-semibold mb-3 text-yellow-500">GoldenPUF Token</h3>
         <div className="p-4 bg-secondary bg-opacity-30 rounded-lg">
           <div className="text-center">
             <p className="text-sm text-muted-foreground mb-2">
-              Total Points Available: 10 Million
+              Total Tokens Available: 10 Million
             </p>
             <p className="text-xs text-muted-foreground">
-              Points will be converted to real tokens on World Chain and listed on decentralized exchanges. Collect points now!
+              Tokens will be converted to real tokens on World Chain and listed on decentralized exchanges. Collect tokens now!
             </p>
           </div>
         </div>

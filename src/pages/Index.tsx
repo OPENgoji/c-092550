@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenButtons from "@/components/TokenButtons";
 import DailyReward from "@/components/DailyReward";
+import PremiumSubscription from "@/components/PremiumSubscription";
 import TelegramInfo from "@/components/TelegramInfo";
 import TokenRain from "@/components/TokenRain";
 import TokenCounter from "@/components/TokenCounter";
@@ -58,8 +59,10 @@ const Index = () => {
     console.log("Reward claim triggered, showing token rain");
     setShowTokenRain(true);
     
+    const hasPremium = localStorage.getItem(`premium_${walletAddress}`) === 'true';
     const rewardMultiplier = worldIdUser?.verified ? 2 : 1;
-    const rewardAmount = 1 * rewardMultiplier;
+    const baseReward = hasPremium ? 100 : 1;
+    const rewardAmount = baseReward * rewardMultiplier;
     const newTokens = userTokens + rewardAmount;
     
     setUserTokens(newTokens);
@@ -163,12 +166,15 @@ const Index = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8 w-full max-w-7xl px-4">
-              <div className="lg:col-span-3">
+              <div className="lg:col-span-2">
                 <DailyReward 
                   walletAddress={walletAddress} 
                   onClaim={handleRewardClaim}
-                  userPoints={userTokens}
+                  userTokens={userTokens}
                 />
+              </div>
+              <div>
+                <PremiumSubscription walletAddress={walletAddress} />
               </div>
             </div>
 

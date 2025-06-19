@@ -7,17 +7,21 @@ import { useToast } from '@/hooks/use-toast';
 const DailyReward = ({ 
   walletAddress, 
   onClaim, 
-  userPoints 
+  userTokens 
 }: { 
   walletAddress: string; 
   onClaim: () => void;
-  userPoints: number;
+  userTokens: number;
 }) => {
   const { t } = useTranslation();
   const { toast } = useToast();
   const [timeLeft, setTimeLeft] = useState<string>('');
   const [canClaim, setCanClaim] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
+
+  // Check if user has premium subscription
+  const hasPremium = localStorage.getItem(`premium_${walletAddress}`) === 'true';
+  const rewardAmount = hasPremium ? 100 : 1;
 
   useEffect(() => {
     const lastClaim = localStorage.getItem(`lastClaim_${walletAddress}`);
@@ -54,7 +58,7 @@ const DailyReward = ({
     try {
       toast({
         title: "🎁 Claiming reward...",
-        description: "Processing your daily reward",
+        description: `Processing your daily reward of ${rewardAmount} tokens`,
       });
 
       localStorage.setItem(`lastClaim_${walletAddress}`, Date.now().toString());
@@ -65,7 +69,7 @@ const DailyReward = ({
       setTimeout(() => {
         toast({
           title: "✅ Reward claimed!",
-          description: "Your tokens have been successfully added",
+          description: `${rewardAmount} tokens have been successfully added`,
         });
       }, 500);
       
@@ -91,6 +95,14 @@ const DailyReward = ({
         Daily special points
       </h3>
       
+      {hasPremium && (
+        <div className="mb-4 p-2 bg-gradient-to-r from-green-500/20 to-green-600/20 border border-green-500/30 rounded-lg">
+          <p className="text-sm text-green-400 font-semibold">
+            ⭐ Premium Active - Earning {rewardAmount} tokens daily!
+          </p>
+        </div>
+      )}
+      
       {canClaim ? (
         <button
           onClick={handleClaim}
@@ -107,20 +119,20 @@ const DailyReward = ({
           ) : (
             <div className="flex items-center justify-center gap-2">
               <Gift className="w-5 h-5" />
-              {t('claimNow')}
+              {t('claimNow')} ({rewardAmount} tokens)
             </div>
           )}
         </button>
       ) : (
         <div className="flex flex-col items-center gap-3">
           <Clock className="w-4 h-4 text-yellow-500" />
-          <p className="text-xs text-muted-foreground">Next special points in:</p>
+          <p className="text-xs text-muted-foreground">Next tokens in:</p>
           <p className="text-sm font-mono text-yellow-500">{timeLeft}</p>
           
           <div className="mt-2 p-2 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 border border-yellow-500/30 rounded-lg">
             <div className="text-center">
-              <p className="text-xs text-muted-foreground">My special tokens</p>
-              <p className="text-sm font-bold text-yellow-500">{userPoints.toLocaleString()}</p>
+              <p className="text-xs text-muted-foreground">My tokens</p>
+              <p className="text-sm font-bold text-yellow-500">{userTokens.toLocaleString()}</p>
             </div>
           </div>
         </div>
