@@ -1,5 +1,4 @@
 
-import { ExternalLink } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 
 const TokenInfo = () => {
@@ -8,8 +7,8 @@ const TokenInfo = () => {
   return (
     <div className="glass-card p-6 rounded-lg mb-8">
       <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold text-yellow-500 mb-2">GoldenPUF NFT</h2>
-        <p className="text-muted-foreground">World Chain NFT Collection Token</p>
+        <h2 className="text-2xl font-bold text-yellow-500 mb-2">GoldenPUF Token</h2>
+        <p className="text-muted-foreground">World Chain Token Collection</p>
       </div>
       
       <div className="p-3 bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/30 rounded-lg mb-4">
@@ -20,13 +19,16 @@ const TokenInfo = () => {
         </p>
         
         <div className="text-center mb-3">
-          <p className="text-sm text-muted-foreground">
-            {t('burnInfo')}
+          <p className="text-sm text-yellow-400 font-semibold">
+            Total Points Available: 10 Million
+          </p>
+          <p className="text-xs text-muted-foreground mt-2">
+            Points will be converted to real tokens on World Chain and listed on decentralized exchanges
           </p>
         </div>
         
         <p className="text-sm text-muted-foreground text-center">
-          {t('futureTokens')}
+          Collect points now - they will be valuable tokens in the future!
         </p>
       </div>
     </div>

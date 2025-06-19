@@ -1,8 +1,6 @@
-
 import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenInfo from "@/components/TokenInfo";
-import GoldenPUFChart from "@/components/GoldenPUFChart";
 import TokenButtons from "@/components/TokenButtons";
 import DailyReward from "@/components/DailyReward";
 import TelegramInfo from "@/components/TelegramInfo";
@@ -26,11 +24,9 @@ const Index = () => {
     setWalletAddress(address);
     setWorldIdUser(worldId || null);
     
-    // Используем улучшенную систему загрузки поинтов
     const userData = PointsStorage.getUserPointsData(address);
     setUserPoints(userData?.points || 0);
     
-    // Сохраняем данные World ID с backup
     if (worldId) {
       try {
         localStorage.setItem(`worldid_${address}`, JSON.stringify(worldId));
@@ -47,12 +43,10 @@ const Index = () => {
     setUserPoints(0);
     setShowTokenRain(false);
     
-    // Очищаем localStorage
     localStorage.removeItem('lastConnectedWallet');
     localStorage.removeItem('worldid_verification');
     localStorage.removeItem('worldid_verification_backup');
     
-    // Очищаем все данные World ID для всех адресов
     Object.keys(localStorage).forEach(key => {
       if (key.startsWith('worldid_')) {
         localStorage.removeItem(key);
@@ -64,17 +58,14 @@ const Index = () => {
     console.log("Reward claim triggered, showing token rain");
     setShowTokenRain(true);
     
-    // Больше поинтов для верифицированных пользователей World ID
     const rewardMultiplier = worldIdUser?.verified ? 2 : 1;
     const rewardAmount = 1 * rewardMultiplier;
     const newPoints = userPoints + rewardAmount;
     
     setUserPoints(newPoints);
     
-    // Используем улучшенную систему сохранения
     PointsStorage.saveUserPoints(walletAddress, newPoints, worldIdUser);
     
-    // Триггерим событие для обновления статистики
     window.dispatchEvent(new Event('storage'));
   };
 
@@ -83,7 +74,6 @@ const Index = () => {
     setShowTokenRain(false);
   };
 
-  // Автоматически подключаем пользователя, если он уже подключался ранее
   useEffect(() => {
     const lastWallet = localStorage.getItem('lastConnectedWallet');
     if (lastWallet) {
@@ -91,7 +81,6 @@ const Index = () => {
       const userData = PointsStorage.getUserPointsData(lastWallet);
       setUserPoints(userData?.points || 0);
       
-      // Восстанавливаем World ID данные
       try {
         const worldIdData = localStorage.getItem(`worldid_${lastWallet}`);
         if (worldIdData) {
@@ -103,7 +92,6 @@ const Index = () => {
     }
   }, []);
 
-  // Сохраняем последний подключенный кошелек
   useEffect(() => {
     if (walletAddress) {
       localStorage.setItem('lastConnectedWallet', walletAddress);
@@ -117,7 +105,6 @@ const Index = () => {
     }}>
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
       
-      {/* Показываем счетчик поинтов только когда кошелек подключен */}
       {walletAddress && <PointsCounter points={userPoints} />}
       
       <div className="w-full flex flex-col items-center justify-center relative z-10">
@@ -125,13 +112,13 @@ const Index = () => {
           <div className="flex flex-col items-center justify-center mb-4">
             <img
               src={MAIN_LOGO}
-              alt="GoldenPuF NFT"
+              alt="GoldenPUF Token"
               className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 animate-pulse-subtle token-image drop-shadow-2xl"
               style={{ background: 'transparent' }}
             />
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-tight">
-                GoldenPuF NFT
+                GoldenPUF Token
               </h1>
             </div>
           </div>
@@ -187,7 +174,6 @@ const Index = () => {
 
             <div className="w-full max-w-7xl px-4">
               <TokenInfo />
-              <GoldenPUFChart />
               <TokenButtons />
               
               <div className="mt-8 flex justify-center">
