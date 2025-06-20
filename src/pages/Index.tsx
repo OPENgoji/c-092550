@@ -115,19 +115,19 @@ const Index = () => {
               style={{ background: 'transparent' }}
             />
             <div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent leading-tight">
                 Golden PUF Token
               </h1>
-              <p className="text-xl md:text-2xl font-semibold text-yellow-500 mt-2">$GPT</p>
+              <p className="text-xl md:text-2xl font-semibold text-yellow-400 mt-2">$GPT</p>
             </div>
           </div>
           
           {!walletAddress && (
             <div className="mt-8 flex justify-center">
-              <div className="glass-card-welcome p-8 rounded-2xl max-w-md w-full border-2 border-yellow-500/20 shadow-2xl backdrop-blur-xl bg-white/10">
+              <div className="glass-card-welcome p-8 rounded-2xl max-w-md w-full border-2 border-yellow-500/30 shadow-2xl backdrop-blur-xl">
                 <div className="text-center mb-6">
-                  <h2 className="text-2xl font-bold text-gray-800 mb-2">{t('welcome')}</h2>
-                  <p className="text-gray-700">{t('connectWallet')}</p>
+                  <h2 className="text-2xl font-bold text-yellow-200 mb-2">{t('welcome')}</h2>
+                  <p className="text-yellow-300">{t('connectWallet')}</p>
                 </div>
                 <WalletConnect onConnect={handleWalletConnect} />
               </div>
@@ -140,12 +140,12 @@ const Index = () => {
             <div className="mb-8 text-center">
               <div className="flex items-center justify-center gap-4 mb-2">
                 <div>
-                  <p className="text-sm text-muted-foreground mb-1">{t('connectedWallet')}</p>
-                  <p className="font-mono text-yellow-500">{walletAddress}</p>
+                  <p className="text-sm text-yellow-300 mb-1">{t('connectedWallet')}</p>
+                  <p className="font-mono text-yellow-400">{walletAddress}</p>
                 </div>
                 <button
                   onClick={handleWalletDisconnect}
-                  className="flex items-center gap-2 px-3 py-2 bg-red-600/20 hover:bg-red-600/30 border border-red-500/30 rounded-lg text-red-400 hover:text-red-300 transition-colors"
+                  className="flex items-center gap-2 px-3 py-2 bg-red-600/30 hover:bg-red-600/40 border border-red-500/40 rounded-lg text-red-300 hover:text-red-200 transition-colors"
                   title={t('disconnect')}
                 >
                   <LogOut className="w-4 h-4" />
@@ -154,9 +154,9 @@ const Index = () => {
               </div>
               
               {worldIdUser?.verified && (
-                <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-green-600/20 border border-green-500/30 rounded-full">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-green-400 text-sm">{t('worldIdVerified')}</span>
+                <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-green-600/30 border border-green-500/40 rounded-full">
+                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span className="text-green-300 text-sm">{t('worldIdVerified')}</span>
                 </div>
               )}
             </div>

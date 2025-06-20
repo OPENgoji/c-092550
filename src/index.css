@@ -6,7 +6,7 @@
 @layer base {
   html, body, #root {
     @apply text-foreground antialiased;
-    background: radial-gradient(circle at center, #f8f9fa 0%, #e9ecef 100%);
+    background: radial-gradient(circle at center, #d4af37 0%, #b8860b 100%);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -17,11 +17,11 @@
     padding: 0;
     overflow-x: hidden;
     position: relative;
-    color: #212529;
+    color: #1a1a1a;
   }
   
   body {
-    background: radial-gradient(circle at center, #f8f9fa 0%, #e9ecef 100%);
+    background: radial-gradient(circle at center, #d4af37 0%, #b8860b 100%);
     background-attachment: fixed;
     position: relative;
   }
@@ -34,13 +34,13 @@
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(circle at center, rgba(248, 249, 250, 0.95) 0%, rgba(233, 236, 239, 0.98) 100%),
-      url('/lovable-uploads/3579c293-6d5f-42fe-bcb4-185aa5aed299.png');
-    background-size: cover, 800px 800px;
+      radial-gradient(circle at center, rgba(212, 175, 55, 0.8) 0%, rgba(184, 134, 11, 0.9) 100%),
+      url('/lovable-uploads/dacd0a56-a82b-46fe-a5ab-ad8d58e58406.png');
+    background-size: cover, 400px 400px;
     background-position: center, center;
-    background-repeat: no-repeat, no-repeat;
+    background-repeat: no-repeat, repeat;
     background-attachment: fixed, fixed;
-    opacity: 0.3;
+    opacity: 0.7;
     z-index: -2;
     pointer-events: none;
   }
@@ -52,7 +52,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(248, 249, 250, 0.8) 0%, rgba(233, 236, 239, 0.9) 100%);
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.6) 0%, rgba(184, 134, 11, 0.8) 100%);
     z-index: -1;
     pointer-events: none;
   }
@@ -73,24 +73,26 @@
 /* Glass card effects */
 .glass-card {
   @apply backdrop-blur-xl shadow-2xl;
-  background: rgba(15, 15, 15, 0.8) !important;
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: rgba(139, 69, 19, 0.8) !important;
+  border: 1px solid rgba(255, 215, 0, 0.4);
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 215, 0, 0.1);
+    inset 0 1px 0 rgba(255, 215, 0, 0.2);
   position: relative;
   z-index: 2;
+  color: #ffd700;
 }
 
 .glass-card-welcome {
   @apply backdrop-blur-xl shadow-2xl;
-  background: rgba(255, 255, 255, 0.15) !important;
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: rgba(139, 69, 19, 0.6) !important;
+  border: 1px solid rgba(255, 215, 0, 0.3);
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 215, 0, 0.2);
   position: relative;
   z-index: 2;
+  color: #ffd700;
 }
 
 .glass-card::before {
@@ -99,7 +101,7 @@
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), transparent, rgba(255, 215, 0, 0.1));
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), transparent, rgba(255, 215, 0, 0.2));
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: xor;
   -webkit-mask-composite: xor;

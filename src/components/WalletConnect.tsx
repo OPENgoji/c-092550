@@ -128,10 +128,10 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
     <div className="space-y-4">
       <div className="text-center mb-4">
         <div className="flex items-center justify-center gap-2 mb-2">
-          <Globe className="w-6 h-6 text-blue-600" />
-          <h3 className="text-lg font-semibold text-gray-800">{t('worldChainIntegration')}</h3>
+          <Globe className="w-6 h-6 text-yellow-400" />
+          <h3 className="text-lg font-semibold text-yellow-300">{t('worldChainIntegration')}</h3>
         </div>
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-yellow-200">
           {t('worldChainDescription')}
         </p>
       </div>
@@ -144,12 +144,12 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
       <button
         onClick={connectWallet}
         disabled={isConnecting}
-        className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-yellow-500/80 hover:bg-yellow-500/90 text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:hover:scale-100 disabled:opacity-70 backdrop-blur-sm"
+        className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-yellow-600/80 hover:bg-yellow-600/90 text-yellow-100 font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:hover:scale-100 disabled:opacity-70 backdrop-blur-sm border border-yellow-500/50"
       >
         <Wallet className="w-6 h-6" />
         {isConnecting ? (
           <>
-            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-yellow-100"></div>
             {t('connectingToWorldChain')}
           </>
         ) : (
@@ -158,8 +158,8 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
       </button>
 
       {isWorldIdVerified && (
-        <div className="text-center text-sm text-green-600 flex items-center justify-center gap-2">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+        <div className="text-center text-sm text-green-400 flex items-center justify-center gap-2">
+          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
           {t('worldIdActive')}
         </div>
       )}
