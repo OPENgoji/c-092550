@@ -10,7 +10,6 @@ interface WalletConnectProps {
   onConnect: (address: string, worldIdUser?: WorldIDUser) => void;
 }
 
-// Define the expected wallet auth payload structure
 interface WalletAuthPayload {
   address: string;
 }
@@ -21,14 +20,12 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
   const [isWorldIdVerified, setIsWorldIdVerified] = useState(false);
   const [worldIdData, setWorldIdData] = useState<WorldIDVerificationResult | null>(null);
 
-  // Initialize MiniKit
   useEffect(() => {
     if (!MiniKit.isInstalled()) {
       console.log("MiniKit is not installed. Please open in World App.");
     }
   }, []);
 
-  // Check saved verification on load
   useEffect(() => {
     const savedVerification = localStorage.getItem('worldid_verification');
     if (savedVerification) {
@@ -62,7 +59,6 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
     setIsConnecting(true);
     
     try {
-      // Use MiniKit for wallet connection if available
       if (MiniKit.isInstalled()) {
         try {
           const result = await MiniKit.commandsAsync.walletAuth({
@@ -70,13 +66,12 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
             requestId: Math.random().toString(36).substring(7),
             expirationTime: new Date(Date.now() + 60000),
             notBefore: new Date(),
-            statement: "Connect to GoldenPUF NFT"
+            statement: "Connect to Golden PUF Token"
           });
 
           console.log("MiniKit wallet auth result:", result);
 
           if (result.finalPayload) {
-            // Type cast the payload to our expected structure
             const payload = result.finalPayload as WalletAuthPayload;
             if (payload.address) {
               const address = payload.address;
@@ -95,10 +90,9 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
         }
       }
 
-      // Fallback for Web3
       if (typeof window.ethereum !== 'undefined') {
-        const accounts = await window.ethereum.request({ 
-          method: 'eth_requestAccounts' 
+        const accounts = await window.ethereum.request({
+          method: 'eth_requestAccounts'
         });
         
         if (accounts.length > 0) {
@@ -112,7 +106,6 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
           onConnect(address, worldIdUser);
         }
       } else {
-        // Demo fallback
         setTimeout(() => {
           const mockAddress = "0x" + Math.random().toString(16).substr(2, 40);
           const worldIdUser: WorldIDUser = {
@@ -135,10 +128,10 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
     <div className="space-y-4">
       <div className="text-center mb-4">
         <div className="flex items-center justify-center gap-2 mb-2">
-          <Globe className="w-6 h-6 text-blue-500" />
-          <h3 className="text-lg font-semibold text-yellow-400">{t('worldChainIntegration')}</h3>
+          <Globe className="w-6 h-6 text-blue-600" />
+          <h3 className="text-lg font-semibold text-gray-800">{t('worldChainIntegration')}</h3>
         </div>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-gray-700">
           {t('worldChainDescription')}
         </p>
       </div>
@@ -151,12 +144,12 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
       <button
         onClick={connectWallet}
         disabled={isConnecting}
-        className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 disabled:hover:scale-100 disabled:opacity-70"
+        className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-yellow-500/80 hover:bg-yellow-500/90 text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:hover:scale-100 disabled:opacity-70 backdrop-blur-sm"
       >
         <Wallet className="w-6 h-6" />
         {isConnecting ? (
           <>
-            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-black"></div>
+            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
             {t('connectingToWorldChain')}
           </>
         ) : (
@@ -165,7 +158,7 @@ const WalletConnect = ({ onConnect }: WalletConnectProps) => {
       </button>
 
       {isWorldIdVerified && (
-        <div className="text-center text-sm text-green-400 flex items-center justify-center gap-2">
+        <div className="text-center text-sm text-green-600 flex items-center justify-center gap-2">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
           {t('worldIdActive')}
         </div>

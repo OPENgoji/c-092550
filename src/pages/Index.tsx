@@ -2,9 +2,9 @@
 import { useState, useEffect } from 'react';
 import WalletConnect from "@/components/WalletConnect";
 import TokenButtons from "@/components/TokenButtons";
+import TokenPool from "@/components/TokenPool";
 import DailyReward from "@/components/DailyReward";
 import PremiumSubscription from "@/components/PremiumSubscription";
-import TelegramInfo from "@/components/TelegramInfo";
 import TokenRain from "@/components/TokenRain";
 import TokenCounter from "@/components/TokenCounter";
 import { WorldIDUser } from "@/types/worldid";
@@ -69,7 +69,8 @@ const Index = () => {
     
     PointsStorage.saveUserPoints(walletAddress, newTokens, worldIdUser);
     
-    window.dispatchEvent(new Event('storage'));
+    // Dispatch custom event to update token pool
+    window.dispatchEvent(new Event('pointsUpdated'));
   };
 
   const handleRainComplete = () => {
@@ -102,10 +103,7 @@ const Index = () => {
   }, [walletAddress]);
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 relative" style={{ 
-      background: '#0a0a0a',
-      position: 'relative'
-    }}>
+    <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 relative">
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
       
       {walletAddress && <TokenCounter tokens={userTokens} />}
@@ -115,23 +113,24 @@ const Index = () => {
           <div className="flex flex-col items-center justify-center mb-4">
             <img
               src={MAIN_LOGO}
-              alt="GoldenPUF Token"
+              alt="Golden PUF Token"
               className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 animate-pulse-subtle token-image drop-shadow-2xl"
               style={{ background: 'transparent' }}
             />
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent leading-tight">
-                GoldenPUF Token
+                Golden PUF Token
               </h1>
+              <p className="text-xl md:text-2xl font-semibold text-yellow-500 mt-2">$GPT</p>
             </div>
           </div>
           
           {!walletAddress && (
             <div className="mt-8 flex justify-center">
-              <div className="glass-card p-8 rounded-2xl max-w-md w-full border-2 border-yellow-500/30 shadow-2xl backdrop-blur-xl">
+              <div className="glass-card-welcome p-8 rounded-2xl max-w-md w-full border-2 border-yellow-500/20 shadow-2xl backdrop-blur-xl bg-white/10">
                 <div className="text-center mb-6">
-                  <h2 className="text-2xl font-bold text-yellow-400 mb-2">{t('welcome')}</h2>
-                  <p className="text-muted-foreground">{t('connectWallet')}</p>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2">{t('welcome')}</h2>
+                  <p className="text-gray-700">{t('connectWallet')}</p>
                 </div>
                 <WalletConnect onConnect={handleWalletConnect} />
               </div>
@@ -165,27 +164,23 @@ const Index = () => {
               )}
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8 w-full max-w-7xl px-4">
-              <div className="lg:col-span-2">
-                <DailyReward 
-                  walletAddress={walletAddress} 
-                  onClaim={handleRewardClaim}
-                  userTokens={userTokens}
-                />
-              </div>
-              <div>
-                <PremiumSubscription walletAddress={walletAddress} />
-              </div>
-            </div>
-
             <div className="w-full max-w-7xl px-4">
-              <TokenButtons />
+              <TokenPool />
               
-              <div className="mt-8 flex justify-center">
-                <div className="max-w-md w-full">
-                  <TelegramInfo />
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <div className="lg:col-span-2">
+                  <DailyReward 
+                    walletAddress={walletAddress} 
+                    onClaim={handleRewardClaim}
+                    userTokens={userTokens}
+                  />
+                </div>
+                <div>
+                  <PremiumSubscription walletAddress={walletAddress} />
                 </div>
               </div>
+
+              <TokenButtons />
             </div>
           </>
         )}

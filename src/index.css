@@ -6,7 +6,7 @@
 @layer base {
   html, body, #root {
     @apply text-foreground antialiased;
-    background: radial-gradient(circle at center, #121212 0%, #0a0a0a 100%);
+    background: radial-gradient(circle at center, #f8f9fa 0%, #e9ecef 100%);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -17,11 +17,11 @@
     padding: 0;
     overflow-x: hidden;
     position: relative;
-    color: #e5e5e5;
+    color: #212529;
   }
   
   body {
-    background: radial-gradient(circle at center, #121212 0%, #0a0a0a 100%);
+    background: radial-gradient(circle at center, #f8f9fa 0%, #e9ecef 100%);
     background-attachment: fixed;
     position: relative;
   }
@@ -34,13 +34,13 @@
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(circle at center, #121212 0%, #0a0a0a 100%),
+      radial-gradient(circle at center, rgba(248, 249, 250, 0.95) 0%, rgba(233, 236, 239, 0.98) 100%),
       url('/lovable-uploads/3579c293-6d5f-42fe-bcb4-185aa5aed299.png');
     background-size: cover, 800px 800px;
     background-position: center, center;
     background-repeat: no-repeat, no-repeat;
     background-attachment: fixed, fixed;
-    opacity: 0.05;
+    opacity: 0.3;
     z-index: -2;
     pointer-events: none;
   }
@@ -52,7 +52,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(18, 18, 18, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+    background: radial-gradient(circle at center, rgba(248, 249, 250, 0.8) 0%, rgba(233, 236, 239, 0.9) 100%);
     z-index: -1;
     pointer-events: none;
   }
@@ -70,20 +70,7 @@
   }
 }
 
-/* Скрываем Lovable badge */
-[data-lovable-badge] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-.lovable-badge {
-  display: none !important;
-  visibility: hidden !important;
-}
-
-/* Улучшенный glass card эффект */
+/* Glass card effects */
 .glass-card {
   @apply backdrop-blur-xl shadow-2xl;
   background: rgba(15, 15, 15, 0.8) !important;
@@ -91,6 +78,17 @@
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.6),
     inset 0 1px 0 rgba(255, 215, 0, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.glass-card-welcome {
+  @apply backdrop-blur-xl shadow-2xl;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   position: relative;
   z-index: 2;
 }
@@ -165,7 +163,6 @@
   animation: token-fall-slow 20s linear infinite;
 }
 
-/* Улучшенное золотое свечение */
 .golden-glow {
   box-shadow: 
     0 0 20px rgba(255, 215, 0, 0.4), 
@@ -180,7 +177,6 @@
     inset 0 1px 0 rgba(255, 215, 0, 0.3);
 }
 
-/* Современные стили для кнопок */
 .golden-button {
   background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 215, 0, 0.15));
   border: 1px solid rgba(255, 215, 0, 0.5);
@@ -210,7 +206,6 @@
   transform: translateY(-2px);
 }
 
-/* Улучшенная анимация появления */
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -224,16 +219,4 @@
 
 .animate-fade-in-up {
   animation: fade-in-up 0.6s ease-out;
-}
-
-/* Скрытие всех возможных вариантов Lovable badge */
-div[class*="lovable"],
-div[id*="lovable"],
-a[href*="lovable.dev"],
-[data-testid*="lovable"],
-.powered-by-lovable,
-.edit-in-lovable {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
 }

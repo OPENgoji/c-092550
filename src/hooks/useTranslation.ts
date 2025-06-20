@@ -10,7 +10,7 @@ interface Translations {
 const translations: Translations = {
   en: {
     // Main page
-    welcome: "Welcome!",
+    welcome: "Welcome to Golden PUF Token",
     connectWallet: "Connect wallet to get started",
     connectedWallet: "Connected Wallet:",
     disconnect: "Disconnect",
@@ -27,39 +27,25 @@ const translations: Translations = {
     // Daily Reward
     dailyReward: "Daily special points",
     claimNow: "Claim Now",
-    nextReward: "Next tokens in:",
-    myPoints: "My tokens",
+    nextReward: "Next points in:",
     
     // Token Info
-    tokenInfo: "Token Information",
-    totalSupply: "Total Supply",
-    currentPrice: "Current Price",
-    marketCap: "Market Cap",
-    pointsInfo: "Tokens Information",
-    earnDaily: "Earn daily tokens that will be converted into real tokens on World Chain. Connect your World Chain wallet and get daily rewards every 24 hours!",
-    burnInfo: "Total supply is limited to 10 million tokens",
-    futureTokens: "These tokens will be converted to real tokens on World Chain and listed on decentralized exchanges! Only 10 million in the ecosystem - keep collecting and follow project updates. ✨",
-    
-    // Telegram
-    telegramChannel: "Telegram Channel",
-    joinCommunity: "Join our community",
-    goldenPufSwap: "GoldenPUF SWAP",
-    clickToTelegram: "Click to go to Telegram",
-    getUpdates: "Get news, updates and chat with the community",
+    tokenInfo: "Golden PUF Token ($GPT)",
+    totalSupply: "Total Supply: 10,000,000 $GPT",
+    tokenConversion: "All points convert 1:1 to $GPT tokens",
+    remainingTokens: "Remaining in pool:",
+    earnDaily: "Earn daily points that convert 1:1 to $GPT tokens on World Chain",
     
     // Token Buttons
-    tokenTitle: "GoldenPUF Token",
-    contractAddress: "Contract Address:",
-    copy: "Copy",
-    copied: "Copied!",
-    openDexScreener: "Open on DEX Screener",
-    buyToken: "Buy GoldenPUF Token",
-    stakingComingSoon: "GoldenPUF Token staking coming soon 💸",
-    swapComingSoon: "GoldenPUF Token swap coming soon 💰⏰",
+    tokenTitle: "Golden PUF Token ($GPT)",
+    stakingComingSoon: "$GPT Token Staking coming soon 💎",
+    swapComingSoon: "$GPT Token Swap coming soon 🚀",
     
-    // Chart
-    liveChart: "GoldenPUF Token Live Chart",
-    realTimePrice: "📈 Real-time GoldenPUF Token price"
+    // Premium
+    premiumTitle: "Premium Subscription",
+    premiumDaily: "100 points daily",
+    premiumCost: "Get 100 points daily for 10 WLD",
+    premiumActive: "Premium Active"
   }
 };
 
