@@ -6,7 +6,6 @@ import TokenPool from "@/components/TokenPool";
 import DailyReward from "@/components/DailyReward";
 import PremiumSubscription from "@/components/PremiumSubscription";
 import TokenRain from "@/components/TokenRain";
-import TokenCounter from "@/components/TokenCounter";
 import { WorldIDUser } from "@/types/worldid";
 import { PointsStorage } from "@/utils/pointsStorage";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -138,8 +137,6 @@ const Index = () => {
 
         {walletAddress && (
           <>
-            <TokenCounter tokens={userTokens} />
-            
             <div className="mb-8 text-center">
               <div className="flex items-center justify-center gap-4 mb-2">
                 <div>

@@ -11,35 +11,61 @@ const TokenPool = () => {
   const calculateTotalDistributed = () => {
     let totalPoints = 0;
     const keys = Object.keys(localStorage);
+    const processedWallets = new Set();
     
+    // Сначала проверяем новый формат данных
     keys.forEach(key => {
-      if (key.startsWith('user_points_') || key.startsWith('user_data_')) {
-        try {
-          const userData = JSON.parse(localStorage.getItem(key) || '{}');
-          if (userData.points) {
-            totalPoints += userData.points;
+      if (key.startsWith('user_data_')) {
+        const walletAddress = key.replace('user_data_', '');
+        if (!processedWallets.has(walletAddress)) {
+          try {
+            const userData = JSON.parse(localStorage.getItem(key) || '{}');
+            if (userData.points && typeof userData.points === 'number') {
+              totalPoints += userData.points;
+              processedWallets.add(walletAddress);
+              console.log(`Added ${userData.points} points from wallet ${walletAddress}`);
+            }
+          } catch (error) {
+            console.error('Error parsing user data:', error);
           }
-        } catch (error) {
-          console.error('Error parsing user data:', error);
         }
       }
     });
     
-    // Also check for simple points storage
+    // Затем проверяем старый формат для кошельков, которые не были обработаны
     keys.forEach(key => {
       if (key.startsWith('points_') && !key.includes('backup')) {
-        try {
-          const points = parseInt(localStorage.getItem(key) || '0');
-          if (!isNaN(points)) {
-            totalPoints += points;
+        const walletAddress = key.replace('points_', '');
+        if (!processedWallets.has(walletAddress)) {
+          try {
+            const points = parseInt(localStorage.getItem(key) || '0');
+            if (!isNaN(points) && points > 0) {
+              totalPoints += points;
+              processedWallets.add(walletAddress);
+              console.log(`Added ${points} points from wallet ${walletAddress} (old format)`);
+            }
+          } catch (error) {
+            console.error('Error parsing points:', error);
           }
-        } catch (error) {
-          console.error('Error parsing points:', error);
         }
       }
     });
     
-    console.log('Total distributed tokens calculated:', totalPoints);
+    // Также проверяем реестр пользователей
+    try {
+      const registry = JSON.parse(localStorage.getItem('golden_puf_users_registry') || '{}');
+      Object.keys(registry).forEach(walletAddress => {
+        if (!processedWallets.has(walletAddress) && registry[walletAddress].points) {
+          totalPoints += registry[walletAddress].points;
+          processedWallets.add(walletAddress);
+          console.log(`Added ${registry[walletAddress].points} points from registry for wallet ${walletAddress}`);
+        }
+      });
+    } catch (error) {
+      console.error('Error reading registry:', error);
+    }
+    
+    console.log('Total distributed tokens calculated:', totalPoints, 'from', processedWallets.size, 'wallets');
     return totalPoints;
   };
   
@@ -51,7 +77,7 @@ const TokenPool = () => {
   useEffect(() => {
     const handleStorageChange = () => {
       const newTotal = calculateTotalDistributed();
-      console.log('Updating total distributed tokens:', newTotal);
+      console.log('Storage change - updating total distributed tokens:', newTotal);
       setTotalDistributed(newTotal);
     };
 
@@ -71,6 +97,7 @@ const TokenPool = () => {
     const interval = setInterval(() => {
       const newTotal = calculateTotalDistributed();
       if (newTotal !== totalDistributed) {
+        console.log('Interval check - updating total:', newTotal);
         setTotalDistributed(newTotal);
       }
     }, 3000);

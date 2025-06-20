@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Gift, Clock, CheckCircle } from 'lucide-react';
+import { Gift, Clock, Star } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useToast } from '@/hooks/use-toast';
 
@@ -95,6 +95,16 @@ const DailyReward = ({
         Daily special points
       </h3>
       
+      {/* User tokens display */}
+      <div className="mb-4 p-3 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 border border-yellow-500/30 rounded-lg">
+        <div className="flex items-center justify-center gap-2 mb-2">
+          <Star className="w-5 h-5 text-yellow-500" />
+          <span className="text-sm text-muted-foreground">Your Points</span>
+        </div>
+        <p className="text-2xl font-bold text-yellow-500">{userTokens.toLocaleString()}</p>
+        <p className="text-sm text-yellow-400">→ $GPT</p>
+      </div>
+      
       {hasPremium && (
         <div className="mb-4 p-2 bg-gradient-to-r from-green-500/20 to-green-600/20 border border-green-500/30 rounded-lg">
           <p className="text-sm text-green-400 font-semibold">
@@ -128,13 +138,6 @@ const DailyReward = ({
           <Clock className="w-4 h-4 text-yellow-500" />
           <p className="text-xs text-muted-foreground">Next tokens in:</p>
           <p className="text-sm font-mono text-yellow-500">{timeLeft}</p>
-          
-          <div className="mt-2 p-2 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 border border-yellow-500/30 rounded-lg">
-            <div className="text-center">
-              <p className="text-xs text-muted-foreground">My tokens</p>
-              <p className="text-sm font-bold text-yellow-500">{userTokens.toLocaleString()}</p>
-            </div>
-          </div>
         </div>
       )}
     </div>
