@@ -11,7 +11,7 @@ import { PointsStorage } from "@/utils/pointsStorage";
 import { useTranslation } from "@/hooks/useTranslation";
 import { LogOut } from "lucide-react";
 
-const MAIN_LOGO = "/lovable-uploads/55fa699e-e967-46e2-9719-3fe4e122ecd8.png";
+const MAIN_LOGO = "/lovable-uploads/2af79d0c-8a7a-464b-8409-671542526d7d.png";
 
 const Index = () => {
   const { t } = useTranslation();

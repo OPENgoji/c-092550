@@ -1,96 +1,182 @@
 
-# Deployment Guide - GoldenPUF NFT
+# Deployment Guide - GoldenPUF Token World App Integration
 
 ## 🌍 World App Exclusive Deployment
 
 **Important:** This application is designed exclusively for the World App platform and is **NOT** deployed as a web application or mobile app stores.
 
-## 📱 World App Integration
+## 📱 Complete World App Integration
 
 ### Application Details
-- **App ID:** `app_15daccf5b7d4ec9b7dbba044a8fdeab5`
+- **App ID:** `app_de95af90f10c78687dd4d723124bdad0`
 - **Team ID:** `team_ad489f561da23f72d61b3ba9e0962cf0`
-- **Developer App ID:** `app_b924910c34c036984df5a50cd6f122e9`
 - **Platform:** World App Mini-App
-- **Network:** World Chain Mainnet
+- **Network:** World Chain Mainnet (Chain ID: 480)
+- **Status:** Live and Active
 
 ### Official Access Points
-- **Primary Access:** Through World App mini-app section
-- **Token Purchase:** [World App Token Link](https://worldcoin.org/mini-app?app_id=app_15daccf5b7d4ec9b7dbba044a8fdeab5&path=app/token/0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd)
-- **Developer Portal:** [World Developer Console](https://developer.worldcoin.org/teams/team_ad489f561da23f72d61b3ba9e0962cf0/apps/app_b924910c34c036984df5a50cd6f122e9)
+- **Primary Access:** World App → Mini-Apps → GoldenPUF Token
+- **Developer Portal:** [https://developer.worldcoin.org/teams/team_ad489f561da23f72d61b3ba9e0962cf0/apps/app_de95af90f10c78687dd4d723124bdad0](https://developer.worldcoin.org/teams/team_ad489f561da23f72d61b3ba9e0962cf0/apps/app_de95af90f10c78687dd4d723124bdad0)
+- **Auth Portal:** [World Developer Auth](https://worldcoin-developer-portal.eu.auth0.com/)
 
-## 🏗️ Build Process
-
-### Prerequisites
-```bash
-Node.js >= 18.0.0
-npm >= 8.0.0
-```
-
-### Build Commands
-```bash
-# Install dependencies
-npm install
-
-# Build for production
-npm run build
-
-# Preview build locally
-npm run preview
-
-# Development server (for testing only)
-npm run dev
-```
-
-### Build Configuration
-```json
-{
-  "build": {
-    "target": "es2020",
-    "outDir": "dist",
-    "sourcemap": false,
-    "minify": true,
-    "cssMinify": true
-  }
-}
-```
-
-## 🌐 World App Deployment Configuration
+## 🔧 World App Configuration
 
 ### Environment Variables
 ```bash
 # World Chain Configuration
 VITE_WORLD_CHAIN_RPC=https://worldchain-mainnet.g.alchemy.com/public
 VITE_WORLD_CHAIN_ID=480
-VITE_WORLD_APP_ID=app_15daccf5b7d4ec9b7dbba044a8fdeab5
+VITE_WORLD_APP_ID=app_de95af90f10c78687dd4d723124bdad0
 
 # World ID Configuration
-VITE_WORLD_ID_APP_ID=app_staging_15daccf5b7d4ec9b7dbba044a8fdeab5
+VITE_WORLD_ID_APP_ID=app_staging_de95af90f10c78687dd4d723124bdad0
 VITE_WORLD_ID_ACTION=verify-golden-puf-user
+VITE_WORLD_ID_VERIFICATION_LEVEL=orb
 
-# Contract Configuration
-VITE_TOKEN_CONTRACT=0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd
+# MiniKit Configuration
+VITE_MINIKIT_APP_ID=app_de95af90f10c78687dd4d723124bdad0
+VITE_MINIKIT_WORLD_CHAIN_RPC=https://worldchain-mainnet.g.alchemy.com/public
+
+# Premium Payment Configuration
+VITE_WLD_TOKEN_CONTRACT=0x2cFc85d8E48F8EAB294be644d9E25C3030863003
+VITE_PAYMENT_RECIPIENT=0x4efd0575242c6c8414dfc2a8d06d3b38640a7dd3
 ```
 
-### World App Manifest Configuration
+### World App Manifest
 ```json
 {
-  "name": "GoldenPUF NFT",
+  "name": "GoldenPUF Token",
   "short_name": "GoldenPUF",
-  "description": "Daily rewards and exclusive NFT collection on World Chain",
-  "version": "1.0.0",
+  "description": "Daily rewards and token collection on World Chain",
+  "version": "2.0.0",
   "world_app": {
-    "app_id": "app_15daccf5b7d4ec9b7dbba044a8fdeab5",
+    "app_id": "app_de95af90f10c78687dd4d723124bdad0",
+    "team_id": "team_ad489f561da23f72d61b3ba9e0962cf0",
     "supported_chains": ["world-chain"],
     "requires_world_id": true,
+    "verification_level": "orb",
+    "minikit_integration": true,
     "permissions": [
       "wallet_connect",
       "world_id_verify",
-      "local_storage"
-    ]
+      "minikit_commands",
+      "local_storage",
+      "push_notifications",
+      "biometric_auth"
+    ],
+    "features": {
+      "daily_rewards": true,
+      "premium_subscription": true,
+      "token_distribution": true,
+      "airdrop_preparation": true
+    }
   }
 }
 ```
+
+## 🏗️ Build Configuration
+
+### Vite Configuration for World App
+```typescript
+// vite.config.ts
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    target: 'es2020',
+    outDir: 'dist',
+    sourcemap: false,
+    minify: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          worldcoin: ['@worldcoin/idkit', '@worldcoin/minikit-js'],
+          ui: ['lucide-react', '@radix-ui/react-toast']
+        }
+      }
+    }
+  },
+  define: {
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    global: 'globalThis'
+  },
+  optimizeDeps: {
+    include: ['@worldcoin/idkit', '@worldcoin/minikit-js']
+  }
+});
+```
+
+### World Chain Network Configuration
+```typescript
+const WORLD_CHAIN_CONFIG = {
+  chainId: 480,
+  name: 'World Chain',
+  rpcUrls: {
+    default: {
+      http: ['https://worldchain-mainnet.g.alchemy.com/public']
+    },
+    public: {
+      http: ['https://worldchain-mainnet.g.alchemy.com/public']
+    }
+  },
+  blockExplorers: {
+    default: {
+      name: 'WorldScan',
+      url: 'https://worldscan.org'
+    }
+  },
+  contracts: {
+    wldToken: {
+      address: '0x2cFc85d8E48F8EAB294be644d9E25C3030863003'
+    }
+  }
+};
+```
+
+## 🚀 Deployment Process
+
+### 1. World Developer Portal Setup
+1. **Access Developer Portal:** [https://developer.worldcoin.org](https://developer.worldcoin.org)
+2. **Authenticate:** Use World ID for secure access
+3. **Navigate to Team:** `team_ad489f561da23f72d61b3ba9e0962cf0`
+4. **Select Application:** `app_de95af90f10c78687dd4d723124bdad0`
+5. **Configure Settings:** Update app configuration and permissions
+
+### 2. Build Preparation
+```bash
+# Clean installation
+rm -rf dist node_modules
+npm install
+
+# Environment setup
+cp .env.example .env.production
+# Configure production environment variables
+
+# Production build
+npm run build
+
+# Verify build
+npm run preview
+```
+
+### 3. World App Deployment
+```bash
+# Deploy to World App Platform
+npm run deploy:world-app
+
+# Verify deployment
+npm run verify:world-app
+
+# Update app status
+npm run status:world-app
+```
+
+### 4. Integration Testing
+- **World ID Verification:** Test complete verification flow
+- **MiniKit Commands:** Verify all wallet operations
+- **Premium Payments:** Test WLD token transactions
+- **Daily Rewards:** Confirm reward distribution
+- **Token Tracking:** Validate point accumulation
 
 ## 🔐 Security Configuration
 
@@ -98,99 +184,91 @@ VITE_TOKEN_CONTRACT=0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd
 ```html
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
-  script-src 'self' 'unsafe-inline' https://cdn.worldcoin.org;
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+    https://cdn.worldcoin.org 
+    https://bridge.worldcoin.org
+    https://minikit.worldcoin.org;
   style-src 'self' 'unsafe-inline';
-  img-src 'self' data: https:;
-  connect-src 'self' https://worldchain-mainnet.g.alchemy.com https://api.worldcoin.org;
-  frame-src https://bridge.worldcoin.org;
+  img-src 'self' data: https: blob:;
+  connect-src 'self' 
+    https://worldchain-mainnet.g.alchemy.com
+    https://api.worldcoin.org
+    https://bridge.worldcoin.org
+    wss://worldchain-mainnet.g.alchemy.com;
+  frame-src 
+    https://bridge.worldcoin.org
+    https://minikit.worldcoin.org;
+  worker-src 'self' blob:;
 ">
 ```
 
-### HTTPS Requirements
-- All connections must use HTTPS
-- World App enforces secure connections
-- No mixed content allowed
+### World App Security Requirements
+- **HTTPS Only:** All connections must use HTTPS
+- **World ID Integration:** Mandatory for enhanced security
+- **MiniKit Security:** Secure wallet operations only
+- **No Mixed Content:** All resources must be secure
+- **CSP Compliance:** Strict content security policy
 
-## 📊 Performance Optimization
+## 📊 Monitoring & Analytics
 
-### Bundle Size Optimization
-```javascript
-// Vite configuration for optimization
-export default {
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          worldcoin: ['@worldcoin/idkit'],
-          ui: ['lucide-react', '@radix-ui/react-toast']
-        }
-      }
-    }
-  }
-}
+### World App Analytics
+```typescript
+// Analytics configuration
+const ANALYTICS_CONFIG = {
+  app_id: "app_de95af90f10c78687dd4d723124bdad0",
+  events: [
+    'wallet_connect',
+    'world_id_verify',
+    'daily_claim',
+    'premium_purchase',
+    'token_accumulation'
+  ],
+  metrics: [
+    'daily_active_users',
+    'verification_rate',
+    'premium_conversion',
+    'token_distribution',
+    'session_duration'
+  ]
+};
 ```
 
-### Asset Optimization
-- Images compressed and optimized
-- Lazy loading for non-critical components
-- Tree shaking for unused code
-- Code splitting for better performance
+### Performance Monitoring
+- **Load Times:** World App initialization tracking
+- **User Interactions:** Comprehensive user journey analytics
+- **Error Tracking:** Real-time error monitoring and alerts
+- **World Chain Monitoring:** Network performance and transaction success
+- **MiniKit Performance:** Wallet operation efficiency
 
-## 🧪 Testing Before Deployment
+## 🧪 Testing Strategy
 
-### Pre-Deployment Checklist
-- [ ] World ID integration working
-- [ ] Wallet connection functional
-- [ ] Daily rewards system operational
-- [ ] Point tracking accurate
-- [ ] World Chain contract interaction working
-- [ ] UI responsive on mobile devices
-- [ ] Error handling comprehensive
-- [ ] Security measures in place
-
-### Testing Commands
+### Pre-Deployment Testing
 ```bash
-# Run all tests
-npm test
+# World App Compatibility
+npm run test:world-app
 
-# Type checking
-npm run type-check
+# World ID Integration
+npm run test:world-id
 
-# Linting
-npm run lint
+# MiniKit Commands
+npm run test:minikit
 
-# Build test
-npm run build && npm run preview
+# Premium Payments
+npm run test:payments
+
+# Token Distribution
+npm run test:rewards
 ```
 
-## 🚀 Deployment Process
-
-### 1. World Developer Portal Setup
-1. Access [World Developer Portal](https://developer.worldcoin.org)
-2. Navigate to your team: `team_ad489f561da23f72d61b3ba9e0962cf0`
-3. Select the GoldenPUF app: `app_b924910c34c036984df5a50cd6f122e9`
-4. Configure app settings and permissions
-
-### 2. Build Preparation
-```bash
-# Clean and build
-rm -rf dist node_modules
-npm install
-npm run build
-```
-
-### 3. Upload to World App Platform
-1. **Archive Build:** Create production build archive
-2. **Upload Assets:** Upload to World App hosting
-3. **Configure Routing:** Set up app routing within World App
-4. **Set Permissions:** Configure required permissions
-
-### 4. Configuration Verification
-- Verify app ID configuration
-- Test World ID integration
-- Validate wallet connections
-- Check contract interactions
+### Testing Checklist
+- [ ] **World ID Verification** working correctly
+- [ ] **MiniKit Wallet Connection** successful
+- [ ] **Daily Rewards System** functioning
+- [ ] **Premium Subscriptions** processing payments
+- [ ] **Token Tracking** accurate across all wallets
+- [ ] **World Chain Integration** stable and reliable
+- [ ] **Mobile Responsiveness** perfect on all devices
+- [ ] **Error Handling** comprehensive and user-friendly
 
 ## 🔄 CI/CD Pipeline
 
@@ -200,139 +278,105 @@ name: World App Deployment
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
+          cache: 'npm'
       
       - name: Install dependencies
         run: npm ci
       
       - name: Run tests
-        run: npm test
+        run: |
+          npm run test
+          npm run test:world-app
+          npm run test:integration
       
       - name: Build application
         run: npm run build
+        env:
+          VITE_WORLD_APP_ID: ${{ secrets.WORLD_APP_ID }}
+          VITE_WORLD_ID_APP_ID: ${{ secrets.WORLD_ID_APP_ID }}
       
       - name: Deploy to World App
         run: npm run deploy:world-app
         env:
           WORLD_APP_TOKEN: ${{ secrets.WORLD_APP_TOKEN }}
+          WORLD_DEVELOPER_API_KEY: ${{ secrets.WORLD_DEVELOPER_API_KEY }}
+      
+      - name: Verify deployment
+        run: npm run verify:deployment
 ```
-
-## 📱 World App Specific Features
-
-### Deep Linking
-```typescript
-// Handle World App deep links
-const handleWorldAppLink = (path: string) => {
-  const baseUrl = 'https://worldcoin.org/mini-app';
-  const appId = 'app_15daccf5b7d4ec9b7dbba044a8fdeab5';
-  return `${baseUrl}?app_id=${appId}&path=${path}`;
-};
-```
-
-### World App API Integration
-```typescript
-// World App specific APIs
-interface WorldAppAPI {
-  wallet: {
-    connect(): Promise<string>;
-    disconnect(): void;
-    getBalance(): Promise<string>;
-  };
-  worldId: {
-    verify(): Promise<WorldIDResult>;
-  };
-  storage: {
-    get(key: string): Promise<string>;
-    set(key: string, value: string): Promise<void>;
-  };
-}
-```
-
-## 🔍 Monitoring & Analytics
-
-### Performance Monitoring
-- **Load Times:** Track app initialization
-- **User Interactions:** Monitor button clicks and navigation
-- **Error Tracking:** Comprehensive error logging
-- **Usage Analytics:** Daily active users and session duration
-
-### World Chain Monitoring
-- **Contract Interactions:** Monitor smart contract calls
-- **Transaction Success Rate:** Track transaction failures
-- **Gas Usage:** Monitor gas consumption
-- **Network Health:** World Chain network status
 
 ## 🆘 Troubleshooting
 
-### Common Issues
+### Common Issues & Solutions
 
 **World ID Verification Fails**
 ```typescript
-// Check World ID configuration
+// Check configuration
 const worldIdConfig = {
-  app_id: "app_staging_15daccf5b7d4ec9b7dbba044a8fdeab5",
+  app_id: "app_staging_de95af90f10c78687dd4d723124bdad0",
   action: "verify-golden-puf-user",
   verification_level: VerificationLevel.Orb
 };
+
+// Debug verification
+console.log('World ID Config:', worldIdConfig);
 ```
 
-**Wallet Connection Issues**
+**MiniKit Connection Issues**
 ```typescript
-// Verify World Chain network
-const worldChainConfig = {
-  chainId: 480,
-  rpcUrl: "https://worldchain-mainnet.g.alchemy.com/public"
-};
+// Verify MiniKit installation
+if (!MiniKit.isInstalled()) {
+  console.error('MiniKit not available - app must run in World App');
+  return;
+}
+
+// Test MiniKit commands
+try {
+  await MiniKit.commandsAsync.walletAuth({
+    nonce: Math.random().toString(36),
+    requestId: Math.random().toString(36)
+  });
+} catch (error) {
+  console.error('MiniKit error:', error);
+}
 ```
 
-**Contract Interaction Errors**
+**Premium Payment Failures**
 ```typescript
-// Verify contract address
-const contractAddress = "0xB7b9Bc8e8c301E761AF20143A3477e5D1890e1Dd";
-```
+// Verify WLD contract
+const WLD_CONTRACT = "0x2cFc85d8E48F8EAB294be644d9E25C3030863003";
+const RECIPIENT = "0x4efd0575242c6c8414dfc2a8d06d3b38640a7dd3";
 
-### Debug Mode
-```bash
-# Enable debug logging
-NODE_ENV=development npm run dev
+// Check transaction parameters
+console.log('Payment config:', { WLD_CONTRACT, RECIPIENT });
 ```
 
 ## 📞 Support & Maintenance
 
-### Deployment Support
-- **Technical Issues:** tech-support@goldenpuf.com
-- **World App Integration:** world-app-support@goldenpuf.com
-- **Emergency Hotline:** +1-XXX-XXX-XXXX
+### Development Support
+- **Technical Issues:** ministotele@gmail.com
+- **World App Integration:** [Developer Portal Support](https://developer.worldcoin.org/support)
+- **Emergency Deployment:** 24/7 support available
+- **Community Support:** [Telegram Group](https://t.me/GoldenPUFswap)
 
 ### Maintenance Schedule
-- **Regular Updates:** Monthly feature updates
-- **Security Patches:** As needed
-- **World App Compatibility:** Continuous monitoring
-- **Performance Optimization:** Quarterly reviews
-
-## 📚 Resources
-
-### Documentation
-- [World App Developer Docs](https://docs.worldcoin.org/mini-apps)
-- [World ID Integration Guide](https://docs.worldcoin.org/id)
-- [World Chain Documentation](https://docs.worldchain.org)
-
-### Tools
-- [World Developer Portal](https://developer.worldcoin.org)
-- [World Chain Explorer](https://worldscan.org)
-- [DEX Screener](https://dexscreener.com/worldchain)
+- **Daily Monitoring:** Automated health checks
+- **Weekly Updates:** Performance optimization
+- **Monthly Releases:** Feature updates and improvements
+- **Quarterly Reviews:** Security audits and compliance checks
 
 ---
 
-**Note:** This application is exclusively designed for World App platform. Traditional web deployment is not supported or recommended.
+**🚀 Successfully Deployed on World App Platform! 🚀**
 
-*For technical support or deployment assistance, contact our development team.*
+*Complete integration with World Chain, World ID, and MiniKit for the ultimate user experience.*
