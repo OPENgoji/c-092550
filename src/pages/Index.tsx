@@ -106,8 +106,6 @@ const Index = () => {
     <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 relative">
       <TokenRain isActive={showTokenRain} onComplete={handleRainComplete} />
       
-      {walletAddress && <TokenCounter tokens={userTokens} />}
-      
       <div className="w-full flex flex-col items-center justify-center relative z-10">
         <header className="text-center">
           <div className="flex flex-col items-center justify-center mb-4">
@@ -140,6 +138,8 @@ const Index = () => {
 
         {walletAddress && (
           <>
+            <TokenCounter tokens={userTokens} />
+            
             <div className="mb-8 text-center">
               <div className="flex items-center justify-center gap-4 mb-2">
                 <div>

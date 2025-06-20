@@ -8,13 +8,12 @@ const TokenPool = () => {
   const [totalDistributed, setTotalDistributed] = useState(0);
   const TOTAL_SUPPLY = 10000000; // 10 million tokens
   
-  useEffect(() => {
-    // Calculate total distributed tokens from all users
+  const calculateTotalDistributed = () => {
     let totalPoints = 0;
     const keys = Object.keys(localStorage);
     
     keys.forEach(key => {
-      if (key.startsWith('user_points_')) {
+      if (key.startsWith('user_points_') || key.startsWith('user_data_')) {
         try {
           const userData = JSON.parse(localStorage.getItem(key) || '{}');
           if (userData.points) {
@@ -26,41 +25,62 @@ const TokenPool = () => {
       }
     });
     
-    setTotalDistributed(totalPoints);
+    // Also check for simple points storage
+    keys.forEach(key => {
+      if (key.startsWith('points_') && !key.includes('backup')) {
+        try {
+          const points = parseInt(localStorage.getItem(key) || '0');
+          if (!isNaN(points)) {
+            totalPoints += points;
+          }
+        } catch (error) {
+          console.error('Error parsing points:', error);
+        }
+      }
+    });
+    
+    console.log('Total distributed tokens calculated:', totalPoints);
+    return totalPoints;
+  };
+  
+  useEffect(() => {
+    setTotalDistributed(calculateTotalDistributed());
   }, []);
 
   // Listen for storage changes to update the counter
   useEffect(() => {
     const handleStorageChange = () => {
-      let totalPoints = 0;
-      const keys = Object.keys(localStorage);
-      
-      keys.forEach(key => {
-        if (key.startsWith('user_points_')) {
-          try {
-            const userData = JSON.parse(localStorage.getItem(key) || '{}');
-            if (userData.points) {
-              totalPoints += userData.points;
-            }
-          } catch (error) {
-            console.error('Error parsing user data:', error);
-          }
-        }
-      });
-      
-      setTotalDistributed(totalPoints);
+      const newTotal = calculateTotalDistributed();
+      console.log('Updating total distributed tokens:', newTotal);
+      setTotalDistributed(newTotal);
+    };
+
+    // Listen for custom events from reward claims
+    const handlePointsUpdate = () => {
+      setTimeout(() => {
+        const newTotal = calculateTotalDistributed();
+        console.log('Points updated event - new total:', newTotal);
+        setTotalDistributed(newTotal);
+      }, 100);
     };
 
     window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('pointsUpdated', handlePointsUpdate);
     
-    // Also listen for custom events
-    window.addEventListener('pointsUpdated', handleStorageChange);
+    // Check for updates every few seconds as a fallback
+    const interval = setInterval(() => {
+      const newTotal = calculateTotalDistributed();
+      if (newTotal !== totalDistributed) {
+        setTotalDistributed(newTotal);
+      }
+    }, 3000);
     
     return () => {
       window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('pointsUpdated', handleStorageChange);
+      window.removeEventListener('pointsUpdated', handlePointsUpdate);
+      clearInterval(interval);
     };
-  }, []);
+  }, [totalDistributed]);
 
   const remainingTokens = TOTAL_SUPPLY - totalDistributed;
   const distributedPercentage = (totalDistributed / TOTAL_SUPPLY) * 100;
